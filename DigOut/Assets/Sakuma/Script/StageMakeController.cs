@@ -34,11 +34,11 @@ public class StageMakeController : MonoBehaviour
     {
         string text = "";
         //オブジェ座標以外の情報書き出し
-        text += "わあああああああああああ";
+        //text += "わあああああああああああ";
 
 
 
-        text += "\n[BrockData]\n";
+        //text += "\n[BrockData]\n";
 
         //StageListの子のtagと座標の取得と書き出し
         for (int i = 0; i < stageParent.transform.GetChildCount(); i++)
@@ -78,10 +78,10 @@ public class StageMakeController : MonoBehaviour
         string text = scenarioText.text;
         Resources.UnloadAsset(scenarioText);
 
-        BrockData= text.Split(new string[] { "\n[BrockData]\n" }, System.StringSplitOptions.None)[1];
+        //BrockData= text.Split(new string[] { "\n[BrockData]\n" }, System.StringSplitOptions.None)[1];
 
         //Scenariosに;で区切って表示
-        string[] m_scenarios = BrockData.Split(new string[] { "\n" }, System.StringSplitOptions.None);
+        string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
         for (int i = 0; i < m_scenarios.Length - 1; i++)
         {
             //passに,で区切った数値を入れる

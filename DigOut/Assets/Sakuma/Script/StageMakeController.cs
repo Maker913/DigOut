@@ -45,7 +45,9 @@ public class StageMakeController : MonoBehaviour
         {
             text += stageParent.transform.GetChild(i).transform.tag + ",";
             text += stageParent.transform.GetChild(i).transform.position.x.ToString() + ",";
-            text += stageParent.transform.GetChild(i).transform.position.y.ToString();
+            text += stageParent.transform.GetChild(i).transform.position.y.ToString() + ",";
+            text += (stageParent.transform.GetChild(i).transform.localEulerAngles .z).ToString();
+            //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
             if (i!=stageParent.transform.GetChildCount() - 1)
             {
                 text += "\n";
@@ -87,7 +89,7 @@ public class StageMakeController : MonoBehaviour
             //passに,で区切った数値を入れる
             string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
             //tagを参照し、preList内部のプレハブを各座標に配置
-            Instantiate(stageObjNumList.PreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), 0), Quaternion.identity, stageParent.transform);
+            Instantiate(stageObjNumList.PreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), 0), Quaternion.Euler (0,0, float.Parse(pass[3])), stageParent.transform);
         }
         Debug.Log(workFileName + "をロードしたで(*^-^*)");
     }

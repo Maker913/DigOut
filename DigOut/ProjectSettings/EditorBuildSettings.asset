@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/koyama/Scene/Title.unity
+    guid: 55ccd06f5eebd6143a1db2f360478b08
+  - enabled: 1
+    path: Assets/koyama/Scene/Main.unity
+    guid: 615dc9e2763506049b6eb9162bcf1834
   m_configObjects: {}

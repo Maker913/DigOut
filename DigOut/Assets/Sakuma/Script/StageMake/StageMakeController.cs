@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+//using UnityEngine.SceneManagement;
 public class StageMakeController : MonoBehaviour
 {
 
@@ -18,13 +19,18 @@ public class StageMakeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Debug.Log(MainStateInstance.mainStateInstance.mainState.gameMode.ToString()); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if(Input.GetKeyDown(KeyCode.Q)) {
+        //    SceneManager.LoadScene(0);
+        //}
+        //if (Input.GetKeyDown(KeyCode.W)) {
+        //    MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Anime;
+        //}
     }
 
 

@@ -68,8 +68,11 @@ public class PlayerAction : MonoBehaviour
 
     public LayerMask layer;
     public LayerMask saka;
-
+    public LayerMask nonsaka;
     public bool ska;
+    public bool jpt;
+    public bool tests;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +91,7 @@ public class PlayerAction : MonoBehaviour
         //のちps4コンに変更
         playerInput.Lwalk = Input.GetKey(KeyCode.LeftArrow);
         playerInput.Rwalk = Input.GetKey(KeyCode.RightArrow);
-        playerInput.Jump = Input.GetKeyDown(KeyCode.Z);
+        playerInput.Jump = Input.GetKeyDown(KeyCode.Space);
         //横移動慣性計算
 
         if(playerInput.Lwalk^ playerInput.Rwalk)
@@ -115,17 +118,31 @@ public class PlayerAction : MonoBehaviour
 
 
 
+        float height = 0.8f;
+        float wide = 0.95f;
+
 
 
         //ここから異形
-        ska = Physics2D.BoxCast(transform.position, new Vector2(0.9f, 1), 0, Vector2.up, -0.1f, saka) ;
+        ska = Physics2D.BoxCast(transform.position, new Vector2(height, 1), 0, Vector2.up, -0.1f, saka) ;
+
+        bool jp = false;
+        jpt = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, Vector2.up, -0.1f, layer);
+
+
+
+        tests = Physics2D.BoxCast(transform.position, new Vector2(1, height), 0, Vector2.right, playerVector.x * Time.deltaTime, nonsaka);
+
+
         //Debug.box
         if (playerVector.x != 0)
         {
-            if (Physics2D.BoxCast(transform.position, new Vector2(1, 0.9f), 0, Vector2.right, playerVector.x * Time.deltaTime, layer))
+            if (Physics2D.BoxCast(transform.position+new Vector3(playerVector.x * Time.deltaTime,0,0), new Vector2(1, height), 0, Vector2.right, 0, layer))
             {
-                if(Physics2D.BoxCast(transform.position, new Vector2(1, 0.9f), 0, Vector2.right, playerVector.x * Time.deltaTime, saka))
+                if(Physics2D.BoxCast(transform.position+new Vector3 (playerVector.x * Time.deltaTime,0,0), new Vector2(1, height), 0, Vector2.right,0 , saka)
+                    && !Physics2D.BoxCast(transform.position+ new Vector3(playerVector.x * Time.deltaTime,0,0), new Vector2(1, height), 0, Vector2.right,0,nonsaka) )
                 {
+                    //Debug.Log("sss");
                     float angle;
                     bool right;
                     bool non = false;
@@ -134,40 +151,68 @@ public class PlayerAction : MonoBehaviour
                     do
                     {
                         if (right) { angle += 5f; } else { angle -= 5f; }
-                        if (!Physics2D.BoxCast(transform.position, new Vector2(1, 0.9f), 0, new Vector2 (Mathf.Cos(angle*Mathf.PI /180f), Mathf.Sin(angle * Mathf.PI / 180f)), Mathf.Abs( playerVector.x) * Time.deltaTime, saka))
+                        if (!Physics2D.BoxCast(transform.position+ new Vector3 (Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f),0) * Mathf.Abs(playerVector.x) * Time.deltaTime, new Vector2(1, height), 0, new Vector2 (Mathf.Cos(angle*Mathf.PI /180f), Mathf.Sin(angle * Mathf.PI / 180f)),0, layer))
                         {
                             next = true;
                         }
-                        if (angle>=60&&right ) { non = true; break; }
-                        if (angle <= 60 && !right) { non = true; break; }
+                        if (angle>=80&&right ) { non = true; break; }
+                        if (angle <= 110 && !right) { non = true; break; }
                     } while (!next);
                     //Debug.Log(angle);
 
-                    //坂中の壁
-                    if (Physics2D.BoxCast(transform.position, new Vector2(1, 0.8f), 0, new Vector2(Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f)), Mathf.Abs(playerVector.x) * Time.deltaTime, layer))
+                    if (non)
                     {
+                        Debug.Log(angle);
                         float late = 10f;
-                        bool next2 = false;
+                        bool next3 = false;
                         do
                         {
                             late -= 1f;
-                            if (!Physics2D.BoxCast(transform.position, new Vector2(1, 0.8f), 0, new Vector2(Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f)), Mathf.Abs(playerVector.x) * Time.deltaTime * (late / 10f), layer))
+                            if (!Physics2D.BoxCast(transform.position+new Vector3 (playerVector.x * Time.deltaTime * (late / 10f), 0,0), new Vector2(1, height), 0, Vector2.right, 0, layer))
                             {
 
-                                next2= true;
+                                next3 = true;
                             }
                             if (late <= 0) { break; }
-                        } while (!next2);
-                        transform.Translate(new Vector2(Mathf.Abs(playerVector.x) * Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Abs(playerVector.x) * Mathf.Sin(angle * Mathf.PI / 180f)) * Time.deltaTime * (late / 10f));
+                        } while (!next);
+
+                        transform.Translate(new Vector2(playerVector.x, 0) * Time.deltaTime * (late / 10f));
                         playerVector.x = 0;
-                        Debug.Log("butsaka");
-
-
+                        //Debug.Log("but");
                     }
                     else
                     {
-                        transform.Translate(new Vector2(Mathf.Abs(playerVector.x) * Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Abs(playerVector.x) * Mathf.Sin(angle * Mathf.PI / 180f)) * Time.deltaTime);
+                        //坂中の壁
+                        if (Physics2D.BoxCast(transform.position+new Vector3 (Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f),0)* Mathf.Abs(playerVector.x) * Time.deltaTime, new Vector2(1, height-0.1f), 0,  Vector2.down , 0, layer))
+                        {
+                            float late = 10f;
+                            bool next2 = false;
+                            do
+                            {
+                                late -= 1f;
+                                if (!Physics2D.BoxCast(transform.position + new Vector3(Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f), 0)*Mathf.Abs(playerVector.x) * Time.deltaTime * (late / 10f), new Vector2(1, height - 0.1f), 0, Vector2.down, 0, layer))
+                                {
+
+                                    next2 = true;
+                                }
+                                if (late <= 0) { break; }
+                            } while (!next2);
+                            
+                            transform.Translate(new Vector2(Mathf.Abs(playerVector.x) * Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Abs(playerVector.x) * Mathf.Sin(angle * Mathf.PI / 180f)) * Time.deltaTime * (late / 10f));
+                            playerVector.x = 0;
+                            //Debug.Log("butsaka");
+
+
+                        }
+                        else
+                        {
+                            transform.Translate(new Vector2(Mathf.Abs(playerVector.x) * Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Abs(playerVector.x) * Mathf.Sin(angle * Mathf.PI / 180f)) * Time.deltaTime);
+                        }
                     }
+
+
+
+
 
                 }
                 else
@@ -177,7 +222,7 @@ public class PlayerAction : MonoBehaviour
                     do
                     {
                         late -= 1f;
-                        if (!Physics2D.BoxCast(transform.position, new Vector2(1, 0.9f), 0, Vector2.right, playerVector.x * Time.deltaTime * (late / 10f), layer))
+                        if (!Physics2D.BoxCast(transform.position, new Vector2(1, height), 0, Vector2.right, playerVector.x * Time.deltaTime * (late / 10f), layer))
                         {
 
                             next = true;
@@ -187,7 +232,7 @@ public class PlayerAction : MonoBehaviour
 
                     transform.Translate(new Vector2(playerVector.x, 0) * Time.deltaTime * (late / 10f));
                     playerVector.x = 0;
-                    Debug.Log("but");
+                    Debug.Log("通常壁");
                 }
 
             }
@@ -196,9 +241,10 @@ public class PlayerAction : MonoBehaviour
                 //斜面
                 if (ska)
                 {
-                    Debug.Log("sss");
 
+                    //ここではない
 
+                    Debug.Log("下り");
 
                     float angle;
                     bool right;
@@ -208,29 +254,30 @@ public class PlayerAction : MonoBehaviour
                     do
                     {
                         if (right) { angle -= 5f; } else { angle += 5f; }
-                        if (Physics2D.BoxCast(transform.position, new Vector2(1,0.9f), 0, new Vector2(Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f)), Mathf.Abs(playerVector.x) * Time.deltaTime, layer))
+                        if (Physics2D.BoxCast(transform.position, new Vector2(1, height), 0, new Vector2(Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f)), Mathf.Abs(playerVector.x) * Time.deltaTime, layer))
                         {
                             next = true;
                         }
-                        if (angle <= -90 && right)
+                        if (angle <= -80 && right)
                         {
                             net = false;
                             break;
                         }
-                        if (angle >= 270 && !right)
+                        if (angle >= 260 && !right)
                         {
                             net = false;
                             break;
                         }
                     } while (!next);
                     if (right) { angle += 5f; } else { angle -= 5f; }
-                    Debug.Log(angle);
+                    //Debug.Log(angle);
 
 
 
-
-                    transform.Translate(new Vector2(Mathf.Abs(playerVector.x) * Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Abs(playerVector.x) * Mathf.Sin(angle * Mathf.PI / 180f)) * Time.deltaTime);
-
+                    if (net)
+                    {
+                        transform.Translate(new Vector2(Mathf.Abs(playerVector.x) * Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Abs(playerVector.x) * Mathf.Sin(angle * Mathf.PI / 180f)) * Time.deltaTime);
+                    }
                     //transform.Translate(new Vector2(playerVector.x, 0) * Time.deltaTime);
                 }
                 else
@@ -245,34 +292,62 @@ public class PlayerAction : MonoBehaviour
 
         }
 
-        if (Physics2D.BoxCast(transform.position, new Vector2(0.95f, 1), 0, Vector2.up, playerVector.y * Time.deltaTime, layer))
+        if (jpt && playerInput.Jump)
+        {
+            Debug.Log("飛べ");
+            playerVector.y = 30;
+            jp = true;
+
+            //if(Physics2D.BoxCast(transform.position+new Vector3 (0,playerVector.y * Time.deltaTime,0), new Vector2(0.95f, 1), 0, Vector2.up, 0, layer))
+
+        }
+
+
+
+
+
+        if (Physics2D.BoxCast(transform.position + new Vector3(0, playerVector.y * Time.deltaTime, 0), new Vector2(wide, height + 0.05f), 0, Vector2.up, 0, layer))
         {
             float late = 10f;
             bool next = false;
             do
             {
                 late -= 1f;
-                if (!Physics2D.BoxCast(transform.position, new Vector2(0.95f, 1f), 0, Vector2.up, playerVector.y * Time.deltaTime * (late / 10f), layer))
+                if (!Physics2D.BoxCast(transform.position + new Vector3(0, playerVector.y * Time.deltaTime * (late / 10f), 0), new Vector2(wide, height+0.05f), 0, Vector2.up, 0, layer))
                 {
 
                     next = true;
                 }
                 if (late <= 0) { break; }
             } while (!next);
+
             transform.Translate(new Vector2(0, playerVector.y) * Time.deltaTime * (late / 10.0f));
-            playerVector.y = 0;
+            if (!jp)
+            {
+                playerVector.y = -0.1f;
+            }
 
-
-            //Debug.Log(late);
             
-            if (playerInput.Jump) { playerVector.y += 30; transform.Translate(new Vector2(0, playerVector.y) * Time.deltaTime); }
+            //Debug.Log(late);
         }
         else
         {
-            playerVector.y -= gravity;
-            if (playerVector.y <= -gravityTop) { playerVector.y = -gravityTop; }
+            
             transform.Translate(new Vector2(0, playerVector.y) * Time.deltaTime);
+            playerVector.y -= 2;
+            if (playerVector.y <= -gravityTop) { playerVector.y = -gravityTop; }
         }
+
+        //
+
+
+
+
+        //強制脱出装置
+
+
+
+
 
 
 
@@ -291,7 +366,7 @@ public class PlayerAction : MonoBehaviour
     {
         Gizmos.color = Color.green;
         float angle = 185;
-        Gizmos.DrawCube(transform.position+ new Vector3(Mathf.Cos(angle * Mathf.PI / 180f), Mathf.Sin(angle * Mathf.PI / 180f), 0)*3, new Vector3(1,1f,1));
+        //Gizmos.DrawCube(transform.position+ new Vector3(0,playerVector.y * Time.deltaTime, 0), new Vector3(1,1f,1));
         Gizmos.color = Color.red;
         //Gizmos.DrawCube(transform.position + new Vector3(playerVector.x, 0, 0) * Time.deltaTime+new Vector3 (0,-0.4f,0), new Vector3(0.9f, 0.2f, 1));
     }

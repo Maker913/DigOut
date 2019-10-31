@@ -1315,17 +1315,17 @@ PrefabInstance:
     - target: {fileID: 5994385422455809096, guid: 0e52f0f5afce80e409c2159d8026714b,
         type: 3}
       propertyPath: m_Name
-      value: Quad
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5994385422455809074, guid: 0e52f0f5afce80e409c2159d8026714b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8477172
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5994385422455809074, guid: 0e52f0f5afce80e409c2159d8026714b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.807589
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5994385422455809074, guid: 0e52f0f5afce80e409c2159d8026714b,
         type: 3}

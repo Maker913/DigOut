@@ -68,16 +68,17 @@ public class Player : MonoBehaviour
         Vector2 input = new Vector2(0,0);
 
         //キーボードからの入力取得
-        if (Input.GetKey(KeyCode.LeftArrow)) { input.x = -1; }
-        if (Input.GetKey(KeyCode.RightArrow)) { input.x = 1; }
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { input.x = -1; }
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { input.x = 1; }
+
         //改造要素
         //アニメモードを送る
         if (controller.collisions.below)
         {
-            if (Input.GetKey(KeyCode.LeftArrow) ^ Input.GetKey(KeyCode.RightArrow))
+            if (PS4ControllerInput .pS4ControllerInput .contorollerState .leftWalk   ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk )
             {
-                if (Input.GetKey(KeyCode.LeftArrow)) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; }
-                if (Input.GetKey(KeyCode.RightArrow)) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; }
+                if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; }
+                if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; }
             }
             else
             {
@@ -96,7 +97,7 @@ public class Player : MonoBehaviour
 
 
         //ジャンプ
-        if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.Jump  && controller.collisions.below)
         {
             velocity.y = jumpVelocity;
             playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall ;

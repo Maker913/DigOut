@@ -13,6 +13,6 @@ public class TitleController : MonoBehaviour
     }
     public void Button()
     {
-        SceneController.Instance.SceneChange(scene);
+        SceneController.Instance.SceneChange(SceneController.SceneName.Main);
     }
 }

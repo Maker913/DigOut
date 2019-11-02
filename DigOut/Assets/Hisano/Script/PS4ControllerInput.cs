@@ -25,6 +25,9 @@ public class PS4ControllerInput : MonoBehaviour
 
     static public PS4ControllerInput pS4ControllerInput;
 
+    [SerializeField]
+    bool ControllerOn;
+
     private void Awake()
     {
         if (pS4ControllerInput == null)
@@ -44,11 +47,18 @@ public class PS4ControllerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Padx = Input.GetAxis("DpadLR");
+        if (ControllerOn) {
+            Padx = Input.GetAxis("DpadLR");
 
-        contorollerState.rightWalk = Padx > 0.9;
-        contorollerState.leftWalk = Padx < -0.9f;
-        contorollerState.Jump = Input.GetButton("Fire2");
+            contorollerState.rightWalk = Padx > 0.9;
+            contorollerState.leftWalk = Padx < -0.9f;
+            contorollerState.Jump = Input.GetButton("Fire2");
+        }
+        else {
+            contorollerState.rightWalk = Input.GetKey(KeyCode.RightArrow);
+            contorollerState.leftWalk  = Input.GetKey(KeyCode.LeftArrow );
+            contorollerState.Jump = Input.GetKey(KeyCode.Space);
+        }
 
 
     }

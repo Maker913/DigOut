@@ -6,6 +6,8 @@ TagManager:
   tags:
   - 0
   - 1
+  - 3
+  - 2
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
+  - Wall
+  - Slope
+  - NonSlope
   - 
   - 
   - 

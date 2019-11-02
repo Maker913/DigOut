@@ -43,7 +43,7 @@ public class StageSave : MonoBehaviour
     {
         string text = "";
         //StageListの子のtagと座標の取得と書き出し
-        for (int i = 0; i < Stage.transform.GetChildCount(); i++)
+        for (int i = 0; i < Stage.transform.childCount; i++)
         {
             //tagを出力
             text += Stage.transform.GetChild(i).transform.tag + ",";

@@ -49,10 +49,13 @@ public class StageMakeController : MonoBehaviour
         //StageListの子のtagと座標の取得と書き出し
         for (int i = 0; i < stageParent.transform.childCount; i++)
         {
-            text += stageParent.transform.GetChild(i).transform.tag + ",";
-            text += stageParent.transform.GetChild(i).transform.position.x.ToString() + ",";
-            text += stageParent.transform.GetChild(i).transform.position.y.ToString() + ",";
-            text += (stageParent.transform.GetChild(i).transform.localEulerAngles .z).ToString();
+            //ScriptableObjectでの作成を推奨されました
+            text += stageParent.transform.GetChild(i).transform.tag + ",";//Tag
+            text += stageParent.transform.GetChild(i).transform.position.x.ToString() + ",";//x座標
+            text += stageParent.transform.GetChild(i).transform.position.y.ToString() + ",";//y座標
+            text += (stageParent.transform.GetChild(i).transform.localEulerAngles .z).ToString();//向き角度
+            //text += stageParent.transform.GetChild(i).//マテリアル・テクスチャ
+            //text += stageParent.transform.GetChild(i).//種類
             //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
             if (i!=stageParent.transform.childCount - 1)
             {
@@ -66,7 +69,8 @@ public class StageMakeController : MonoBehaviour
         sw.Flush();
         sw.Close();
 
-        Debug.Log(workFileName+"にセーブしたで(*^^)v");
+        Debug.Log(workFileName+"" +
+            "にセーブしたで(*^^)v");
     }
 
     public void StageLode()

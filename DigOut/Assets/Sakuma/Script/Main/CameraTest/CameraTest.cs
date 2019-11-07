@@ -11,6 +11,8 @@ public class CameraTest : MonoBehaviour
     LayerMask cameraFrame;
     [SerializeField]
     float spead=0.1f;
+
+    public LayerMask mask;
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -57,12 +59,21 @@ public class CameraTest : MonoBehaviour
         {
             dis -= dis < 0 ? -cameradis : cameradis;
         }
-        //if (dis > spead)
-        //{
-        //    dis = spead;
-        //}
+
         dis=Mathf.SmoothDamp(0,dis,ref refSpead ,spead);
-        rigidbody2D.transform.Translate(move*dis);
+
+        if(!Physics2D.CircleCast(transform.position ,0.5f,new Vector2(move.x,0) ,dis, mask))
+        {
+            rigidbody2D.transform.Translate(new Vector2(move.x, 0) * dis);
+        }
+
+        if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(0,move.y), dis, mask))
+        {
+            rigidbody2D.transform.Translate(new Vector2(0, move.y) * dis);
+        }
+
+
+        //rigidbody2D.transform.Translate(move*dis);
 
 
         //if (Physics2D.CircleCast(transform.position, 0.5f, Vector2.right, move.x, cameraFrame))

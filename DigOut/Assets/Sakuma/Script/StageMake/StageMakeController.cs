@@ -161,7 +161,7 @@ public class StageMakeController : MonoBehaviour
             //passに,で区切った数値を入れる
             string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
             //tagを参照し、preList内部のプレハブを各座標に配置
-            GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), -1), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
+            GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), -15), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
 
             brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
         }

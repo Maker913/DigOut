@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 385178500406845964}
   - component: {fileID: 385178500406845969}
   - component: {fileID: 1960982473}
-  - component: {fileID: 1377474712676522025}
   m_Layer: 10
   m_Name: CameraTest
   m_TagString: Untagged
@@ -123,19 +122,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &1377474712676522025
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385178500406845968}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5

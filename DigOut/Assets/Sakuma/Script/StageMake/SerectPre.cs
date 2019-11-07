@@ -40,9 +40,9 @@ public class SerectPre : MonoBehaviour
     {
         int data = (stageObjNumList .CameraPre ?1:0);
         
-        for (int i = 0; i < transform.GetChildCount(); i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            for (int j = 0; j <transform.GetChild (i).GetChildCount() ; j++)
+            for (int j = 0; j <transform.GetChild (i).childCount ; j++)
             {
                 transform.GetChild(i).GetChild(j).gameObject.SetActive(j.Equals(serectPreNum)&&data==i);
             }

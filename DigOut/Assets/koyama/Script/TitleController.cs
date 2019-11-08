@@ -11,8 +11,21 @@ public class TitleController : MonoBehaviour
     {
         
     }
-    public void Button()
+    private void Update()
+    {
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle)
+        {
+            Debug.Log("行けた");
+            StartButton();
+        }
+    }
+    public void StartButton()
     {
         SceneController.Instance.SceneChange(SceneController.SceneName.Main);
     }
+    /*
+    public void Button()
+    {
+        SceneController.Instance.SceneChange(SceneController.SceneName.Main);
+    }*/
 }

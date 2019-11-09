@@ -17,7 +17,6 @@ public class CameraSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //(i%3==0?Pos.x:(i % 3 == 1? Pos.y:Pos.z))
         camera.orthographicSize =(baseSize + cameraTest.dis * 4< baseSizelim? baseSize + cameraTest.dis*4: baseSizelim);
     }
 }

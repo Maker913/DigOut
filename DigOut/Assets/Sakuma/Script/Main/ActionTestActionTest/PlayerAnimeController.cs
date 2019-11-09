@@ -79,7 +79,7 @@ public class PlayerAnimeController : MonoBehaviour
 
     void AnimeChange(string animeName)
     {
-        Debug.Log("変えます");
+        //Debug.Log("変えます");
         animator.SetBool("Idole", animeName == "Idole");
         animator.SetBool("Work", animeName == "Work");
         animator.SetBool("Jump", animeName == "Jump");

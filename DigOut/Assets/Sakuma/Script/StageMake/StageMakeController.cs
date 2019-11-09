@@ -140,7 +140,7 @@ public class StageMakeController : MonoBehaviour
 
         for (int i = 0; i < m_scenarios.Length ; i++)
         {
-            Debug.Log(m_scenarios[i]);
+            //Debug.Log(m_scenarios[i]);
             //passに,で区切った数値を入れる
             string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
             //tagを参照し、preList内部のプレハブを各座標に配置
@@ -149,7 +149,7 @@ public class StageMakeController : MonoBehaviour
         }
 
         
-        Debug.Log("a");
+        //Debug.Log("a");
         text = data.cameraData;
         
         //Scenariosに;で区切って表示
@@ -157,7 +157,7 @@ public class StageMakeController : MonoBehaviour
         if (m_scenarios[0] == "") { return; }
         for (int i = 0; i < m_scenarios.Length; i++)
         {
-            Debug.Log(m_scenarios[i]);
+            //Debug.Log(m_scenarios[i]);
             //passに,で区切った数値を入れる
             string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
             //tagを参照し、preList内部のプレハブを各座標に配置

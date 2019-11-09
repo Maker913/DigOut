@@ -63,10 +63,10 @@ public class StageCreate : MonoBehaviour
         GameObject data2 = Instantiate(PlayerPre, new Vector3(int.Parse(pass[0]), int.Parse(pass[1])+0.5f, 0), Quaternion.identity);
         pass = m_scenarios[1].Split(new string[] { "," }, System.StringSplitOptions.None);
         GameObject data= Instantiate(cameraPre, new Vector3(int.Parse(pass[0]), int.Parse(pass[1]) + 0.5f, dataz), Quaternion.identity);
-        camera.transform.parent= data.transform;
+        camera.transform.parent= data.transform.GetChild(0);
         camera.transform.localPosition =new Vector3 (0,0, 10);
-        data.GetComponent<CameraTest>().targetObj=data2.transform.GetChild (0).gameObject;
-        camera.GetComponent<CameraSize>().cameraTest = data.GetComponent<CameraTest>();
+        data.transform .GetChild (0). GetComponent<CameraTest>().targetObj=data2.transform.GetChild (0).gameObject;
+        camera.GetComponent<CameraSize>().cameraTest = data.transform.GetChild(0).GetComponent<CameraTest>();
     }
 
 

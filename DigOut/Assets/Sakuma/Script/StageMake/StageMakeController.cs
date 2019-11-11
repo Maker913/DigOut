@@ -28,6 +28,9 @@ public class StageMakeController : MonoBehaviour
     //　バイナリフォーマッター
     private BinaryFormatter bf;
 
+    
+    public GameObject cameraTestObj;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +64,18 @@ public class StageMakeController : MonoBehaviour
             text += (stageParent.transform.GetChild(i).transform.localEulerAngles .z).ToString() + ",";
             text += stageParent.transform.GetChild(i).transform.localScale.x.ToString() + ",";
             text += stageParent.transform.GetChild(i).transform.localScale.y.ToString();
+
+            switch (int.Parse(stageParent.transform.GetChild(i).transform.tag))
+            {
+                case 29:
+                    GameObject dat2 = stageParent.transform.GetChild(i).gameObject ;
+                    Vector3 dat = dat2.GetComponent<StageChange>().target;
+                    text += "," + dat.x.ToString() + ",";
+                    text += stageParent.transform.GetChild(i).GetComponent<StageChange>().target.y.ToString();
+                    break;
+            }
+
+
             //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
             if (i!=stageParent.transform.childCount - 1)
             {
@@ -82,6 +97,12 @@ public class StageMakeController : MonoBehaviour
             text += (cameraParent.transform.GetChild(i).transform.localEulerAngles.z).ToString() + ",";
             text += cameraParent.transform.GetChild(i).transform.localScale.x.ToString() + ",";
             text += cameraParent.transform.GetChild(i).transform.localScale.y.ToString();
+
+
+
+
+
+
             //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
             if (i != cameraParent.transform.childCount - 1)
             {
@@ -146,6 +167,20 @@ public class StageMakeController : MonoBehaviour
             //tagを参照し、preList内部のプレハブを各座標に配置
             GameObject  brockdata = Instantiate(stageObjNumList.PreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), 0), Quaternion.Euler (0,0, float.Parse(pass[3])), stageParent.transform);
             brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
+
+
+            switch (int.Parse(pass[0]))
+            {
+                case 29:
+                    brockdata.GetComponent<StageChange>().cameraTestObj = cameraTestObj;
+                    brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]),0);
+                    brockdata.transform.Translate(new Vector3 (0,0,-20));
+                    break;
+            }
+
+
+
+
         }
 
         

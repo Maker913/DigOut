@@ -27,6 +27,12 @@ public class Cursor : MonoBehaviour
     public InputField angleInput;
     public InputField scaleXInput;
     public InputField scaleYInput;
+
+    public InputField changeXInput;
+    public InputField changeYInput;
+
+
+
     public float angle=0;
     // Start is called before the first frame update
     void Start()
@@ -87,7 +93,14 @@ public class Cursor : MonoBehaviour
                 GameObject test= Instantiate(stageObjNumList.CameraPre ? stageObjNumList.CameraPreList[serectPre.serectPreNum] : stageObjNumList.PreList[serectPre.serectPreNum],
                     new Vector3 (transform.position .x+((scaleX-1)* 0.5f),transform.position.y + ((scaleY - 1) * 0.5f), (stageObjNumList.CameraPre ? -1: 0)),Quaternion .Euler (0,0,angle),
                     stageObjNumList.CameraPre ?cameraParent .transform : stageParent.transform );
-                test.transform.localScale = new Vector3(scaleX,scaleY ,1);
+                    test.transform.localScale = new Vector3(scaleX,scaleY ,1);
+
+                switch (serectPre.serectPreNum)
+                {
+                    case 29:
+                        test.GetComponent<StageChange>().target = new Vector3((float)Convert.ToDouble(changeXInput.text), (float)Convert.ToDouble(changeYInput.text),0);
+                        break;
+                }
                 
             }
 

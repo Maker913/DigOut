@@ -34,7 +34,7 @@ public class StageCreate : MonoBehaviour
     void Start()
     {
         stageMake.fileName = "test1";
-        stageMake.StageLode();
+        
         SaveDataLode();
     }
 
@@ -58,7 +58,7 @@ public class StageCreate : MonoBehaviour
 
         string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
 
-        Debug.Log(m_scenarios[0]);
+        //Debug.Log(m_scenarios[0]);
         string[] pass = m_scenarios[0].Split(new string[] { "," }, System.StringSplitOptions.None);
         GameObject data2 = Instantiate(PlayerPre, new Vector3(int.Parse(pass[0]), int.Parse(pass[1])+0.5f, 0), Quaternion.identity);
         pass = m_scenarios[1].Split(new string[] { "," }, System.StringSplitOptions.None);
@@ -67,6 +67,10 @@ public class StageCreate : MonoBehaviour
         camera.transform.localPosition =new Vector3 (0,0, 10);
         data.transform .GetChild (0). GetComponent<CameraTest>().targetObj=data2.transform.GetChild (0).gameObject;
         camera.GetComponent<CameraSize>().cameraTest = data.transform.GetChild(0).GetComponent<CameraTest>();
+
+        stageMake.cameraTestObj = data.transform.GetChild (0).gameObject ;
+
+        stageMake.StageLode();
     }
 
 

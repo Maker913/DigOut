@@ -73,6 +73,7 @@ MonoBehaviour:
   - {fileID: 8006924506129148325, guid: 518ad48019bdfac40b8d459d4f25b5cf, type: 3}
   - {fileID: 8006924506129148325, guid: 3703a09420f164741ab3c2fb6d47dd85, type: 3}
   - {fileID: 8006924506129148325, guid: 8d75335bb0bd5f245808fe79ac8c9c09, type: 3}
+  - {fileID: 4672178148018385142, guid: 8f587aae7b7e0f94a93f5dca6fb119fa, type: 3}
   CameraPreList:
   - {fileID: 8006924506129148325, guid: e3082a6b2f1a8b44ebfa4e86a4fc28ff, type: 3}
   - {fileID: 6758962513156588485, guid: 0aa948fa40004e24fb43989632d31bbe, type: 3}

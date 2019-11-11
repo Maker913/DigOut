@@ -5,11 +5,13 @@ using UnityEngine;
 public class StageChange : MonoBehaviour
 {
     public LayerMask mask;
+    //[SerializeField]
+    //GameObject target;
     [SerializeField]
-    GameObject target;
+    public Vector3 target;
+
     private CameraTest cameraTest;
     public GameObject cameraTestObj;
-
 
     private void Start() {
         cameraTest = cameraTestObj.GetComponent<CameraTest >();
@@ -22,14 +24,17 @@ public class StageChange : MonoBehaviour
         if (collision.gameObject.layer == 12) {
             Debug.Log("sas");
             cameraTest.stepMove = true;
-            cameraTestObj.transform.parent.GetChild(1).transform.position = new Vector3(target.transform.position.x, target.transform.position.y, -20) ;
-            
-
+            cameraTestObj.transform.parent.GetChild(1).transform.position = new Vector3(transform.position.x + target.x, transform.position.y + target.y, -20);
 
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
 
+        Gizmos.DrawWireSphere(this.transform.position + target ,0.5f);
+    }
 
 
 }

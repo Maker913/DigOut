@@ -6,13 +6,17 @@ using System;
 public class Cursor : MonoBehaviour
 {
     [SerializeField]
+    private GameObject stageMother;
+
+
+    [SerializeField]
     private StageObjNumList stageObjNumList;
     [SerializeField]
     private  SerectPre serectPre;
-    [SerializeField]
-    private GameObject stageParent;
-    [SerializeField]
-    private GameObject cameraParent;
+    //[SerializeField]
+    //private GameObject stageParent;
+    //[SerializeField]
+    //private GameObject cameraParent;
     [SerializeField]
     private GameObject camera;
 
@@ -30,6 +34,9 @@ public class Cursor : MonoBehaviour
 
     public InputField changeXInput;
     public InputField changeYInput;
+
+    public InputField areaInput;
+    private int area;
 
 
 
@@ -58,7 +65,23 @@ public class Cursor : MonoBehaviour
         }
 
 
+        try
+        {
+            area=Convert.ToInt16(areaInput.text);
+        }
+        catch
+        {
+            Debug.Log("そんなエリアないで？");
+            return;
+        }
+        if(area> stageMother.transform .childCount-1)
+        {
+            Debug.Log("そんなエリアないで？");
+            return;
+        }
 
+        GameObject stageParent = stageMother.transform.GetChild(area).GetChild(0).gameObject;
+        GameObject cameraParent = stageMother.transform.GetChild(area).GetChild(1).gameObject;
 
 
 
@@ -107,5 +130,25 @@ public class Cursor : MonoBehaviour
 
         }
 
+    }
+
+
+
+    public void AddArea()
+    {
+        GameObject area = new GameObject();
+        area.name = stageMother.transform.childCount.ToString();
+        area.transform.parent =stageMother.transform ;
+        //GameObject areaPl = Instantiate(area, Vector3.zero, Quaternion.identity, stageMother.transform);
+
+        GameObject area2 = new GameObject();
+        area2.name = "StageData";
+        area2.transform.parent = area.transform;
+        //Instantiate(area, Vector3.zero, Quaternion.identity, areaPl.transform);
+
+        area2 = new GameObject();
+        area2.name = "CameraData";
+        area2.transform.parent = area.transform;
+        //Instantiate(area, Vector3.zero, Quaternion.identity, areaPl.transform);
     }
 }

@@ -10,10 +10,15 @@ public class StageMakeController : MonoBehaviour
 {
 
     //ステージの親を入れる
-    [SerializeField]
-    private GameObject stageParent;
-    [SerializeField]
-    private GameObject cameraParent;
+    //[SerializeField]
+    //private GameObject stageParent;
+    //[SerializeField]
+    //private GameObject cameraParent;
+
+        [SerializeField ]
+    private GameObject stageMother;
+
+
     //各設置物のプレハブ配置
     //[SerializeField]
     //private string workFileName;
@@ -31,7 +36,7 @@ public class StageMakeController : MonoBehaviour
     
     public GameObject cameraTestObj;
 
-
+    //public int areaLeng;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,155 +56,192 @@ public class StageMakeController : MonoBehaviour
 
         Data data = new Data();
 
+        data.Set(stageMother.transform.childCount);
+        
         data.name = fileName;
 
-
-        string text = "";
-        //StageListの子のtagと座標の取得と書き出し
-        for (int i = 0; i < stageParent.transform.childCount; i++)
+        for (int j = 0; j < stageMother.transform.childCount; j++)
         {
-            text += stageParent.transform.GetChild(i).transform.tag + ",";
-            text += stageParent.transform.GetChild(i).transform.position.x.ToString() + ",";
-            text += stageParent.transform.GetChild(i).transform.position.y.ToString() + ",";
-            text += (stageParent.transform.GetChild(i).transform.localEulerAngles .z).ToString() + ",";
-            text += stageParent.transform.GetChild(i).transform.localScale.x.ToString() + ",";
-            text += stageParent.transform.GetChild(i).transform.localScale.y.ToString();
 
-            switch (int.Parse(stageParent.transform.GetChild(i).transform.tag))
+            GameObject areaParent = stageMother.transform.GetChild(j).gameObject;
+            GameObject stageParent = areaParent.transform.GetChild(0).gameObject;
+            GameObject cameraParent = areaParent.transform.GetChild(1).gameObject;
+
+            string text = "";
+            //StageListの子のtagと座標の取得と書き出し
+            for (int i = 0; i < stageParent.transform.childCount; i++)
             {
-                case 29:
-                    GameObject dat2 = stageParent.transform.GetChild(i).gameObject ;
-                    Vector3 dat = dat2.GetComponent<StageChange>().target;
-                    text += "," + dat.x.ToString() + ",";
-                    text += stageParent.transform.GetChild(i).GetComponent<StageChange>().target.y.ToString();
-                    break;
+                text += stageParent.transform.GetChild(i).transform.tag + ",";
+                text += stageParent.transform.GetChild(i).transform.position.x.ToString() + ",";
+                text += stageParent.transform.GetChild(i).transform.position.y.ToString() + ",";
+                text += (stageParent.transform.GetChild(i).transform.localEulerAngles.z).ToString() + ",";
+                text += stageParent.transform.GetChild(i).transform.localScale.x.ToString() + ",";
+                text += stageParent.transform.GetChild(i).transform.localScale.y.ToString();
+
+                switch (int.Parse(stageParent.transform.GetChild(i).transform.tag))
+                {
+                    case 29:
+                        GameObject dat2 = stageParent.transform.GetChild(i).gameObject;
+                        Vector3 dat = dat2.GetComponent<StageChange>().target;
+                        text += "," + dat.x.ToString() + ",";
+                        text += stageParent.transform.GetChild(i).GetComponent<StageChange>().target.y.ToString();
+                        break;
+                }
+
+
+                //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
+                if (i != stageParent.transform.childCount - 1)
+                {
+                    text += "\n";
+                }
+
             }
 
+            data.areaDatas[j].stageData = text;
+            // text += "\n[Next]\n";
 
-            //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
-            if (i!=stageParent.transform.childCount - 1)
+            text = "";
+            //カメラ用のオブジェの書き出し
+            for (int i = 0; i < cameraParent.transform.childCount; i++)
             {
-                text += "\n";
+                text += cameraParent.transform.GetChild(i).transform.tag + ",";
+                text += cameraParent.transform.GetChild(i).transform.position.x.ToString() + ",";
+                text += cameraParent.transform.GetChild(i).transform.position.y.ToString() + ",";
+                text += (cameraParent.transform.GetChild(i).transform.localEulerAngles.z).ToString() + ",";
+                text += cameraParent.transform.GetChild(i).transform.localScale.x.ToString() + ",";
+                text += cameraParent.transform.GetChild(i).transform.localScale.y.ToString();
+
+
+
+
+
+
+                //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
+                if (i != cameraParent.transform.childCount - 1)
+                {
+                    text += "\n";
+                }
+
             }
-            
+            data.areaDatas[j].cameraData = text;
+
+            //txtファイルの位置と書き出し設定
+            //StreamWriter sw = new StreamWriter("Assets/Resources/Scenarios/"+ workFileName + ".txt", false); //true = 追記  false or 無し　= 上書き
+            //sw.WriteLine(text);
+            //sw.Flush();
+            //sw.Close();
+
         }
-
-        data.stageData = text;
-        // text += "\n[Next]\n";
-
-        text = "";
-        //カメラ用のオブジェの書き出し
-        for (int i = 0; i < cameraParent.transform.childCount; i++)
-        {
-            text += cameraParent.transform.GetChild(i).transform.tag + ",";
-            text += cameraParent.transform.GetChild(i).transform.position.x.ToString() + ",";
-            text += cameraParent.transform.GetChild(i).transform.position.y.ToString() + ",";
-            text += (cameraParent.transform.GetChild(i).transform.localEulerAngles.z).ToString() + ",";
-            text += cameraParent.transform.GetChild(i).transform.localScale.x.ToString() + ",";
-            text += cameraParent.transform.GetChild(i).transform.localScale.y.ToString();
-
-
-
-
-
-
-            //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
-            if (i != cameraParent.transform.childCount - 1)
-            {
-                text += "\n";
-            }
-
-        }
-        data.cameraData  = text;
-
-        //txtファイルの位置と書き出し設定
-        //StreamWriter sw = new StreamWriter("Assets/Resources/Scenarios/"+ workFileName + ".txt", false); //true = 追記  false or 無し　= 上書き
-        //sw.WriteLine(text);
-        //sw.Flush();
-        //sw.Close();
-
-
 
 
         Save(data);
-        Debug.Log(data.cameraData);
         Debug.Log(fileName + "にセーブしたで(*^^)v");
     }
 
+
+    public GameObject lockobj;
+
     public void StageLode()
     {
-        foreach (Transform child in stageParent.transform)
+        foreach (Transform child in stageMother.transform)
         {
             Destroy(child.gameObject);
         }
-        foreach (Transform child in cameraParent.transform)
-        {
-            Destroy(child.gameObject);
-        }
-        //var scenarioText = Resources.Load<TextAsset>("Scenarios/" + fileName);
-        //if (scenarioText == null)
-        //{
-        //    Debug.LogError("シナリオファイルが見つかりません。");
-        //    return;
-        //}
 
-        //string text = scenarioText.text;
-        //Resources.UnloadAsset(scenarioText);
-
-
-
-
-        //string[] BrockData = text.Split(new string[] { "\n[Next]\n" }, System.StringSplitOptions.None);
-        //text = BrockData[1];
+        
         Data data = Load();
-        string text = data.stageData;
 
 
 
-        //Scenariosに;で区切って表示
-        string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
-
-        for (int i = 0; i < m_scenarios.Length ; i++)
+        for(int i = 0; i < data.areaLeng; i++)
         {
-            //Debug.Log(m_scenarios[i]);
-            //passに,で区切った数値を入れる
-            string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
-            //tagを参照し、preList内部のプレハブを各座標に配置
-            GameObject  brockdata = Instantiate(stageObjNumList.PreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), 0), Quaternion.Euler (0,0, float.Parse(pass[3])), stageParent.transform);
-            brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
+
+            GameObject area = new GameObject();
+            area.name = i.ToString();
+            area.transform.parent = stageMother.transform;
+            //GameObject areaPl = Instantiate(area, Vector3.zero, Quaternion.identity, stageMother.transform);
+
+            GameObject area2 = new GameObject();
+            area2.name = "StageData";
+            area2.transform.parent = area.transform;
+            //Instantiate(area, Vector3.zero, Quaternion.identity, areaPl.transform);
+
+            area2 = new GameObject();
+            area2.name = "CameraData";
+            area2.transform.parent = area.transform;
+        }
 
 
-            switch (int.Parse(pass[0]))
+        
+
+
+
+        //areaLeng = stageMother.transform.childCount;
+        for (int j = 0; j < data.areaLeng; j++)
+        {
+
+            GameObject areaParent = stageMother.transform.GetChild(j).gameObject;
+            GameObject stageParent = areaParent.transform.GetChild(0).gameObject;
+            GameObject cameraParent = areaParent.transform.GetChild(1).gameObject;
+
+
+            string text = data.areaDatas[j].stageData;
+
+            Debug.Log(text);
+
+            //Scenariosに;で区切って表示
+            string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
+
+            for (int i = 0; i < m_scenarios.Length; i++)
             {
-                case 29:
-                    brockdata.GetComponent<StageChange>().cameraTestObj = cameraTestObj;
-                    brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]),0);
-                    brockdata.transform.Translate(new Vector3 (0,0,-20));
-                    break;
+                //Debug.Log(m_scenarios[i]);
+                //passに,で区切った数値を入れる
+                string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
+                //tagを参照し、preList内部のプレハブを各座標に配置
+                GameObject brockdata = Instantiate(stageObjNumList.PreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), 0), Quaternion.Euler(0, 0, float.Parse(pass[3])), stageParent.transform);
+                brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
+
+                if (j == 0)
+                {
+                    lockobj = brockdata;
+                }
+                switch (int.Parse(pass[0]))
+                {
+                    case 29:
+                        brockdata.GetComponent<StageChange>().cameraTestObj = cameraTestObj;
+                        brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]), 0);
+                        brockdata.transform.Translate(new Vector3(0, 0, -20));
+                        break;
+                }
+
+
+
+
             }
 
 
+            //Debug.Log("a");
+            text = data.areaDatas[j].cameraData;
 
+            //Scenariosに;で区切って表示
+            m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
+            if (m_scenarios[0] == "") { return; }
+            for (int i = 0; i < m_scenarios.Length; i++)
+            {
+                //Debug.Log(m_scenarios[i]);
+                //passに,で区切った数値を入れる
+                string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
+                //tagを参照し、preList内部のプレハブを各座標に配置
+                GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), -15), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
 
+                brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
+            }
         }
 
-        
-        //Debug.Log("a");
-        text = data.cameraData;
-        
-        //Scenariosに;で区切って表示
-        m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
-        if (m_scenarios[0] == "") { return; }
-        for (int i = 0; i < m_scenarios.Length; i++)
-        {
-            //Debug.Log(m_scenarios[i]);
-            //passに,で区切った数値を入れる
-            string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
-            //tagを参照し、preList内部のプレハブを各座標に配置
-            GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), -15), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
+        Debug.Log(stageMother.transform.GetChildCount());
 
-            brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
-        }
+
+
         Debug.Log(fileName + "をロードしたで(*^-^*)");
     }
 
@@ -267,8 +309,28 @@ public class StageMakeController : MonoBehaviour
     {
         public string dataText;
         public string name;
-        public string stageData;
-        public string cameraData;
+        public int areaLeng;
+        [Serializable]
+        public struct AreaData
+        {
+            public string stageData;
+            public string cameraData;
+            public int[] loadArea;
+        }
+
+        public AreaData[] areaDatas; 
+        public void Set(int num)
+        {
+            areaLeng = num;
+            areaDatas = new AreaData[num];
+            for(int i=0;i< num; i++)
+            {
+                areaDatas[i].loadArea = new int[4];
+            }
+            
+        }
+
+
     }
 
 

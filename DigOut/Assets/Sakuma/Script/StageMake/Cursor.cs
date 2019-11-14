@@ -114,10 +114,10 @@ public class Cursor : MonoBehaviour
             if (!hit.collider)
             {
                 GameObject test= Instantiate(stageObjNumList.CameraPre ? stageObjNumList.CameraPreList[serectPre.serectPreNum] : stageObjNumList.PreList[serectPre.serectPreNum],
-                    new Vector3 (transform.position .x+((scaleX-1)* 0.5f),transform.position.y + ((scaleY - 1) * 0.5f), (stageObjNumList.CameraPre ? -1: 0)),Quaternion .Euler (0,0,angle),
+                    Vector3.zero,Quaternion .Euler (0,0,angle),
                     stageObjNumList.CameraPre ?cameraParent .transform : stageParent.transform );
                     test.transform.localScale = new Vector3(scaleX,scaleY ,1);
-
+                test.transform.localPosition = new Vector3(transform.position.x + ((scaleX - 1) * 0.5f), transform.position.y + ((scaleY - 1) * 0.5f), (stageObjNumList.CameraPre ? -1 : 0));
                 switch (serectPre.serectPreNum)
                 {
                     case 29:

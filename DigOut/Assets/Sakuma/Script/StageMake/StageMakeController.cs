@@ -36,13 +36,10 @@ public class StageMakeController : MonoBehaviour
     
     public GameObject cameraTestObj;
 
-    //public int areaLeng;
-    // Start is called before the first frame update
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
     }
@@ -139,7 +136,7 @@ public class StageMakeController : MonoBehaviour
     }
 
 
-    public GameObject lockobj;
+    //public GameObject lockobj;
 
     public void StageLode()
     {
@@ -153,7 +150,12 @@ public class StageMakeController : MonoBehaviour
 
 
 
-        for(int i = 0; i < data.areaLeng; i++)
+        Debug.Log(stageMother.transform.childCount);
+
+        int delayLeng = stageMother.transform.childCount;
+
+
+        for (int i = 0; i < data.areaLeng; i++)
         {
 
             GameObject area = new GameObject();
@@ -180,7 +182,7 @@ public class StageMakeController : MonoBehaviour
         for (int j = 0; j < data.areaLeng; j++)
         {
 
-            GameObject areaParent = stageMother.transform.GetChild(j).gameObject;
+            GameObject areaParent = stageMother.transform.GetChild(j+ delayLeng).gameObject;
             GameObject stageParent = areaParent.transform.GetChild(0).gameObject;
             GameObject cameraParent = areaParent.transform.GetChild(1).gameObject;
 
@@ -201,10 +203,7 @@ public class StageMakeController : MonoBehaviour
                 GameObject brockdata = Instantiate(stageObjNumList.PreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), 0), Quaternion.Euler(0, 0, float.Parse(pass[3])), stageParent.transform);
                 brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
 
-                if (j == 0)
-                {
-                    lockobj = brockdata;
-                }
+
                 switch (int.Parse(pass[0]))
                 {
                     case 29:
@@ -232,13 +231,13 @@ public class StageMakeController : MonoBehaviour
                 //passに,で区切った数値を入れる
                 string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
                 //tagを参照し、preList内部のプレハブを各座標に配置
-                GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), -15), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
+                GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), -1), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
 
                 brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
             }
         }
 
-        Debug.Log(stageMother.transform.GetChildCount());
+        
 
 
 

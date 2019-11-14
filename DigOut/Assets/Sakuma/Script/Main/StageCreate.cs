@@ -6,10 +6,7 @@ public class StageCreate : MonoBehaviour
 {
 
     //ステージの親を入れる
-    [SerializeField]
-    private GameObject stageParent;
-    [SerializeField]
-    private GameObject cameraParent;
+
     //各設置物のプレハブ配置
     [SerializeField]
     private string workFileName;

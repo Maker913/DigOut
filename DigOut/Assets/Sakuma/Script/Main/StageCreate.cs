@@ -30,7 +30,7 @@ public class StageCreate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stageMake.fileName = "test1";
+        stageMake.fileName = "Moc1";
         
         SaveDataLode();
     }

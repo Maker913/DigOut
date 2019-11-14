@@ -227,6 +227,7 @@ MonoBehaviour:
   stageObjNumList: {fileID: 9214599620763574355}
   fileName: a
   cameraTestObj: {fileID: 0}
+  MainAction: 1
 --- !u!4 &405926521
 Transform:
   m_ObjectHideFlags: 0

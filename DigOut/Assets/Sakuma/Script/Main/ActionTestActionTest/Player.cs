@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
     }
 
-    void Update()
+    void FixedUpdate()
     {
 
         if (controller.collisions.above || controller.collisions.below)
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         //加速の計算
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         //
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        velocity.y += gravity * Time.fixedDeltaTime ;
+        controller.Move(velocity * Time.fixedDeltaTime);
     }
 }

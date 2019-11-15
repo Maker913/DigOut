@@ -95,7 +95,7 @@ MonoBehaviour:
   cameraFrame:
     serializedVersion: 2
     m_Bits: 2048
-  spead: 0.3
+  spead: 0.2
   mask:
     serializedVersion: 2
     m_Bits: 2048

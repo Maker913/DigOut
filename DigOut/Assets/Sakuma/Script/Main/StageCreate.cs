@@ -63,7 +63,7 @@ public class StageCreate : MonoBehaviour
         camera.transform.parent= data.transform.GetChild(0);
         camera.transform.localPosition =new Vector3 (0,0, 10);
         data.transform .GetChild (0). GetComponent<CameraTest>().targetObj=data2.transform.GetChild (0).gameObject;
-        camera.GetComponent<CameraSize>().cameraTest = data.transform.GetChild(0).GetComponent<CameraTest>();
+        camera.GetComponent<CameraSize>().player = data2;
 
         stageMake.cameraTestObj = data.transform.GetChild (0).gameObject ;
 

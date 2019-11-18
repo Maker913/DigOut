@@ -14,7 +14,8 @@ public class StageMakeController : MonoBehaviour
     //private GameObject stageParent;
     //[SerializeField]
     //private GameObject cameraParent;
-
+    [SerializeField]
+    private GameObject cursor;
         [SerializeField ]
     private GameObject stageMother;
 
@@ -37,6 +38,12 @@ public class StageMakeController : MonoBehaviour
     public GameObject cameraTestObj;
     [SerializeField]
     private bool MainAction;
+
+    [SerializeField]
+    StageCreate stageCreate;
+
+
+
     void Start()
     {
     }
@@ -131,7 +138,8 @@ public class StageMakeController : MonoBehaviour
 
         }
 
-
+        data.startPosx = cursor.transform.position.x;
+        data.startPosy = cursor.transform.position.y;
         Save(data);
         Debug.Log(fileName + "にセーブしたで(*^^)v");
     }
@@ -150,8 +158,8 @@ public class StageMakeController : MonoBehaviour
         Data data = Load();
 
 
-
-        Debug.Log(stageMother.transform.childCount);
+        Debug.Log(data.startPosx+":"+ data.startPosy);
+        //Debug.Log(stageMother.transform.childCount);
 
         int delayLeng = stageMother.transform.childCount;
 
@@ -190,7 +198,7 @@ public class StageMakeController : MonoBehaviour
 
             string text = data.areaDatas[j].stageData;
 
-            Debug.Log(text);
+            //Debug.Log(text);
 
             //Scenariosに;で区切って表示
             string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
@@ -212,6 +220,10 @@ public class StageMakeController : MonoBehaviour
                         brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]), 0);
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
                         break;
+                    case 30:
+                        brockdata.transform.Translate(new Vector3(0, 0, -20));
+                        break;
+
                 }
 
 
@@ -241,8 +253,16 @@ public class StageMakeController : MonoBehaviour
         
 
 
-
+        
         Debug.Log(fileName + "をロードしたで(*^-^*)");
+        try
+        {
+            stageCreate.startPos = new Vector2(data.startPosx, data.startPosy);
+        }catch
+        {
+
+        }
+        
     }
 
 
@@ -310,6 +330,8 @@ public class StageMakeController : MonoBehaviour
         public string dataText;
         public string name;
         public int areaLeng;
+        public float startPosx;
+        public float startPosy;
         [Serializable]
         public struct AreaData
         {

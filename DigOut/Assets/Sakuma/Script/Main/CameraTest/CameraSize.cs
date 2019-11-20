@@ -27,7 +27,7 @@ public class CameraSize : MonoBehaviour
     {
         
         float dis = Vector2.Distance(player.transform.position, transform.position);
-        Debug.Log(dis);
+        //Debug.Log(dis);
         dis *= 0f;
 
 

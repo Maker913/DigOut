@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     {
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
+
             if (controller.collisions.above || controller.collisions.below)
             {
                 velocity.y = 0;

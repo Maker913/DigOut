@@ -41,8 +41,10 @@ public class StageMakeController : MonoBehaviour
 
     [SerializeField]
     StageCreate stageCreate;
-
-
+    [SerializeField]
+    GoHomeSelect goHome;
+    [SerializeField]
+    stageSelect  stage;
 
     void Start()
     {
@@ -158,7 +160,7 @@ public class StageMakeController : MonoBehaviour
         Data data = Load();
 
 
-        Debug.Log(data.startPosx+":"+ data.startPosy);
+        //Debug.Log(data.startPosx+":"+ data.startPosy);
         //Debug.Log(stageMother.transform.childCount);
 
         int delayLeng = stageMother.transform.childCount;
@@ -221,7 +223,11 @@ public class StageMakeController : MonoBehaviour
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
                         break;
                     case 30:
+                        brockdata.GetComponent<SceneLoad >().stageSelect  =stage ;
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
+                        break;
+                    case 31:
+                        brockdata.GetComponent<GoHomeSelectSet>().goHome = goHome;
                         break;
 
                 }
@@ -278,7 +284,7 @@ public class StageMakeController : MonoBehaviour
         try
         {
             //　ゲームフォルダにfiledata.datファイルを作成
-            fileStream = File.Create(Application.dataPath + "/StageData/" + fileName + ".dat");
+            fileStream = File.Create(Application.dataPath + "/StreamingAssets/StageData/" + fileName + ".dat");
             bf.Serialize(fileStream, data);
         }
         catch (IOException e1)
@@ -302,7 +308,7 @@ public class StageMakeController : MonoBehaviour
         try
         {
             //　ファイルを読み込む
-            fileStream = File.Open(Application.dataPath + "/StageData/" + fileName + ".dat", FileMode.Open);
+            fileStream = File.Open(Application.dataPath + "/StreamingAssets/StageData/" + fileName + ".dat", FileMode.Open);
             data = bf.Deserialize(fileStream) as Data;
         }
         catch (FileNotFoundException e1)

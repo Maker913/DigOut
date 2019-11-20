@@ -32,13 +32,13 @@ public class GoHomeSelect : MonoBehaviour
             rectTransform.localPosition  = new Vector3(yesNo?-100:100, -55,0);
 
 
-            if(Input.GetKeyDown (KeyCode.LeftArrow )|| Input.GetKeyDown(KeyCode.RightArrow))
+            if(PS4ControllerInput.pS4ControllerInput.contorollerState.singleLeft|| PS4ControllerInput.pS4ControllerInput.contorollerState.singleRight)
             {
                 yesNo = !yesNo;
             }
 
 
-            if(Input.GetKeyDown (KeyCode.Z))
+            if(PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
             {
 
 

@@ -10,12 +10,15 @@ public class ClashBlock : MonoBehaviour
         
     }
 
+    [SerializeField]
+    LayerMask layerMask;
+
     // Update is called once per frame
     void Update()
     {
-        if(PS4ControllerInput.pS4ControllerInput.contorollerState.downButton && PS4ControllerInput.pS4ControllerInput.contorollerState.Circle)
+        if(PS4ControllerInput.pS4ControllerInput.contorollerState.downButton && PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
         {
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector2.down,2f);
+            RaycastHit2D hit2D = Physics2D.BoxCast(transform.position, new Vector2(0.5f,1), 0, Vector2.down,2f, layerMask);
             if (hit2D == true)
             {
                 if (hit2D.collider.tag == "32")
@@ -27,9 +30,9 @@ public class ClashBlock : MonoBehaviour
             
         }
 
-        if(PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk && PS4ControllerInput.pS4ControllerInput.contorollerState.Circle)
+        if(PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk && PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
         {
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector2.right,2f);
+            RaycastHit2D hit2D = Physics2D.BoxCast(transform.position, new Vector2(0.5f,1), 0, Vector2.right,2f, layerMask);
             if (hit2D == true)
             {
                 if (hit2D.collider.tag == "32")
@@ -40,9 +43,9 @@ public class ClashBlock : MonoBehaviour
             }
         }
 
-        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk && PS4ControllerInput.pS4ControllerInput.contorollerState.Circle)
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk && PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
         {
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector2.left,2f);
+            RaycastHit2D hit2D = Physics2D.BoxCast (transform.position,new Vector2(0.5f, 1),0, Vector2.left,2f, layerMask);
             if (hit2D == true)
             {
                 if (hit2D.collider.tag == "32")
@@ -53,6 +56,6 @@ public class ClashBlock : MonoBehaviour
             }
         }
 
-        //Debug.DrawRay(transform.position, (Vector3)(Vector2.right * 2f));
+        Debug.DrawRay(transform.position, (Vector3)(Vector2.right * 2f));
     }
 }

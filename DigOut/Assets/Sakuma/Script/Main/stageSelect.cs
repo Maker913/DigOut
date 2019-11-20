@@ -36,16 +36,16 @@ public class stageSelect : MonoBehaviour
         {
 
             rectTransform.localPosition = homePos + new Vector3(0,-50*nowpas ,0);
-            if (Input.GetKeyDown(KeyCode.UpArrow )&&nowpas>0)
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleUp&&nowpas>0)
             {
                 nowpas--;
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow ) && nowpas < stagelist.Length-1)
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleDown && nowpas < stagelist.Length-1)
             {
                 nowpas++;
             }
 
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
             {
 
 

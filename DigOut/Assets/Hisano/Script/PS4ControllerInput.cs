@@ -11,6 +11,8 @@ public class PS4ControllerInput : MonoBehaviour
     {
         public bool leftWalk;
         public bool rightWalk;
+        public bool upButton;
+        public bool downButton;
         public bool Jump;
         public bool Circle;
         public void reset()
@@ -24,6 +26,7 @@ public class PS4ControllerInput : MonoBehaviour
 
     public ContorollerState contorollerState;
     float Padx;
+    float Pady;
 
     static public PS4ControllerInput pS4ControllerInput;
 
@@ -51,9 +54,12 @@ public class PS4ControllerInput : MonoBehaviour
     {
         if (ControllerOn) {
             Padx = Input.GetAxis("DpadLR");
+            Pady = Input.GetAxis("DpadUD");
 
-            contorollerState.rightWalk = Padx > 0.9;
+            contorollerState.rightWalk = Padx > 0.9f;
             contorollerState.leftWalk = Padx < -0.9f;
+            contorollerState.upButton = Pady > 0.9f;
+            contorollerState.downButton = Pady < -0.9f;
             contorollerState.Jump = Input.GetButton("Fire2");
             contorollerState.Circle = Input.GetButton("Circle");
         }

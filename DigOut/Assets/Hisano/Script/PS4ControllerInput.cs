@@ -12,11 +12,13 @@ public class PS4ControllerInput : MonoBehaviour
         public bool leftWalk;
         public bool rightWalk;
         public bool Jump;
+        public bool Circle;
         public void reset()
         {
             leftWalk = false;
             rightWalk = false;
             Jump = false;
+            Circle = false;
         }
     }
 
@@ -53,6 +55,7 @@ public class PS4ControllerInput : MonoBehaviour
             contorollerState.rightWalk = Padx > 0.9;
             contorollerState.leftWalk = Padx < -0.9f;
             contorollerState.Jump = Input.GetButton("Fire2");
+            contorollerState.Circle = Input.GetButton("Circle");
         }
         else {
             contorollerState.rightWalk = Input.GetKey(KeyCode.RightArrow);

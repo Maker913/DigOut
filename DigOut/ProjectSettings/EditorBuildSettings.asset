@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Sakuma/Scene/MainAction.unity
+    guid: 1597eb215f967684c9a23afce56d0b24
   m_configObjects: {}

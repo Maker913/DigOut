@@ -32,54 +32,66 @@ public class PlayerAnimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        switch (animeMode)
+        if(MainStateInstance .mainStateInstance .mainState .gameMode ==MainStateInstance .GameMode.Play)
         {
-            case AnimeMode.Idole:
-                transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 180, ref spead, 0.1f), 0);
-                break;
-            case AnimeMode.LWork:
-                transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 270, ref spead, 0.1f), 0);
-                break;
-            case AnimeMode.RWork:
-                transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 90, ref spead, 0.1f), 0);
-                break;
-            case AnimeMode.Fall:
-                break;
-        }
-
-
-
-        //切り替わった瞬間のみ呼び出し
-
-
-        if(animeModeDil!= animeMode)
-        {
+            animator.SetFloat("Spead", 1);
             switch (animeMode)
             {
                 case AnimeMode.Idole:
-                    AnimeChange("Idole");
+                    transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 180, ref spead, 0.1f), 0);
                     break;
                 case AnimeMode.LWork:
-                    AnimeChange("Work");
+                    transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 270, ref spead, 0.1f), 0);
                     break;
                 case AnimeMode.RWork:
-                    AnimeChange("Work");
+                    transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 90, ref spead, 0.1f), 0);
                     break;
                 case AnimeMode.Fall:
-                    AnimeChange("Jump");
                     break;
             }
+
+
+
+            //切り替わった瞬間のみ呼び出し
+
+
+            if (animeModeDil != animeMode)
+            {
+                switch (animeMode)
+                {
+                    case AnimeMode.Idole:
+                        AnimeChange("Idole");
+                        break;
+                    case AnimeMode.LWork:
+                        AnimeChange("Work");
+                        break;
+                    case AnimeMode.RWork:
+                        AnimeChange("Work");
+                        break;
+                    case AnimeMode.Fall:
+                        AnimeChange("Jump");
+                        break;
+                }
+            }
+
+            animeModeDil = animeMode;
+        }
+        else
+        {
+            animator.SetFloat("Spead", 0);
         }
 
-        animeModeDil = animeMode;
+
+
+
+
 
     }
 
 
     void AnimeChange(string animeName)
     {
-        Debug.Log("変えます");
+        //Debug.Log("変えます");
         animator.SetBool("Idole", animeName == "Idole");
         animator.SetBool("Work", animeName == "Work");
         animator.SetBool("Jump", animeName == "Jump");

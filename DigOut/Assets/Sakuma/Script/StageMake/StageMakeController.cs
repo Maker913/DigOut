@@ -46,6 +46,13 @@ public class StageMakeController : MonoBehaviour
     [SerializeField]
     stageSelect  stage;
 
+    [SerializeField]
+    GameObject startPos;
+    [SerializeField]
+    GameObject cameraPos;
+
+
+
     void Start()
     {
     }
@@ -140,8 +147,10 @@ public class StageMakeController : MonoBehaviour
 
         }
 
-        data.startPosx = cursor.transform.position.x;
-        data.startPosy = cursor.transform.position.y;
+        data.startPosx = startPos.transform.position.x;
+        data.startPosy = startPos.transform.position.y;
+        data.cameraPosx = cameraPos.transform.position.x;
+        data.cameraPosy = cameraPos.transform.position.y;
         Save(data);
         Debug.Log(fileName + "にセーブしたで(*^^)v");
     }
@@ -264,7 +273,9 @@ public class StageMakeController : MonoBehaviour
         try
         {
             stageCreate.startPos = new Vector2(data.startPosx, data.startPosy);
-        }catch
+            stageCreate.cameraPos  = new Vector2(data.cameraPosx , data.cameraPosy );
+        }
+        catch
         {
 
         }
@@ -338,6 +349,8 @@ public class StageMakeController : MonoBehaviour
         public int areaLeng;
         public float startPosx;
         public float startPosy;
+        public float cameraPosx;
+        public float cameraPosy;
         [Serializable]
         public struct AreaData
         {

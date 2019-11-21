@@ -24,7 +24,7 @@ public class StageCreate : MonoBehaviour
     StageMakeController stageMake;
 
     public Vector2 startPos;
-
+    public Vector2 cameraPos;
     float dataz = -20;
     // Start is called before the first frame update
     void Start()
@@ -58,7 +58,7 @@ public class StageCreate : MonoBehaviour
         stageMake.StageLode();
 
         data2.transform.position = new Vector3(startPos.x, startPos.y + 0.5f, 0);
-        data.transform.position = new Vector3(startPos.x, startPos.y, dataz);
+        data.transform.position = new Vector3(cameraPos.x, cameraPos.y, dataz);
 
 
         

@@ -96,7 +96,7 @@ public class Cursor : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward,1,stageObjNumList . CameraPre ?CameraMask:StageMask);
@@ -107,7 +107,7 @@ public class Cursor : MonoBehaviour
 
 
         }
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward,1, stageObjNumList.CameraPre ? CameraMask : StageMask);

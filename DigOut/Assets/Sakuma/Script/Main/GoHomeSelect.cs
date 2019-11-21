@@ -45,7 +45,7 @@ public class GoHomeSelect : MonoBehaviour
                 if(yesNo)
                 {
 
-                    MainStateInstance.mainStateInstance.stageName = "towntest";
+                    MainStateInstance.mainStateInstance.stageName = "街に戻る";
                     Scene.sceneManagerPr.SceneLoad("MainAction");
 
                 }

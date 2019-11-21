@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Hisano/Scene/Title.unity
+    guid: c20bc2df5fe8ba942ae73dec8793a4e8
+  - enabled: 1
     path: Assets/Sakuma/Scene/MainAction.unity
     guid: 1597eb215f967684c9a23afce56d0b24
   m_configObjects: {}

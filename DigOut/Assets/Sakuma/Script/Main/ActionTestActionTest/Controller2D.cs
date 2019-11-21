@@ -21,8 +21,13 @@ public class Controller2D : MonoBehaviour
     RaycastOrigins raycastOrigins;
     public CollisionInfo collisions;
 
+    Rigidbody2D rigidbody2;
+
+
+
     void Start()
     {
+        rigidbody2 = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
     }
@@ -46,7 +51,7 @@ public class Controller2D : MonoBehaviour
             VerticalCollisions(ref velocity);
         }
 
-        transform.Translate(velocity);
+        rigidbody2.transform.Translate(velocity);
     }
 
     void HorizontalCollisions(ref Vector3 velocity)

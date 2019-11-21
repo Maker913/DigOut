@@ -54,62 +54,71 @@ public class Player : MonoBehaviour
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-
-        if (controller.collisions.above || controller.collisions.below)
+        if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
-            velocity.y = 0;
-        }
-
-        //プレイヤーの移動方向
-        //コントローラー等のスティックのベクトル取得
-        //Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector2 input = new Vector2(0,0);
-
-        //キーボードからの入力取得
-        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { input.x = -1; }
-        if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { input.x = 1; }
-
-        //改造要素
-        //アニメモードを送る
-        if (controller.collisions.below)
-        {
-            if (PS4ControllerInput .pS4ControllerInput .contorollerState .leftWalk   ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk )
+            if (controller.collisions.above || controller.collisions.below)
             {
-                if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; }
-                if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; }
+                velocity.y = 0;
             }
-            else
+
+            //プレイヤーの移動方向
+            //コントローラー等のスティックのベクトル取得
+            //Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Vector2 input = new Vector2(0, 0);
+
+            //キーボードからの入力取得
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { input.x = -1; }
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { input.x = 1; }
+
+            //改造要素
+            //アニメモードを送る
+            if (controller.collisions.below)
             {
-                playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
+                if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
+                {
+                    if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; }
+                    if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; }
+                }
+                else
+                {
+                    playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+            //ジャンプ
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Jump && controller.collisions.below)
+            {
+                velocity.y = jumpVelocity;
+                playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
+            }
+
+            //x軸の慣性計算
+            //現在目標の速度を計算、それを目的地とする
+            float targetVelocityX = input.x * moveSpeed;
+            //加速の計算
+            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+            //
+            velocity.y += gravity * Time.fixedDeltaTime;
+            try
+            {
+                controller.Move(velocity * Time.fixedDeltaTime);
+            }catch
+            {
+                return;
             }
             
         }
-
-
-
-
-
-
-
-
-
-
-        //ジャンプ
-        if (PS4ControllerInput.pS4ControllerInput.contorollerState.Jump  && controller.collisions.below)
-        {
-            velocity.y = jumpVelocity;
-            playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall ;
-        }
-
-        //x軸の慣性計算
-        //現在目標の速度を計算、それを目的地とする
-        float targetVelocityX = input.x * moveSpeed;
-        //加速の計算
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-        //
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 }

@@ -2,48 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-<<<<<<< HEAD
-=======
 using UnityEngine.UI;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
 //using UnityEngine.SceneManagement;
 public class StageMakeController : MonoBehaviour
 {
 
     //ステージの親を入れる
-<<<<<<< HEAD
-    [SerializeField]
-    private GameObject stageParent;
-    //各設置物のプレハブ配置
-    [SerializeField]
-    private string workFileName;
-    [SerializeField]
-    StageObjNumList stageObjNumList;
-
-    public string BrockData;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Debug.Log(MainStateInstance.mainStateInstance.mainState.gameMode.ToString()); 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if(Input.GetKeyDown(KeyCode.Q)) {
-        //    SceneManager.LoadScene(0);
-        //}
-        //if (Input.GetKeyDown(KeyCode.W)) {
-        //    MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Anime;
-        //}
-=======
     //[SerializeField]
     //private GameObject stageParent;
     //[SerializeField]
     //private GameObject cameraParent;
-
+    [SerializeField]
+    private GameObject cursor;
         [SerializeField ]
     private GameObject stageMother;
 
@@ -66,13 +38,18 @@ public class StageMakeController : MonoBehaviour
     public GameObject cameraTestObj;
     [SerializeField]
     private bool MainAction;
+
+    [SerializeField]
+    StageCreate stageCreate;
+
+
+
     void Start()
     {
     }
 
     void Update()
     {
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
     }
 
 
@@ -80,46 +57,6 @@ public class StageMakeController : MonoBehaviour
 
     public void StageSave()
     {
-<<<<<<< HEAD
-        string text = "";
-        //オブジェ座標以外の情報書き出し
-        //text += "わあああああああああああ";
-
-
-
-        //text += "\n[BrockData]\n";
-
-        //StageListの子のtagと座標の取得と書き出し
-        for (int i = 0; i < stageParent.transform.childCount; i++)
-        {
-            //ScriptableObjectでの作成を推奨されました
-            text += stageParent.transform.GetChild(i).transform.tag + ",";//Tag
-            text += stageParent.transform.GetChild(i).transform.position.x.ToString() + ",";//x座標
-            text += stageParent.transform.GetChild(i).transform.position.y.ToString() + ",";//y座標
-            text += (stageParent.transform.GetChild(i).transform.localEulerAngles .z).ToString();//向き角度
-            //text += stageParent.transform.GetChild(i).//マテリアル・テクスチャ
-            //text += stageParent.transform.GetChild(i).//種類
-            //Debug.Log(stageParent.transform.GetChild(i).transform.localRotation.z.ToString());
-            if (i!=stageParent.transform.childCount - 1)
-            {
-                text += "\n";
-            }
-            
-        }
-        //txtファイルの位置と書き出し設定
-        StreamWriter sw = new StreamWriter("Assets/Resources/Scenarios/"+ workFileName + ".txt", false); //true = 追記  false or 無し　= 上書き
-        sw.WriteLine(text);
-        sw.Flush();
-        sw.Close();
-
-        Debug.Log(workFileName+"" +
-            "にセーブしたで(*^^)v");
-    }
-
-    public void StageLode()
-    {
-        foreach (Transform child in stageParent.transform)
-=======
         //オブジェ座標以外の情報書き出し
 
         Data data = new Data();
@@ -201,7 +138,8 @@ public class StageMakeController : MonoBehaviour
 
         }
 
-
+        data.startPosx = cursor.transform.position.x;
+        data.startPosy = cursor.transform.position.y;
         Save(data);
         Debug.Log(fileName + "にセーブしたで(*^^)v");
     }
@@ -212,44 +150,16 @@ public class StageMakeController : MonoBehaviour
     public void StageLode()
     {
         foreach (Transform child in stageMother.transform)
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
         {
             Destroy(child.gameObject);
         }
 
-<<<<<<< HEAD
-        var scenarioText = Resources.Load<TextAsset>("Scenarios/" + workFileName);
-        if (scenarioText == null)
-        {
-            Debug.LogError("シナリオファイルが見つかりません。");
-            return;
-        }
-
-        string text = scenarioText.text;
-        Resources.UnloadAsset(scenarioText);
-
-        //BrockData= text.Split(new string[] { "\n[BrockData]\n" }, System.StringSplitOptions.None)[1];
-
-        //Scenariosに;で区切って表示
-        string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
-        for (int i = 0; i < m_scenarios.Length - 1; i++)
-        {
-            //passに,で区切った数値を入れる
-            string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
-            //tagを参照し、preList内部のプレハブを各座標に配置
-            Instantiate(stageObjNumList.PreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), 0), Quaternion.Euler (0,0, float.Parse(pass[3])), stageParent.transform);
-        }
-        Debug.Log(workFileName + "をロードしたで(*^-^*)");
-    }
-
-
-=======
         
         Data data = Load();
 
 
-
-        Debug.Log(stageMother.transform.childCount);
+        Debug.Log(data.startPosx+":"+ data.startPosy);
+        //Debug.Log(stageMother.transform.childCount);
 
         int delayLeng = stageMother.transform.childCount;
 
@@ -288,7 +198,7 @@ public class StageMakeController : MonoBehaviour
 
             string text = data.areaDatas[j].stageData;
 
-            Debug.Log(text);
+            //Debug.Log(text);
 
             //Scenariosに;で区切って表示
             string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
@@ -310,6 +220,10 @@ public class StageMakeController : MonoBehaviour
                         brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]), 0);
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
                         break;
+                    case 30:
+                        brockdata.transform.Translate(new Vector3(0, 0, -20));
+                        break;
+
                 }
 
 
@@ -339,8 +253,16 @@ public class StageMakeController : MonoBehaviour
         
 
 
-
+        
         Debug.Log(fileName + "をロードしたで(*^-^*)");
+        try
+        {
+            stageCreate.startPos = new Vector2(data.startPosx, data.startPosy);
+        }catch
+        {
+
+        }
+        
     }
 
 
@@ -408,6 +330,8 @@ public class StageMakeController : MonoBehaviour
         public string dataText;
         public string name;
         public int areaLeng;
+        public float startPosx;
+        public float startPosy;
         [Serializable]
         public struct AreaData
         {
@@ -433,5 +357,4 @@ public class StageMakeController : MonoBehaviour
 
 
 
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
 }

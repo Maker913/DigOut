@@ -28,7 +28,7 @@ public class MainStateInstance : MonoBehaviour
 
     public MainState mainState;
     static public MainStateInstance mainStateInstance;
-    
+    public string stageName;
 
     private void Awake() {
         if (mainStateInstance == null) {

@@ -8,8 +8,6 @@ TagManager:
   - 1
   - 3
   - 2
-<<<<<<< HEAD
-=======
   - 4
   - 5
   - 6
@@ -37,7 +35,6 @@ TagManager:
   - 28
   - 29
   - 30
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
   layers:
   - Default
   - TransparentFX
@@ -49,17 +46,10 @@ TagManager:
   - 
   - PostProcessing
   - Wall
-<<<<<<< HEAD
-  - Slope
-  - NonSlope
-  - 
-  - 
-=======
   - Camera
   - CameraFrame
   - Player
   - ChangePt
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
   - 
   - 
   - 

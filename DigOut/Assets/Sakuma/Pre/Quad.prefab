@@ -30,11 +30,7 @@ Transform:
   m_Children:
   - {fileID: 5994385422183274605}
   m_Father: {fileID: 5994385422455809074}
-<<<<<<< HEAD
-  m_RootOrder: 0
-=======
   m_RootOrder: 1
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1645078525
 MonoBehaviour:
@@ -50,8 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animeMode: 0
   animator: {fileID: 5994385422192834181}
-<<<<<<< HEAD
-=======
 --- !u!1 &4328820381267006788
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +76,6 @@ Transform:
   m_Father: {fileID: 5994385422455809074}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
 --- !u!1 &5994385422455809096
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,14 +90,10 @@ GameObject:
   - component: {fileID: 5994385422455809079}
   - component: {fileID: 5994385422455809097}
   - component: {fileID: 7383241385374004553}
-<<<<<<< HEAD
-  m_Layer: 0
-=======
   - component: {fileID: 5308400146959445274}
   m_Layer: 12
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,16 +106,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5994385422455809096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -1.8477172, y: 2.807589, z: 0}
-  m_LocalScale: {x: 0.75, y: 2, z: 0.75}
-  m_Children:
-=======
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 2, z: 0.75}
   m_Children:
   - {fileID: 8963880867416568138}
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
   - {fileID: 1645078524}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -231,14 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e20168f4f56f354ab6623b8d1d2a19b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  jumpHeight: 2.5
-  timeToJumpApex: 0.5
-  accelerationTimeAirborne: 0.2
-  accelerationTimeGrounded: 0.1
-  moveSpeed: 5
-  playerAnime: {fileID: 1645078525}
-=======
   jumpHeight: 3.5
   timeToJumpApex: 0.5
   accelerationTimeAirborne: 0.2
@@ -266,7 +241,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
 --- !u!1001 &5994385422183400421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,13 +248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1645078524}
     m_Modifications:
-<<<<<<< HEAD
-=======
     - target: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_Name
       value: SD_unitychan_humanoid
       objectReference: {fileID: 0}
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
     - target: {fileID: 400264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -337,13 +308,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
-      propertyPath: m_Name
-      value: SD_unitychan_humanoid
-      objectReference: {fileID: 0}
-=======
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
     - target: {fileID: 9500000, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_Controller
       value: 
@@ -356,40 +320,23 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 11400002, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
-      propertyPath: isGUI
-=======
     - target: {fileID: 11400084, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400088, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_Enabled
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 11400084, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400088, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
-=======
     - target: {fileID: 11400000, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: isGUI
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
->>>>>>> 40914c70ff315d902e41bf2ad71a470ea459c9cd
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}

@@ -112,7 +112,7 @@ public class PS4ControllerInput : MonoBehaviour
             contorollerState.singleCircle = Input.GetKeyDown(KeyCode.Z);
         }
 
-        Debug.Log(contorollerState.singleLeft);
+        //Debug.Log(contorollerState.singleLeft);
 
         oldDown = contorollerState.downButton;
         oldLeft = contorollerState.leftWalk;

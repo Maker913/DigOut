@@ -77,7 +77,7 @@ public class CameraTest : MonoBehaviour
 
 
                 rigidbody2D.transform.Translate(new Vector2(move.x, 0) * dis * (cont / 10));
-                Debug.Log(cont);
+                //Debug.Log(cont);
             }
 
             if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(0, move.y), dis, mask)) {
@@ -100,7 +100,7 @@ public class CameraTest : MonoBehaviour
                     }
                 } while (flg);
 
-                Debug.Log(cont);
+                //Debug.Log(cont);
                 rigidbody2D.transform.Translate(new Vector2(0, move.y) * dis * (cont / 10));
 
             }

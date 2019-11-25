@@ -43,7 +43,7 @@ public class StageCreate : MonoBehaviour
     void SaveDataLode()
     {
 
-
+        MainStateInstance.mainStateInstance.mainState.nowArea = 0;
 
 
         GameObject data2 = Instantiate(PlayerPre, Vector3.zero, Quaternion.identity);

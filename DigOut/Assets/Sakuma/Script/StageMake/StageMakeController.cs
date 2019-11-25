@@ -50,7 +50,8 @@ public class StageMakeController : MonoBehaviour
     GameObject startPos;
     [SerializeField]
     GameObject cameraPos;
-
+    [SerializeField]
+    int nowArea;
 
 
     void Start()
@@ -59,6 +60,7 @@ public class StageMakeController : MonoBehaviour
 
     void Update()
     {
+        nowArea = MainStateInstance.mainStateInstance.mainState.nowArea;
     }
 
 
@@ -98,7 +100,9 @@ public class StageMakeController : MonoBehaviour
                         GameObject dat2 = stageParent.transform.GetChild(i).gameObject;
                         Vector3 dat = dat2.GetComponent<StageChange>().target;
                         text += "," + dat.x.ToString() + ",";
-                        text += stageParent.transform.GetChild(i).GetComponent<StageChange>().target.y.ToString();
+                        text += stageParent.transform.GetChild(i).GetComponent<StageChange>().target.y.ToString() + ",";
+                        text += dat2.GetComponent<StageChange  >().changeArea.ToString() + ",";
+                        text += dat2.GetComponent<StageChange>().thisArea.ToString();
                         break;
                 }
 
@@ -230,6 +234,8 @@ public class StageMakeController : MonoBehaviour
                         brockdata.GetComponent<StageChange>().cameraTestObj = cameraTestObj;
                         brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]), 0);
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
+                        brockdata.GetComponent<StageChange>().changeArea = int.Parse(pass[8]);
+                        brockdata.GetComponent<StageChange>().thisArea = int.Parse(pass[9]);
                         break;
                     case 30:
                         brockdata.GetComponent<SceneLoad >().stageSelect  =stage ;

@@ -6,6 +6,8 @@ public class MapLoder : MonoBehaviour
 {
     [SerializeField]
     GameObject[] mapObj;
+    [SerializeField]
+    GameObject[] mapObj2;
 
     RectTransform[] rectTransforms;
     RectTransform thistrans;
@@ -22,7 +24,8 @@ public class MapLoder : MonoBehaviour
         {
             rectTransforms[i] = mapObj[i].GetComponent<RectTransform>();
         }
-        mapObj[MainStateInstance.mainStateInstance.mainState.nowArea].SetActive(true);
+        mapObj[0].SetActive(true);
+        mapObj2[0].SetActive(true);
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class MapLoder : MonoBehaviour
         if(num != MainStateInstance.mainStateInstance.mainState.nowArea)
         {
             mapObj[MainStateInstance.mainStateInstance.mainState.nowArea].SetActive(true);
+            mapObj2[MainStateInstance.mainStateInstance.mainState.nowArea].SetActive(true);
             Debug.Log(MainStateInstance.mainStateInstance.mainState.nowArea);
             movePos = -rectTransforms[MainStateInstance.mainStateInstance.mainState.nowArea].anchoredPosition3D;
 

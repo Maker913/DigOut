@@ -22,6 +22,15 @@ public class MapCr : MonoBehaviour
         string stagename;
         stagename = MainStateInstance.mainStateInstance.stageName;
 
+        if(stagename == "街に戻る")
+        {
+            transform.parent.gameObject.SetActive(false);
+            Debug.Log("マップけしたで");
+            return;
+        }
+
+
+
         for (int i=0; i < mapDatas.Length ; i++){
 
             if(mapDatas [i].name ==stagename)

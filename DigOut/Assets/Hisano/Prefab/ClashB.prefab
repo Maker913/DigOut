@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3592442339564693743}
   m_Layer: 9
   m_Name: Quad
-  m_TagString: 32
+  m_TagString: 5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1030459298133939615}
   m_Layer: 13
   m_Name: ClashB
-  m_TagString: 32
+  m_TagString: 4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

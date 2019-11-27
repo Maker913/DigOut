@@ -96,7 +96,7 @@ public class StageMakeController : MonoBehaviour
 
                 switch (int.Parse(stageParent.transform.GetChild(i).transform.tag))
                 {
-                    case 29:
+                    case 2:
                         GameObject dat2 = stageParent.transform.GetChild(i).gameObject;
                         Vector3 dat = dat2.GetComponent<StageChange>().target;
                         text += "," + dat.x.ToString() + ",";
@@ -230,18 +230,18 @@ public class StageMakeController : MonoBehaviour
 
                 switch (int.Parse(pass[0]))
                 {
-                    case 29:
+                    case 2:
                         brockdata.GetComponent<StageChange>().cameraTestObj = cameraTestObj;
                         brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]), 0);
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
                         brockdata.GetComponent<StageChange>().changeArea = int.Parse(pass[8]);
                         brockdata.GetComponent<StageChange>().thisArea = int.Parse(pass[9]);
                         break;
-                    case 30:
+                    case 1:
                         brockdata.GetComponent<SceneLoad >().stageSelect  =stage ;
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
                         break;
-                    case 31:
+                    case 3:
                         brockdata.GetComponent<GoHomeSelectSet>().goHome = goHome;
                         break;
 

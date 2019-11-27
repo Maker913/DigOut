@@ -120,7 +120,7 @@ public class Cursor : MonoBehaviour
                 test.transform.localPosition = new Vector3(transform.position.x + ((scaleX - 1) * 0.5f), transform.position.y + ((scaleY - 1) * 0.5f), (stageObjNumList.CameraPre ? -1 : 0));
                 switch (serectPre.serectPreNum)
                 {
-                    case 29:
+                    case 2:
                         test.GetComponent<StageChange>().target = new Vector3((float)Convert.ToDouble(changeXInput.text), (float)Convert.ToDouble(changeYInput.text),0);
                         break;
                 }

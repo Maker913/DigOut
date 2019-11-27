@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4443090042111601150}
   m_Layer: 13
   m_Name: stageChange
-  m_TagString: 29
+  m_TagString: 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
     m_Bits: 4096
   target: {x: 0, y: 0, z: 0}
   cameraTestObj: {fileID: 5919959751568645917}
+  changeArea: 0
+  thisArea: 0
 --- !u!1 &5919959751568645917
 GameObject:
   m_ObjectHideFlags: 0

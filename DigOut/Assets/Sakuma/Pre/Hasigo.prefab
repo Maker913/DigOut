@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 9119666544869193507}
   m_Layer: 0
   m_Name: Hasigo
-  m_TagString: 31
+  m_TagString: 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

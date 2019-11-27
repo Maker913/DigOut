@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3822982306155276985}
   - component: {fileID: 7712236171075924912}
   m_Layer: 13
-  m_Name: stageChange 1
-  m_TagString: 30
+  m_Name: Chikahe
+  m_TagString: 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57240177f058f7f48be3904a258d2c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageSelect: {fileID: 0}
 --- !u!1 &5919959751568645917
 GameObject:
   m_ObjectHideFlags: 0

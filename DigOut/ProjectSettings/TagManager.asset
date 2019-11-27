@@ -37,6 +37,8 @@ TagManager:
   - 30
   - 31
   - 32
+  - 33
+  - 34
   layers:
   - Default
   - TransparentFX

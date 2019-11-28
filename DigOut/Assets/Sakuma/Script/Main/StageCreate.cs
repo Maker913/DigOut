@@ -20,8 +20,12 @@ public class StageCreate : MonoBehaviour
     [SerializeField]
     GameObject camera;
 
+
+
     [SerializeField]
     StageMakeController stageMake;
+
+
 
     public Vector2 startPos;
     public Vector2 cameraPos;
@@ -61,7 +65,6 @@ public class StageCreate : MonoBehaviour
         data.transform.position = new Vector3(cameraPos.x, cameraPos.y, dataz);
 
 
-        
     }
 
 

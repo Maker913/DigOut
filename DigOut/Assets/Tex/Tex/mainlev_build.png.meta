@@ -36,6 +36,12 @@ TextureImporter:
     21300062: Point_1
     21300064: Point_2
     21300066: Point_3
+    21300068: Ceiling_L
+    21300070: Ceiling_R
+    21300072: Ceiling_L2
+    21300074: Ceiling_L3
+    21300076: Ceiling_R2
+    21300078: Ceiling_R3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -804,6 +810,126 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e162552143bed2e4b991165b0c1977ee
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceiling_L
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece67d11d2fc2234ca6f8df93b7ea883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceiling_R
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 896
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f7d074eaef8d7346b4d39c8ffa714fe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceiling_L2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 880
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58dccca630bdf643bbdb326c2b6dbda
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceiling_L3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d40f4b95fedee4b86d31ffc4d43246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceiling_R2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 880
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae0bc57d6176aa346a10914adf039cf8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceiling_R3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b3831f79082c764e8c5fb63e6fc8be4
       vertices: []
       indices: 
       edges: []

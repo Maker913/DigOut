@@ -155,6 +155,7 @@ public class StageMakeController : MonoBehaviour
         data.startPosy = startPos.transform.position.y;
         data.cameraPosx = cameraPos.transform.position.x;
         data.cameraPosy = cameraPos.transform.position.y;
+        
         Save(data);
         Debug.Log(fileName + "にセーブしたで(*^^)v");
     }
@@ -169,8 +170,20 @@ public class StageMakeController : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        
+
+
         Data data = Load();
+
+
+        try
+        {
+            stageCreate.startPos = new Vector2(data.startPosx, data.startPosy);
+            stageCreate.cameraPos = new Vector2(data.cameraPosx, data.cameraPosy);
+        }
+        catch
+        {
+            Debug.Log("きゃっちゃー");
+        }
 
 
         //Debug.Log(data.startPosx+":"+ data.startPosy);
@@ -276,15 +289,8 @@ public class StageMakeController : MonoBehaviour
 
         
         Debug.Log(fileName + "をロードしたで(*^-^*)");
-        try
-        {
-            stageCreate.startPos = new Vector2(data.startPosx, data.startPosy);
-            stageCreate.cameraPos  = new Vector2(data.cameraPosx , data.cameraPosy );
-        }
-        catch
-        {
 
-        }
+
         
     }
 

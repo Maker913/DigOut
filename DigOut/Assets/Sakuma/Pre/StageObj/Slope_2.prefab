@@ -108,6 +108,7 @@ PolygonCollider2D:
       - {x: 1.5, y: -0.5}
       - {x: -0.5, y: -0.5}
       - {x: -0.5, y: 2.5}
+      - {x: -0.4, y: 2.5}
 --- !u!1 &666853540228149504
 GameObject:
   m_ObjectHideFlags: 0

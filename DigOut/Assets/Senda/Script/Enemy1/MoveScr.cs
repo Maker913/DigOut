@@ -10,7 +10,7 @@ public class MoveScr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        script = Enemy1.GetComponent<Enemy1>();
     }
 
     // Update is called once per frame
@@ -23,8 +23,8 @@ public class MoveScr : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            script.Starting();
             script.Moveing();
+            script.Starting();
             Debug.Log("Hit2");
         }
     }

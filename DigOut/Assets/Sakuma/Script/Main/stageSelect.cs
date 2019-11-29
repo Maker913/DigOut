@@ -35,7 +35,7 @@ public class stageSelect : MonoBehaviour
         if (windowOn)
         {
 
-            rectTransform.localPosition = homePos + new Vector3(0,-50*nowpas ,0);
+            rectTransform.localPosition = homePos + new Vector3(0, - 120*nowpas ,0);
             if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleUp&&nowpas>0)
             {
                 nowpas--;
@@ -78,7 +78,7 @@ public class stageSelect : MonoBehaviour
             //Debug.Log(f.Name);
 
             GameObject test= Instantiate(textobj, textParent.transform );
-            test.transform.Translate(0, i*-50, 0);
+            test.transform.Translate(180,-60 +i*-120, 0);
             test.GetComponent<Text>().text = f.Name.Split(new string[] { ".dat" }, System.StringSplitOptions.None)[0];
             if (i == 0)
             {

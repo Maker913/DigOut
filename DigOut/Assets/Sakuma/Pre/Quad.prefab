@@ -295,6 +295,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1645078524}
     m_Modifications:
+    - target: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
+      propertyPath: m_Name
+      value: SD_unitychan_humanoid
+      objectReference: {fileID: 0}
     - target: {fileID: 400264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -350,10 +354,6 @@ PrefabInstance:
     - target: {fileID: 400264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
-      propertyPath: m_Name
-      value: SD_unitychan_humanoid
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_Controller

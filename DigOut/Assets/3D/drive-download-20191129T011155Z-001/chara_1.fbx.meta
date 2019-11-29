@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 078d21bcd99243e48a779dc14e2ece66
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: belt_L
+    100002: belt_R
+    100004: body
+    100006: //RootNode
+    100008: collar
+    100010: hair
+    100012: hair 1
+    100014: hand_L_1
+    100016: hand_R_1
+    100018: head
+    100020: headlight
+    100022: helmet
+    100024: huku
+    100026: kutsu_L
+    100028: kutsu_R
+    100030: L_ankle
+    100032: L_clavicle
+    100034: L_elbow
+    100036: L_hip
+    100038: L_knee
+    100040: L_shoulder
+    100042: L_toe
+    100044: L_wrist
+    100046: neck
+    100048: pelvis
+    100050: R_ankle
+    100052: R_clavicle
+    100054: R_elbow
+    100056: R_hip
+    100058: R_knee
+    100060: R_shoulder
+    100062: R_toe
+    100064: R_wrist
+    100066: spine1
+    100068: spine2
+    100070: zubon
+    400000: belt_L
+    400002: belt_R
+    400004: body
+    400006: //RootNode
+    400008: collar
+    400010: hair
+    400012: hair 1
+    400014: hand_L_1
+    400016: hand_R_1
+    400018: head
+    400020: headlight
+    400022: helmet
+    400024: huku
+    400026: kutsu_L
+    400028: kutsu_R
+    400030: L_ankle
+    400032: L_clavicle
+    400034: L_elbow
+    400036: L_hip
+    400038: L_knee
+    400040: L_shoulder
+    400042: L_toe
+    400044: L_wrist
+    400046: neck
+    400048: pelvis
+    400050: R_ankle
+    400052: R_clavicle
+    400054: R_elbow
+    400056: R_hip
+    400058: R_knee
+    400060: R_shoulder
+    400062: R_toe
+    400064: R_wrist
+    400066: spine1
+    400068: spine2
+    400070: zubon
+    2100000: lambert2
+    2100002: lambert3
+    4300000: helmet
+    4300002: headlight
+    4300004: hair
+    4300006: head
+    4300008: body
+    4300010: huku
+    4300012: belt_L
+    4300014: belt_R
+    4300016: zubon
+    4300018: kutsu_L
+    4300020: kutsu_R
+    4300022: hand_L_1
+    4300024: hand_R_1
+    9500000: //RootNode
+    13700000: belt_L
+    13700002: belt_R
+    13700004: body
+    13700006: hair
+    13700008: hand_L_1
+    13700010: hand_R_1
+    13700012: head
+    13700014: headlight
+    13700016: helmet
+    13700018: huku
+    13700020: kutsu_L
+    13700022: kutsu_R
+    13700024: zubon
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: fc9364faf29bc5440b67dcb586b21169, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: f05ad576581473a40887557ce7ebdde7, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

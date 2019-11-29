@@ -21,7 +21,7 @@ public class ClashBlock : MonoBehaviour
             RaycastHit2D hit2D = Physics2D.BoxCast(transform.position, new Vector2(0.5f,1), 0, Vector2.down,2f, layerMask);
             if (hit2D == true)
             {
-                if (hit2D.collider.tag == "32")
+                if (hit2D.collider.tag == "5")
                 {
                     hit2D.collider.gameObject.GetComponent<ClashEffect>().particleSystem.Play();
                     hit2D.collider.gameObject.SetActive(false);
@@ -35,7 +35,7 @@ public class ClashBlock : MonoBehaviour
             RaycastHit2D hit2D = Physics2D.BoxCast(transform.position, new Vector2(0.5f,1), 0, Vector2.right,2f, layerMask);
             if (hit2D == true)
             {
-                if (hit2D.collider.tag == "32")
+                if (hit2D.collider.tag == "5")
                 {
                     hit2D.collider.gameObject.GetComponent<ClashEffect>().particleSystem.Play();
                     hit2D.collider.gameObject.SetActive(false);
@@ -48,7 +48,7 @@ public class ClashBlock : MonoBehaviour
             RaycastHit2D hit2D = Physics2D.BoxCast (transform.position,new Vector2(0.5f, 1),0, Vector2.left,2f, layerMask);
             if (hit2D == true)
             {
-                if (hit2D.collider.tag == "32")
+                if (hit2D.collider.tag == "5")
                 {
                     hit2D.collider.gameObject.GetComponent<ClashEffect>().particleSystem.Play();
                     hit2D.collider.gameObject.SetActive(false);

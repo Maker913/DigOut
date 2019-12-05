@@ -81,6 +81,7 @@ Shader "Custom/Dot" {
 				c.g = floor(c.g * 10) / 10;
 				c.b = floor(c.b * 10) / 10;
 
+				c.a = c.a < 0.5f ? 0 : c.a;
                 c.rgb *= c.a;
                 return c;
             }

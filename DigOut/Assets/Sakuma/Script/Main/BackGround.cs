@@ -14,7 +14,6 @@ public class BackGround : MonoBehaviour
     public float leng =0;
     Material material;
 
-    public float d;
     private void Start()
     {
         material = GetComponent<Renderer>().material;
@@ -28,7 +27,6 @@ public class BackGround : MonoBehaviour
         float data= oldtrans - player.transform.position.x;
         //transform.Translate(data/late, 0, 0);
         leng += data / late;
-        d = leng - (int)leng;
         material.SetFloat("_Rim",Mathf.Abs( leng - (int)leng));
         oldtrans = player.transform.position.x;
     }

@@ -77,9 +77,9 @@ Shader "Custom/Dot" {
             	float4 c =tex2D(_MainTex, dat);
 
 
-				c.r = floor(c.r * 10) / 10;
-				c.g = floor(c.g * 10) / 10;
-				c.b = floor(c.b * 10) / 10;
+				c.r = floor(c.r * 32) / 32;
+				c.g = floor(c.g * 32) / 32;
+				c.b = floor(c.b * 32) / 32;
 
 				c.a = c.a < 0.5f ? 0 : c.a;
                 c.rgb *= c.a;

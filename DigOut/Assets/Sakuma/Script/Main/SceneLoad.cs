@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoad : MonoBehaviour
 {
+    public stageSelect stageSelect;
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
 
         if (collision.gameObject.layer == 12)
         {
-            MainStateInstance.mainStateInstance.stageName = "Moc1";
-            Scene.sceneManagerPr.SceneLoad("MainAction");
-            
+            stageSelect.On();
+
+
         }
     }
 

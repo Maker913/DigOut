@@ -20,11 +20,15 @@ public class StageCreate : MonoBehaviour
     [SerializeField]
     GameObject camera;
 
+
+
     [SerializeField]
     StageMakeController stageMake;
 
-    public Vector2 startPos;
 
+
+    public Vector2 startPos;
+    public Vector2 cameraPos;
     float dataz = -20;
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,7 @@ public class StageCreate : MonoBehaviour
     void SaveDataLode()
     {
 
-
+        MainStateInstance.mainStateInstance.mainState.nowArea = 0;
 
 
         GameObject data2 = Instantiate(PlayerPre, Vector3.zero, Quaternion.identity);
@@ -58,10 +62,9 @@ public class StageCreate : MonoBehaviour
         stageMake.StageLode();
 
         data2.transform.position = new Vector3(startPos.x, startPos.y + 0.5f, 0);
-        data.transform.position = new Vector3(startPos.x, startPos.y, dataz);
+        data.transform.position = new Vector3(cameraPos.x, cameraPos.y, dataz);
 
 
-        
     }
 
 

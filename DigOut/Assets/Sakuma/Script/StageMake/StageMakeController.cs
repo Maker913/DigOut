@@ -41,7 +41,17 @@ public class StageMakeController : MonoBehaviour
 
     [SerializeField]
     StageCreate stageCreate;
+    [SerializeField]
+    GoHomeSelect goHome;
+    [SerializeField]
+    stageSelect  stage;
 
+    [SerializeField]
+    GameObject startPos;
+    [SerializeField]
+    GameObject cameraPos;
+    [SerializeField]
+    int nowArea;
 
 
     void Start()
@@ -50,6 +60,7 @@ public class StageMakeController : MonoBehaviour
 
     void Update()
     {
+        nowArea = MainStateInstance.mainStateInstance.mainState.nowArea;
     }
 
 
@@ -85,11 +96,13 @@ public class StageMakeController : MonoBehaviour
 
                 switch (int.Parse(stageParent.transform.GetChild(i).transform.tag))
                 {
-                    case 29:
+                    case 2:
                         GameObject dat2 = stageParent.transform.GetChild(i).gameObject;
                         Vector3 dat = dat2.GetComponent<StageChange>().target;
                         text += "," + dat.x.ToString() + ",";
-                        text += stageParent.transform.GetChild(i).GetComponent<StageChange>().target.y.ToString();
+                        text += stageParent.transform.GetChild(i).GetComponent<StageChange>().target.y.ToString() + ",";
+                        text += dat2.GetComponent<StageChange  >().changeArea.ToString() + ",";
+                        text += dat2.GetComponent<StageChange>().thisArea.ToString();
                         break;
                 }
 
@@ -138,8 +151,11 @@ public class StageMakeController : MonoBehaviour
 
         }
 
-        data.startPosx = cursor.transform.position.x;
-        data.startPosy = cursor.transform.position.y;
+        data.startPosx = startPos.transform.position.x;
+        data.startPosy = startPos.transform.position.y;
+        data.cameraPosx = cameraPos.transform.position.x;
+        data.cameraPosy = cameraPos.transform.position.y;
+        
         Save(data);
         Debug.Log(fileName + "にセーブしたで(*^^)v");
     }
@@ -154,11 +170,23 @@ public class StageMakeController : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        
+
+
         Data data = Load();
 
 
-        Debug.Log(data.startPosx+":"+ data.startPosy);
+        try
+        {
+            stageCreate.startPos = new Vector2(data.startPosx, data.startPosy);
+            stageCreate.cameraPos = new Vector2(data.cameraPosx, data.cameraPosy);
+        }
+        catch
+        {
+            Debug.Log("きゃっちゃー");
+        }
+
+
+        //Debug.Log(data.startPosx+":"+ data.startPosy);
         //Debug.Log(stageMother.transform.childCount);
 
         int delayLeng = stageMother.transform.childCount;
@@ -215,13 +243,19 @@ public class StageMakeController : MonoBehaviour
 
                 switch (int.Parse(pass[0]))
                 {
-                    case 29:
+                    case 2:
                         brockdata.GetComponent<StageChange>().cameraTestObj = cameraTestObj;
                         brockdata.GetComponent<StageChange>().target = new Vector3(float.Parse(pass[6]), float.Parse(pass[7]), 0);
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
+                        brockdata.GetComponent<StageChange>().changeArea = int.Parse(pass[8]);
+                        brockdata.GetComponent<StageChange>().thisArea = int.Parse(pass[9]);
                         break;
-                    case 30:
+                    case 1:
+                        brockdata.GetComponent<SceneLoad >().stageSelect  =stage ;
                         brockdata.transform.Translate(new Vector3(0, 0, -20));
+                        break;
+                    case 3:
+                        brockdata.GetComponent<GoHomeSelectSet>().goHome = goHome;
                         break;
 
                 }
@@ -255,13 +289,8 @@ public class StageMakeController : MonoBehaviour
 
         
         Debug.Log(fileName + "をロードしたで(*^-^*)");
-        try
-        {
-            stageCreate.startPos = new Vector2(data.startPosx, data.startPosy);
-        }catch
-        {
 
-        }
+
         
     }
 
@@ -278,7 +307,7 @@ public class StageMakeController : MonoBehaviour
         try
         {
             //　ゲームフォルダにfiledata.datファイルを作成
-            fileStream = File.Create(Application.dataPath + "/StageData/" + fileName + ".dat");
+            fileStream = File.Create(Application.dataPath + "/StreamingAssets/StageData/" + fileName + ".dat");
             bf.Serialize(fileStream, data);
         }
         catch (IOException e1)
@@ -302,7 +331,7 @@ public class StageMakeController : MonoBehaviour
         try
         {
             //　ファイルを読み込む
-            fileStream = File.Open(Application.dataPath + "/StageData/" + fileName + ".dat", FileMode.Open);
+            fileStream = File.Open(Application.dataPath + "/StreamingAssets/StageData/" + fileName + ".dat", FileMode.Open);
             data = bf.Deserialize(fileStream) as Data;
         }
         catch (FileNotFoundException e1)
@@ -332,6 +361,8 @@ public class StageMakeController : MonoBehaviour
         public int areaLeng;
         public float startPosx;
         public float startPosy;
+        public float cameraPosx;
+        public float cameraPosy;
         [Serializable]
         public struct AreaData
         {

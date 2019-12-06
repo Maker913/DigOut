@@ -13,6 +13,8 @@ public class StageChange : MonoBehaviour
     private CameraTest cameraTest;
     public GameObject cameraTestObj;
 
+    public int changeArea;
+    public int thisArea;
     private void Start() {
         cameraTest = cameraTestObj.GetComponent<CameraTest >();
     }
@@ -21,11 +23,12 @@ public class StageChange : MonoBehaviour
         {
         
         
-        if (collision.gameObject.layer == 12) {
-            Debug.Log("sas");
+        if (collision.gameObject.layer == 12&&thisArea == MainStateInstance.mainStateInstance.mainState.nowArea) {
+            
             cameraTest.stepMove = true;
             cameraTestObj.transform.parent.GetChild(1).transform.position = new Vector3(transform.position.x + target.x, transform.position.y + target.y, -20);
-
+            MainStateInstance.mainStateInstance.mainState.nowArea = changeArea;
+            Debug.Log(MainStateInstance.mainStateInstance.mainState.nowArea);
         }
     }
 

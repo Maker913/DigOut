@@ -58,10 +58,57 @@ public class CameraTest : MonoBehaviour
             if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(move.x, 0), dis, mask)) {
                 rigidbody2D.transform.Translate(new Vector2(move.x, 0) * dis);
             }
+            else
+            {
+                float cont = 10f;
+                bool flg = true;
+                do
+                {
+                    cont -= 1f;
+                    if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(move.x, 0), dis * (cont / 10f), mask))
+                    {
+                        flg = false;
+                    }
+                    if (cont <= 0)
+                    {
+                        break;
+                    }
+                } while (flg);
+
+
+                rigidbody2D.transform.Translate(new Vector2(move.x, 0) * dis * (cont / 10));
+                //Debug.Log(cont);
+            }
 
             if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(0, move.y), dis, mask)) {
                 rigidbody2D.transform.Translate(new Vector2(0, move.y) * dis);
             }
+            else
+            {
+                float cont = 10f;
+                bool flg = true;
+                do
+                {
+                    cont -= 1f;
+                    if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(0, move.y), dis * (cont / 10f), mask))
+                    {
+                        flg = false;
+                    }
+                    if (cont <= 0)
+                    {
+                        break;
+                    }
+                } while (flg);
+
+                //Debug.Log(cont);
+                rigidbody2D.transform.Translate(new Vector2(0, move.y) * dis * (cont / 10));
+
+            }
+
+
+
+
+
 
         }
         else {

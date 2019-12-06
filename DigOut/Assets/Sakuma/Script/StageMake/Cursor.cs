@@ -96,7 +96,7 @@ public class Cursor : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward,1,stageObjNumList . CameraPre ?CameraMask:StageMask);
@@ -107,7 +107,7 @@ public class Cursor : MonoBehaviour
 
 
         }
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward,1, stageObjNumList.CameraPre ? CameraMask : StageMask);
@@ -116,11 +116,11 @@ public class Cursor : MonoBehaviour
                 GameObject test= Instantiate(stageObjNumList.CameraPre ? stageObjNumList.CameraPreList[serectPre.serectPreNum] : stageObjNumList.PreList[serectPre.serectPreNum],
                     Vector3.zero,Quaternion .Euler (0,0,angle),
                     stageObjNumList.CameraPre ?cameraParent .transform : stageParent.transform );
-                    test.transform.localScale = new Vector3(scaleX,scaleY ,1);
+                    test.transform.localScale = new Vector3(scaleX, scaleY, 1);
                 test.transform.localPosition = new Vector3(transform.position.x + ((scaleX - 1) * 0.5f), transform.position.y + ((scaleY - 1) * 0.5f), (stageObjNumList.CameraPre ? -1 : 0));
                 switch (serectPre.serectPreNum)
                 {
-                    case 29:
+                    case 2:
                         test.GetComponent<StageChange>().target = new Vector3((float)Convert.ToDouble(changeXInput.text), (float)Convert.ToDouble(changeYInput.text),0);
                         break;
                 }

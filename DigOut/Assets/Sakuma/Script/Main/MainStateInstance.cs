@@ -16,10 +16,11 @@ public class MainStateInstance : MonoBehaviour
     {
         public GameMode gameMode;
         public bool GameModeStart;
-
+        public int nowArea;
         public void StateSet() {
             GameModeStart=true;
             gameMode = GameMode.Title;
+            nowArea = 0;
         }
     }
 

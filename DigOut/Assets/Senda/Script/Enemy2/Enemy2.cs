@@ -37,11 +37,11 @@ public class Enemy2 : MonoBehaviour
     {
         if (MoveS)
         {
-            int yVector = -2;
+            int yVector = -3;
             if (rightTF)
             {
                 yVector = 1;
-                transform.localScale = new Vector3(1, -2, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
             else
             {

@@ -18,10 +18,14 @@ public class TitleController : MonoBehaviour
             Debug.Log("行けた");
             StartButton();
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartButton();
+        }
     }
     public void StartButton()
     {
-        SceneController.Instance.SceneChange(SceneController.SceneName.Main);
+        SceneController.Instance.LoadScene(SceneController.SceneName.Main,true);
     }
     /*
     public void Button()

@@ -55,6 +55,7 @@ TagManager:
   - 48
   - 49
   - 50
+  - 51
   layers:
   - Default
   - TransparentFX
@@ -70,7 +71,7 @@ TagManager:
   - CameraFrame
   - Player
   - ChangePt
-  - 
+  - Item
   - 
   - 
   - 

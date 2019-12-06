@@ -32,7 +32,7 @@ public class ItemList : MonoBehaviour
 
             itemList = this;
 
-            //itemList.StartSet();
+           itemList.StartSet();
             
 
 

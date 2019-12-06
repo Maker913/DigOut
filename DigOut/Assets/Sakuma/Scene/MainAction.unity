@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4926,6 +4926,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848787863975893779, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca,
+        type: 3}
+      propertyPath: dynamite
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848787863975893779, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca,
+        type: 3}
+      propertyPath: drill
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848787863975893779, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca,
+        type: 3}
+      propertyPath: heel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848787863975893779, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca,
+        type: 3}
+      propertyPath: copper
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848787863975893779, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca,
+        type: 3}
+      propertyPath: silver
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848787863975893779, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca,
+        type: 3}
+      propertyPath: gold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848787863975893779, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca,
+        type: 3}
+      propertyPath: iceaxLevel
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b0af5a3ef596f4a9c51603bd3aa3ca, type: 3}

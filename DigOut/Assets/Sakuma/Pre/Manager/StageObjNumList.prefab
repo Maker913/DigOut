@@ -89,6 +89,13 @@ MonoBehaviour:
   - {fileID: 166608023697771913, guid: f74074fcecb120b4b894fd44e0dfe53c, type: 3}
   - {fileID: 166608023697771913, guid: cdac5366ddb23b44ba9a5637fa6d738a, type: 3}
   - {fileID: 166608023697771913, guid: 58fe5e7fad878ed4fb058b2280d83451, type: 3}
+  - {fileID: 166608023697771913, guid: 8fc3c2b6f62304443b133ff78cad4bba, type: 3}
+  - {fileID: 166608023697771913, guid: 29b1793173936184ebcdee5d512e5d40, type: 3}
+  - {fileID: 166608023697771913, guid: 7f1b3beb00f4a2f46a7031893a0ddaa4, type: 3}
+  - {fileID: 166608023697771913, guid: 1f11e5f347b866f4589f429800cb6e8f, type: 3}
+  - {fileID: 166608023697771913, guid: 1450996281dcc2d42bfb8a536c951842, type: 3}
+  - {fileID: 166608023697771913, guid: 71b9cd384356cd54c9b33f224baa66f8, type: 3}
+  - {fileID: 6483827956365106762, guid: 70154354f519d8246a7e72923aeb60bb, type: 3}
   CameraPreList:
   - {fileID: 8006924506129148325, guid: e3082a6b2f1a8b44ebfa4e86a4fc28ff, type: 3}
   CameraPre: 0

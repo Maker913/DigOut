@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mid : MonoBehaviour
+public class MidMove : MonoBehaviour
 {
+    public GameObject Quad;
+
+    Quad script;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,10 @@ public class Mid : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void MidJump()
+    {
+
     }
 }

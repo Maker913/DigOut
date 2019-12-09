@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimScr2 : MonoBehaviour
+public class AnimScr : MonoBehaviour
 {
-    public GameObject Enemy2;
+    public GameObject Enemy1;
 
-    Enemy2 script;
+    Enemy1 script;
 
     // Start is called before the first frame update
     void Start()
     {
-        script = Enemy2.GetComponent<Enemy2>();
+        script = Enemy1.GetComponent<Enemy1>();
     }
 
     // Update is called once per frame

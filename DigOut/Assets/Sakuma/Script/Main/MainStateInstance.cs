@@ -9,6 +9,7 @@ public class MainStateInstance : MonoBehaviour
         Pause,
         Anime,
         Title,
+        Story
     }
 
 
@@ -47,6 +48,8 @@ public class MainStateInstance : MonoBehaviour
             case GameMode.Play:
                 break;
             case GameMode.Pause:
+                break;
+            case GameMode.Story:
                 break;
             case GameMode.Title:
                 TitleUpdate();

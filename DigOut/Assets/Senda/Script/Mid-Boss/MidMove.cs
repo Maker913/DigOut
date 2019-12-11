@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MidMove : MonoBehaviour
 {
-    public GameObject Quad;
+    GameObject Quad;
 
-    Quad script;
+    Player script;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Quad = GameObject.Find("Quad");
+        script = Quad.GetComponent<Player>();
     }
 
     // Update is called once per frame

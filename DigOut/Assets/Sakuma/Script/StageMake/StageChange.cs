@@ -28,7 +28,7 @@ public class StageChange : MonoBehaviour
             cameraTest.stepMove = true;
             cameraTestObj.transform.parent.GetChild(1).transform.position = new Vector3(transform.position.x + target.x, transform.position.y + target.y, -20);
             MainStateInstance.mainStateInstance.mainState.nowArea = changeArea;
-            Debug.Log(MainStateInstance.mainStateInstance.mainState.nowArea);
+            //Debug.Log(MainStateInstance.mainStateInstance.mainState.nowArea);
         }
     }
 

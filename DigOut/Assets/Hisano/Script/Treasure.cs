@@ -45,18 +45,13 @@ public class Treasure : MonoBehaviour
                 GameObject data = Instantiate(Item[Random.Range(0, 3)], transform.position, Quaternion.identity);
                 Rigidbody2D rigidbody2D = data.GetComponent<Rigidbody2D>();
                 float angle;
-                if (cont > 1)
-                {
-                    angle = 45 + ((90 / (cont - 1)) * cont2);
-                }
-                else
-                {
-                    angle = 90;
-                }
+
+                    angle = 60 + ((60 / (cont - 1)) * cont2);
 
 
 
-                rigidbody2D.AddForce(new Vector3(Mathf.Cos(angle*Mathf .PI /180) * 150*(1+(cont/10)), Mathf.Sin (angle * Mathf.PI / 180)*150 * (1 + (cont / 10)), 0));
+                Debug.Log(Mathf.Cos(angle * Mathf.PI / 180) * 3.5f * (1 + (cont / 10)));
+                rigidbody2D.AddForce(new Vector3(Mathf.Cos(angle*Mathf .PI /180) * 3f*(1+(cont/10)), Mathf.Sin (angle * Mathf.PI / 180)*3f * (1 + (cont / 10)), 0),ForceMode2D.Impulse );
                 time = 0;
                 cont2++;
 

@@ -70,9 +70,9 @@ public class StoryManager : MonoBehaviour
             if (Anime)
             {
                 animeTime += Time.deltaTime;
-                BackImage.color = new Color(0, 0, 0, animeTime/2);
+                BackImage.color = new Color(0, 0, 0, animeTime);
 
-                if(animeTime > 1f)
+                if(animeTime > 0.5f)
                 {
                     Anime = false;
                     
@@ -136,7 +136,7 @@ public class StoryManager : MonoBehaviour
                 }
                 else
                 {
-                    Move = Input.GetKeyDown(KeyCode.Space);
+                    Move = Input.GetKeyDown(KeyCode.Z);
                 }
 
             }
@@ -148,9 +148,9 @@ public class StoryManager : MonoBehaviour
             if (Anime)
             {
                 animeTime += Time.deltaTime;
-                BackImage.color = new Color(0, 0, 0,0.5f-( animeTime / 2));
+                BackImage.color = new Color(0, 0, 0,0.5f-( animeTime ));
 
-                if (animeTime > 1f)
+                if (animeTime > 0.5f)
                 {
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
                     Progression.progression.progressionSet(LoadName);

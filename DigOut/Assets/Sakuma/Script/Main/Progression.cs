@@ -20,7 +20,11 @@ public class Progression : MonoBehaviour
             progression = this;
             DontDestroyOnLoad(gameObject);
 
-            
+
+        }
+        else
+        {
+            Destroy(this);
         }
     }
 
@@ -32,15 +36,21 @@ public class Progression : MonoBehaviour
         switch (num)
         {
             case 0:
-                MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Pause;
+                
                 if(startC)
                 {
+                    MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Pause;
                     StoryManager.storyManager.StoryLoad("TextFile");
                     startC = false;
                 }
                 break;
             case 1:
-                MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
+                if (startC)
+                {
+                    MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
+                    startC = false;
+                }
+                
                 break;
         }
     }

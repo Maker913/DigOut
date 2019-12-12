@@ -23,6 +23,6 @@ public class MidMove : MonoBehaviour
 
     public void MidJump()
     {
-
+        
     }
 }

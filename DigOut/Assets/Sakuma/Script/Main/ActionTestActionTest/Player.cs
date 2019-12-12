@@ -38,6 +38,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     PlayerAnimeController playerAnime;
 
+    //中ボス
+    //GameObject MidBoss;
+
 
     void Start()
     {
@@ -52,6 +55,7 @@ public class Player : MonoBehaviour
 
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+        //MidBoss = GameObject.Find("Mid-Boss");
     }
 
     void FixedUpdate()
@@ -103,6 +107,8 @@ public class Player : MonoBehaviour
             {
                 velocity.y = jumpVelocity;
                 //playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
+                //MidBoss S1 = GetComponent<MidMove>();
+                //S1.MidJump();
             }
 
             //x軸の慣性計算

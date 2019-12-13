@@ -92,24 +92,24 @@ public class SceneController : MonoBehaviour
     }
     private void Update()
     {
-        if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle||
-            Input.GetMouseButtonDown(1))
-        {
-            //if(SceneManager.GetActiveScene().name == "Main")
-            //{
-            //    LoadScene(SceneController.SceneName.Result,true);
-            //}
-            if (SceneManager.GetActiveScene().name == "Title")
-            {
-                LoadScene(SceneController.SceneName.Main, true);
-            }
-            //if(SceneManager.GetActiveScene().name == "Result")
-            //{
-            //    LoadScene(SceneController.SceneName.Title, true);
-            //}
-            return;
-        }
-        //if (Input.GetKey(KeyCode.Escape)) SceneController.Instance.Quit();
+        //if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle||
+        //    Input.GetMouseButtonDown(1))
+        //{
+        //    //if(SceneManager.GetActiveScene().name == "Main")
+        //    //{
+        //    //    LoadScene(SceneController.SceneName.Result,true);
+        //    //}
+        //    if (SceneManager.GetActiveScene().name == "Title")
+        //    {
+        //        LoadScene(SceneController.SceneName.Main, true);
+        //    }
+        //    //if(SceneManager.GetActiveScene().name == "Result")
+        //    //{
+        //    //    LoadScene(SceneController.SceneName.Title, true);
+        //    //}
+        //    return;
+        //}
+        if (Input.GetKey(KeyCode.Escape)) SceneController.Instance.Quit();
         //if (Input.GetKey(KeyCode.Space))
         //{
         //    if (SceneManager.GetActiveScene().name == "Title")

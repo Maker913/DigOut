@@ -9,11 +9,22 @@ public class SoundController : MonoBehaviour
     private SeContrller SeContrller;
     public enum BgmName
     {
-
+        Title,
+        MainGame,
     }
     public enum SeName
     {
-
+        Walk,//移動
+        ladder,//梯子
+        MissionTrust,//受託
+        MissionAchievement,//達成
+        TreasureBox,//宝箱
+        GetItem,//アイテム取得
+        Dig,//掘る
+        Menu,//メニュ―表示
+        Select,//選択
+        Enter,//決定
+        Talk,//NPCとの会話
     }
     private void Awake()
     {

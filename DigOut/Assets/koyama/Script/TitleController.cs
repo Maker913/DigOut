@@ -20,7 +20,8 @@ public class TitleController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            StartButton();
+            SoundController.Instance.PlayBGM(0);
+            Debug.Log("流れ");
         }
     }
     public void StartButton()

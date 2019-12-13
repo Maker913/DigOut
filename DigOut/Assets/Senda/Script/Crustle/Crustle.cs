@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MidMove : MonoBehaviour
+[RequireComponent(typeof(Controller2D))]
+public class Crustle : MonoBehaviour
 {
-    public GameObject Quad;
-
-    public Player sc;
-
-    bool te = false;
-
-    //ジャンプの最高到達点
+    ////ジャンプの最高到達点
     public float jumpHeight = 4;
-    //ジャンプの最高到達点までにかかる時間
+    ////ジャンプの最高到達点までにかかる時間
     public float timeToJumpApex = .4f;
 
 
@@ -28,9 +23,9 @@ public class MidMove : MonoBehaviour
     public float moveSpeed = 6;
 
 
-    //重力はジャンプの到達点、到達までにかかる時間から計算
+    ////重力はジャンプの到達点、到達までにかかる時間から計算
     float gravity;
-    //ジャンプ時の初速
+    ////ジャンプ時の初速
     float jumpVelocity;
     //このオブジェクトの慣性保管場所
     Vector3 velocity;
@@ -39,33 +34,41 @@ public class MidMove : MonoBehaviour
     //コントローラー保存先
     Controller2D controller;
 
+    public LayerMask layer;
 
-    //中ボス
-    //GameObject MidBoss;
 
+    bool Turn = true;
 
     void Start()
     {
-
-
         //コントローラー取得
         controller = GetComponent<Controller2D>();
 
-        //重力計算
+        ////重力計算
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-        //ジャンプ初速算出
-        jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+        ////ジャンプ初速算出
+        //jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 
 
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
-
-        //MidBoss = GameObject.Find("Mid-Boss");
     }
 
-    public void MidJump()
+    void HitRay()
     {
-        te = true;
+        Ray ray = new Ray(transform.position, new Vector3(1, 2, 0));
+
+        RaycastHit2D hit;
+
+        int range = 2;
+
+        Debug.DrawLine(new Vector3(0, 2f) +transform.position, new Vector3(0, 2f) + transform.position + (Turn == true ? Vector3.right  : Vector3.left )*range, Color.red);
+
+        if (Physics2D.Raycast(new Vector2 (0,2f)+ (Vector2 )transform.position,Turn == true ? Vector2.right:Vector2.left,range,layer))
+        {
+            Debug.Log("a");
+            Turn = !Turn;
+        }
     }
 
     void FixedUpdate()
@@ -84,8 +87,9 @@ public class MidMove : MonoBehaviour
             Vector2 input = new Vector2(0, 0);
 
             //キーボードからの入力取得
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { input.x = -1; }
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { input.x = 1; }
+            if (Turn == true) { input.x = 0.5f; }
+            if (Turn == false) { input.x = -0.5f; }
+            HitRay();
 
             //改造要素
             //アニメモードを送る
@@ -103,18 +107,6 @@ public class MidMove : MonoBehaviour
 
             //}
 
-
-            if (te == true && controller.collisions.below)
-            {
-                velocity.y = jumpVelocity;
-                te = false;
-                //playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
-            }
-
-            if (te == true && velocity.y != 0)
-            {
-                te = false;
-            }
 
 
 

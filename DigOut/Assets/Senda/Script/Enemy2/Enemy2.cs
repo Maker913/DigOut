@@ -35,20 +35,20 @@ public class Enemy2 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (MoveS)
-        {
-            int yVector = -3;
-            if (rightTF)
-            {
-                yVector = 1;
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-            else
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-            rb.velocity = new Vector2(0, yVector);
-        }
+        //if (MoveS)
+        //{
+        //    int yVector = -3;
+        //    if (rightTF)
+        //    {
+        //        yVector = 1;
+        //        transform.localScale = new Vector3(1, 1, 1);
+        //    }
+        //    else
+        //    {
+        //        transform.localScale = new Vector3(1, 1, 1);
+        //    }
+        //    rb.velocity = new Vector2(0, yVector);
+        //}
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -80,10 +80,8 @@ public class Enemy2 : MonoBehaviour
 
     public void Starting()
     {
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
         MoveS = true;
     }
 }

@@ -80,10 +80,6 @@ public class Enemy1 : MonoBehaviour
 
     public void Starting()
     {
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
         MoveS = true;
     }
 }

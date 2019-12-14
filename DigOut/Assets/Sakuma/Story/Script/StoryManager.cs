@@ -26,7 +26,8 @@ public class StoryManager : MonoBehaviour
     [SerializeField]
     RectTransform [] imageObj;
 
-
+    [SerializeField]
+    Text InfoText;
     [SerializeField]
     Text storyText;
     [SerializeField]
@@ -55,7 +56,7 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(transform.parent . gameObject);
         }
 
     }
@@ -154,6 +155,7 @@ public class StoryManager : MonoBehaviour
                 {
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
                     Progression.progression.progressionSet(LoadName);
+                    InfoText.text = "";
                     PlayUI.SetActive(true);
 
                     Anime = false;

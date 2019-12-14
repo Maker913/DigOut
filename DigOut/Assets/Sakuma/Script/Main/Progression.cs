@@ -8,7 +8,7 @@ public class Progression : MonoBehaviour
 
     public int num = 0;
     [SerializeField]
-    private string[] nextCode;
+    public string[] nextCode;
     private bool startC = false;
     // Start is called before the first frame update
     void Awake()

@@ -34,10 +34,12 @@ public class Crustle : MonoBehaviour
     //コントローラー保存先
     Controller2D controller;
 
+    [SerializeField]
     public LayerMask layer;
 
+    float angle;
 
-    bool Turn = true;
+    bool Turn;
 
     void Start()
     {
@@ -62,7 +64,7 @@ public class Crustle : MonoBehaviour
 
         int range = 2;
 
-        Debug.DrawLine(new Vector3(0, 2f) +transform.position, new Vector3(0, 2f) + transform.position + (Turn == true ? Vector3.right  : Vector3.left )*range, Color.red);
+        Debug.DrawLine(new Vector3(0, 2f) +transform.position, new Vector3(0, 2f) + transform.position + (Turn == true ? Vector3.left  : Vector3.right )*range, Color.red);
 
         if (Physics2D.Raycast(new Vector2 (0,2f)+ (Vector2 )transform.position,Turn == true ? Vector2.right:Vector2.left,range,layer))
         {
@@ -86,9 +88,31 @@ public class Crustle : MonoBehaviour
             //Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             Vector2 input = new Vector2(0, 0);
 
-            //キーボードからの入力取得
-            if (Turn == true) { input.x = 0.5f; }
-            if (Turn == false) { input.x = -0.5f; }
+
+
+
+            if (Turn == true)
+            {
+                input.x = -1;
+
+                angle = Mathf.LerpAngle(0.0f, 0.0f, Time.time);
+
+                transform.eulerAngles = new Vector3(0, angle, 0);
+                
+                Debug.Log("true");
+            }
+
+            if (Turn == false)
+            {
+                input.x = 1;
+
+                angle = Mathf.LerpAngle(0.0f, 180.0f, Time.time);
+
+                transform.eulerAngles = new Vector3(0, angle, 0);
+
+                Debug.Log("false");
+            }
+
             HitRay();
 
             //改造要素

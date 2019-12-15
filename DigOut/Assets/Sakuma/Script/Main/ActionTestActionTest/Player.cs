@@ -75,19 +75,24 @@ public class Player : MonoBehaviour
 
             //改造要素
             //アニメモードを送る
-            //if (controller.collisions.below)
-            //{
-            //    if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
-            //    {
-            //        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; }
-            //        if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; }
-            //    }
-            //    else
-            //    {
-            //        playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
-            //    }
+            if (controller.collisions.below)
+            {
+                if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
+                {
+                    if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; }
+                    if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; }
+                }
+                else
+                {
+                    playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
+                }
 
-            //}
+            }
+            else
+            {
+                //playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
+            
+            }
 
 
 
@@ -102,7 +107,7 @@ public class Player : MonoBehaviour
             if (PS4ControllerInput.pS4ControllerInput.contorollerState.Jump && controller.collisions.below)
             {
                 velocity.y = jumpVelocity;
-                //playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
+                playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
             }
 
             //x軸の慣性計算

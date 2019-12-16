@@ -37,6 +37,10 @@ public class Crustle : MonoBehaviour
     [SerializeField]
     public LayerMask layer;
 
+    float Turnspeed = 180f;
+
+
+
     float angle;
 
     bool Turn;
@@ -64,7 +68,7 @@ public class Crustle : MonoBehaviour
 
         int range = 2;
 
-        Debug.DrawLine(new Vector3(0, 2f) +transform.position, new Vector3(0, 2f) + transform.position + (Turn == true ? Vector3.left  : Vector3.right )*range, Color.red);
+        Debug.DrawLine(new Vector3(0, 2f) +transform.position, new Vector3(0, 2f) + transform.position + (Turn == true ? Vector3.right  : Vector3.left )*range, Color.red);
 
         if (Physics2D.Raycast(new Vector2 (0,2f)+ (Vector2 )transform.position,Turn == true ? Vector2.right:Vector2.left,range,layer))
         {
@@ -90,30 +94,63 @@ public class Crustle : MonoBehaviour
 
 
 
+            HitRay();
+
+            float step = Turnspeed * Time.deltaTime;
 
             if (Turn == true)
             {
-                input.x = -1;
+                if(transform.localEulerAngles.y >= 0f)
+                {
+                    input.x = 0;
 
-                angle = Mathf.LerpAngle(0.0f, 0.0f, Time.time);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0f, 0), step);
 
-                transform.eulerAngles = new Vector3(0, angle, 0);
-                
+                    //angle = Mathf.LerpAngle(0.0f, 0.0f, Time.time);
+
+                    //transform.eulerAngles = new Vector2(0, angle);
+
+                    Debug.Log("0A");
+                }
+                if (input.x == 0)
+                {
+                    input.x = 1;
+                }
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0f, 0), step);
+
+
+
                 Debug.Log("true");
             }
 
             if (Turn == false)
             {
-                input.x = 1;
+                if (transform.localEulerAngles.y >= 0f)
+                {
+                    input.x = 0;
 
-                angle = Mathf.LerpAngle(0.0f, 180.0f, Time.time);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 180f, 0), step);
 
-                transform.eulerAngles = new Vector3(0, angle, 0);
+                    //angle = Mathf.LerpAngle(0.0f, 0.0f, Time.time);
+
+                    //transform.eulerAngles = new Vector2(0, angle);
+
+                    Debug.Log("180A");
+                }
+                if (input.x == 0)
+                {
+                    input.x = 1;
+                }
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 180f, 0), step);
+
+                //angle = Mathf.LerpAngle(0.0f, 180.0f, Time.time);
+
+                //transform.eulerAngles = new Vector2(0, angle);
 
                 Debug.Log("false");
             }
 
-            HitRay();
+            
 
             //改造要素
             //アニメモードを送る
@@ -144,7 +181,7 @@ public class Crustle : MonoBehaviour
             //現在目標の速度を計算、それを目的地とする
             float targetVelocityX = input.x * moveSpeed;
             //加速の計算
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+            velocity.x = targetVelocityX;/*Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne)*/;
             //
             velocity.y += gravity * Time.fixedDeltaTime;
             try

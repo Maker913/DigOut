@@ -91,6 +91,7 @@ ModelImporter:
     4300022: hand_L_1
     4300024: hand_R_1
     9500000: //RootNode
+    11100000: //RootNode
     13700000: belt_L
     13700002: belt_R
     13700004: body
@@ -134,7 +135,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -191,7 +192,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

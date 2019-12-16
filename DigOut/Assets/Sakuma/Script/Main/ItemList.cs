@@ -29,13 +29,17 @@ public class ItemList : MonoBehaviour
         {
 
 
-
+            DontDestroyOnLoad(gameObject);
             itemList = this;
 
-            //itemList.StartSet();
-            
+           itemList.StartSet();
 
 
+
+        }
+        else
+        {
+            Destroy(this);
         }
     }
 

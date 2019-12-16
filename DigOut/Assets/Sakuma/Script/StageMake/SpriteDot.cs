@@ -29,7 +29,7 @@ public class SpriteDot : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time > 1f / 6f)
+        if(time > 1f / 12f)
         {
             newTexture = new Texture2D(_target.width, _target.height, TextureFormat.ARGB32, false, false);
 

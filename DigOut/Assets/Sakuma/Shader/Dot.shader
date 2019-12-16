@@ -6,6 +6,7 @@ Shader "Custom/Dot" {
 		_Rim("Rim", Range(0,1)) = 0
 		_X("_X",int) = 0
 		_Y("_Y", int) = 0
+		_Skin("Skin", Color) = (1,1,1,1)
     }
 
     SubShader{
@@ -39,7 +40,7 @@ Shader "Custom/Dot" {
 			float _Rim;
 			int _X;
 			int _Y;
-
+			float4 _Skin;
 
             VertexOutput vert (VertexInput input) {
             	VertexOutput output;
@@ -76,12 +77,31 @@ Shader "Custom/Dot" {
 
             	float4 c =tex2D(_MainTex, dat);
 
+				float er = abs(c.r - _Skin.r);
+				float eb = abs(c.b - _Skin.b);
+				float eg = abs(c.g - _Skin.g);
+
+
+				if (er + eb + eg < 0.1f) {
+					c.r = _Skin.r;
+					c.g = _Skin.g;
+					c.b = _Skin.b;
+				}
+
+
+
 
 				c.r = floor(c.r * 32) / 32;
 				c.g = floor(c.g * 32) / 32;
 				c.b = floor(c.b * 32) / 32;
 
-				c.a = c.a < 0.5f ? 0 : c.a;
+
+
+
+
+
+
+				c.a = c.a < 0.6f ? 0 : c.a;
                 c.rgb *= c.a;
                 return c;
             }

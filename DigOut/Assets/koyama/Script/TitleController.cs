@@ -20,8 +20,12 @@ public class TitleController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            SoundController.Instance.PlayBGM(0);
+            SoundController.Instance.PlaySE(SoundController.SeName.Attack);
             Debug.Log("流れ");
+        }
+        if (Input.GetMouseButtonDown(2))
+        {
+            SoundController.Instance.PlaySE(SoundController.SeName.Damage);
         }
     }
     public void StartButton()

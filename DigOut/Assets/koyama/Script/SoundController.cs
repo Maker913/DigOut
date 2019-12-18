@@ -9,22 +9,21 @@ public class SoundController : MonoBehaviour
     private SeContrller SeContrller;
     public enum BgmName
     {
-        Title,
-        MainGame,
+        Order,
+        Stage,
+        Stage_1819
     }
     public enum SeName
     {
-        Walk,//移動
-        ladder,//梯子
-        MissionTrust,//受託
-        MissionAchievement,//達成
-        TreasureBox,//宝箱
-        GetItem,//アイテム取得
+        Attack,//攻撃
+        Damage,//ダメージ
         Dig,//掘る
-        Menu,//メニュ―表示
-        Select,//選択
-        Enter,//決定
-        Talk,//NPCとの会話
+        Get,//アイテム獲得
+        Jump,//ジャンプ
+        Open,//箱空ける
+        Option_Close,//オプション閉じる
+        Option_Open,//オプション開く
+        Walk//歩き
     }
     private void Awake()
     {
@@ -42,7 +41,7 @@ public class SoundController : MonoBehaviour
     }
     /// <summary>
     /// BGM再生
-    /// <para>SoundController.Instance.PlayBGM("AudioManager.BgmName.名前") </para>
+    /// <para>SoundController.Instance.PlayBGM(AudioManager.BgmName.名前) </para>
     /// </summary>
     /// <param name="name"></param>
     public void PlayBGM(BgmName name)
@@ -56,7 +55,7 @@ public class SoundController : MonoBehaviour
     }
     /// <summary>
     /// SE再生
-    /// <para>SoundController.Instance.PlaySE("AudioManager.SeName.名前") </para>
+    /// <para>SoundController.Instance.PlaySE(AudioManager.SeName.名前) </para>
     /// </summary>
     /// <param name="name"></param>
     public void PlaySE(SeName name)

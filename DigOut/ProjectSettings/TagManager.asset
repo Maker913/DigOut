@@ -57,6 +57,7 @@ TagManager:
   - 50
   - 51
   - 52
+  - 53
   layers:
   - Default
   - TransparentFX
@@ -73,9 +74,9 @@ TagManager:
   - Player
   - ChangePt
   - Item
-  - 
-  - 
-  - 
+  - Damage
+  - Enemy
+  - Atk
   - 
   - 
   - 

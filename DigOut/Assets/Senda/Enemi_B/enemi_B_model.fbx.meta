@@ -115,7 +115,12 @@ ModelImporter:
     13700010: R_foot_1
     13700012: R_foot_2
     13700014: R_foot_3
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: c39b41f1fc7333641a3ec232a8ddcd5d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

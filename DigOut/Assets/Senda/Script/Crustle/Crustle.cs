@@ -29,6 +29,8 @@ public class Crustle : MonoBehaviour
     float jumpVelocity;
     //このオブジェクトの慣性保管場所
     Vector3 velocity;
+
+
     //謎
     float velocityXSmoothing;
     //コントローラー保存先
@@ -44,6 +46,34 @@ public class Crustle : MonoBehaviour
     float angle;
 
     bool Turn;
+
+
+
+
+    //佐久間追加分
+    Vector3 damageVelocity = Vector3.zero;
+    float DamageTime = 0;
+    [SerializeField ]
+
+    //
+
+    //佐久間追加分
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Atk" && DamageTime < 0&&Player .Atk )
+        {
+            
+            damageVelocity = ((Vector2)collision.gameObject.transform.parent.gameObject.transform.position - (Vector2)transform.position).normalized;
+            Debug.Log(damageVelocity);
+            damageVelocity *= (Turn ?-1:1) * 20;
+            damageVelocity.y = 5;
+            DamageTime = 1;
+        }
+    }
+    //
+
 
     void Start()
     {
@@ -72,13 +102,19 @@ public class Crustle : MonoBehaviour
 
         if (Physics2D.Raycast(new Vector2 (0,2f)+ (Vector2 )transform.position,Turn == true ? Vector2.right:Vector2.left,range,layer))
         {
-            Debug.Log("a");
+            //Debug.Log("a");
             Turn = !Turn;
         }
     }
 
     void FixedUpdate()
     {
+        
+        DamageTime -= Time.fixedDeltaTime;
+
+
+
+
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
 
@@ -110,7 +146,7 @@ public class Crustle : MonoBehaviour
 
                     //transform.eulerAngles = new Vector2(0, angle);
 
-                    Debug.Log("0A");
+                    //Debug.Log("0A");
                 }
                 if (input.x == 0)
                 {
@@ -120,7 +156,7 @@ public class Crustle : MonoBehaviour
 
 
 
-                Debug.Log("true");
+                //Debug.Log("true");
             }
 
             if (Turn == false)
@@ -135,7 +171,7 @@ public class Crustle : MonoBehaviour
 
                     //transform.eulerAngles = new Vector2(0, angle);
 
-                    Debug.Log("180A");
+                    //Debug.Log("180A");
                 }
                 if (input.x == 0)
                 {
@@ -147,10 +183,10 @@ public class Crustle : MonoBehaviour
 
                 //transform.eulerAngles = new Vector2(0, angle);
 
-                Debug.Log("false");
+                //Debug.Log("false");
             }
 
-            
+
 
             //改造要素
             //アニメモードを送る
@@ -183,6 +219,16 @@ public class Crustle : MonoBehaviour
             //加速の計算
             velocity.x = targetVelocityX;/*Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne)*/;
             //
+
+
+            if (damageVelocity != Vector3.zero)
+            {
+                velocity = damageVelocity;
+                damageVelocity *= 0.75f;
+
+            }
+
+
             velocity.y += gravity * Time.fixedDeltaTime;
             try
             {

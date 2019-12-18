@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     float jumpVelocity;
     //このオブジェクトの慣性保管場所
     Vector3 velocity;
+    Vector3 damageVelocity=Vector3.zero;
     //謎
     float velocityXSmoothing;
     //コントローラー保存先
@@ -38,13 +39,34 @@ public class Player : MonoBehaviour
     [SerializeField]
     PlayerAnimeController playerAnime;
 
-
+    [SerializeField]
+    Material material1;
+    [SerializeField]
+    Material material2;
 
     bool left = false;
     bool atk = false;
     float atkTime = 0;
 
+    float DamageTime=0;
+    [SerializeField]
+    GameObject atkCol;
 
+    static public bool Atk = false;
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+       
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage"&& DamageTime<0)
+        {
+
+            damageVelocity = ((Vector2 )collision.gameObject.transform.position- (Vector2)transform.position ).normalized;
+            damageVelocity *=-1* 20;
+            damageVelocity.y = 5;
+            DamageTime = 2;
+        }
+    }
 
 
     void Start()
@@ -65,6 +87,38 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        if (left)
+        {
+            atkCol.transform.localPosition = new Vector3(-2,0.15f,0);
+        }
+        else
+        {
+            atkCol.transform.localPosition = new Vector3(2, 0.15f, 0);
+        }
+
+
+
+        DamageTime -= Time.fixedDeltaTime;
+
+        if(DamageTime > 0)
+        {
+            material1.SetColor("_Color", new Color(1, 1, 1, (Mathf.Sin((DamageTime * 360)*4 * Mathf.PI / 180)+1)/2));
+            material2.SetColor("_Color", new Color(1, 1, 1, (Mathf.Sin((DamageTime * 360)*4 * Mathf.PI / 180) + 1) / 2));
+        }
+        if (DamageTime < 0)
+        {
+            material1.SetColor("_Color", new Color(1, 1, 1, 1));
+            material2.SetColor("_Color", new Color(1, 1, 1, 1));
+        }
+
+
+
+
+
+
+
+
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
 
@@ -119,6 +173,7 @@ public class Player : MonoBehaviour
                     Debug.Log("asa");
                     atk = true;
                     atkTime = 0;
+                    Atk = true;
                     if (left)
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.LAtk;
@@ -127,7 +182,11 @@ public class Player : MonoBehaviour
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
                     }
-                    
+
+                }
+                else
+                {
+                    Atk = false ;
                 }
 
 
@@ -149,9 +208,13 @@ public class Player : MonoBehaviour
 
 
 
+            //damageVelocity *= 0.5f;
+            if(damageVelocity!=Vector3.zero)
+            {
+                velocity = damageVelocity;
+                damageVelocity = Vector3.zero;
 
-
-
+            }
 
             //x軸の慣性計算
             //現在目標の速度を計算、それを目的地とする
@@ -160,6 +223,10 @@ public class Player : MonoBehaviour
             velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
             //
             velocity.y += gravity * Time.fixedDeltaTime;
+
+            
+
+
             try
             {
                 controller.Move(velocity * Time.fixedDeltaTime);

@@ -32,11 +32,17 @@ public class MainStateInstance : MonoBehaviour
     static public MainStateInstance mainStateInstance;
     public string stageName;
 
+    public int Life;
+
+
+
+
     private void Awake() {
         if (mainStateInstance == null) {
             mainState.gameMode = StartMode;
             mainState.GameModeStart = true;
             mainStateInstance = this;
+            Life = 6;
             DontDestroyOnLoad(this.gameObject);
         }
     }

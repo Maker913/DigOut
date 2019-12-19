@@ -32,9 +32,7 @@ public class Info : MonoBehaviour
             float movex = Mathf.SmoothDamp(info.color.a, 1.0f, ref nows, 1f);
             //transform.position = new Vector3(movex, transform.position.y, transform.position.z);
             info.color = new Color (1,1,1, movex);
-            if (Input.GetKeyDown(KeyCode.F)) {
-                InfoSet();
-            }
+
 
             if(backNum != Progression.progression.num) {
                 InfoSet();
@@ -44,7 +42,7 @@ public class Info : MonoBehaviour
 
         }
         else {
-            info.color = new Color(1, 1, 1, 0);
+            //info.color = new Color(1, 1, 1, 0);
         }
 
 

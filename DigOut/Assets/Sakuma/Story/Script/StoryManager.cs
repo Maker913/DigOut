@@ -6,6 +6,9 @@ using System;
 public class StoryManager : MonoBehaviour
 {
     [SerializeField]
+    Info info;
+
+    [SerializeField]
     string text;
 
     [SerializeField]
@@ -154,8 +157,12 @@ public class StoryManager : MonoBehaviour
                 if (animeTime > 0.5f)
                 {
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
+                    
+                    if(Progression.progression.nextCode[Progression.progression.num ]== LoadName)
+                    {
+                        InfoText.text = "";
+                    }
                     Progression.progression.progressionSet(LoadName);
-                    InfoText.text = "";
                     PlayUI.SetActive(true);
 
                     Anime = false;

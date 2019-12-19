@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Client : MonoBehaviour
 {
+    [SerializeField]
+    Material material;
+    bool text=false;
+    float a=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,8 +17,46 @@ public class Client : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (text)
+        {
+            if (a < 1)
+            {
+                a += Time.deltaTime*4;
+            }
+            else
+            {
+                a = 1;
+            }
+        }
+        else
+        {
+            if (a > 0)
+            {
+                a -= Time.deltaTime*4;
+            }
+            else
+            {
+                a = 0;
+            }
+        }
+        material.SetColor("_Color", new Color(1, 1, 1, a));
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.ToString() == "Player")
+        {
+            text = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.ToString() == "Player")
+        {
+            text = false;
+        }
+    }
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {

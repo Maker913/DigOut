@@ -9,7 +9,7 @@ public class Progression : MonoBehaviour
     public int num = 0;
     [SerializeField]
     public string[] nextCode;
-    private bool startC = false;
+    public bool startC = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -48,6 +48,14 @@ public class Progression : MonoBehaviour
                 if (startC)
                 {
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
+                    startC = false;
+                }
+                
+                break;
+            case 3:
+                if (startC)
+                {
+                    Scene.sceneManagerPr.SceneLoad("Title");
                     startC = false;
                 }
                 

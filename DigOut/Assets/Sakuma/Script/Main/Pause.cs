@@ -19,7 +19,7 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleOptions)
         {
             if (pauseBool)
             {

@@ -62,7 +62,7 @@ public class Client : MonoBehaviour
     {
         if(collision .gameObject.tag .ToString() == "Player"&&MainStateInstance.mainStateInstance.mainState.gameMode==MainStateInstance.GameMode.Play)
         {
-            if(Input.GetKeyDown(KeyCode.Z))
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
             {
                 switch (Progression .progression.num)
                 {

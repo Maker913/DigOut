@@ -48,8 +48,19 @@ public class Scene : MonoBehaviour
 
 
 
+
+    private void Awake()
+    {
+
+    }
+
+
     public void SceneLoad(string scenename)
     {
+
+        SetpReset.bfName = SceneManager.GetActiveScene().name;
+
+
         //Updateに渡すフラグの初期化
         lostCheck = true;
         go = true;

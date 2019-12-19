@@ -96,11 +96,11 @@ public class Crustle : MonoBehaviour
 
         RaycastHit2D hit;
 
-        int range = 2;
+        float range = 1.2f;
 
-        Debug.DrawLine(new Vector3(0, 2f) +transform.position, new Vector3(0, 2f) + transform.position + (Turn == true ? Vector3.right  : Vector3.left )*range, Color.red);
+        Debug.DrawLine(new Vector3(0, 0.9f) +transform.position, new Vector3(0, 0.9f) + transform.position + (Turn == true ? Vector3.right  : Vector3.left )*range, Color.red);
 
-        if (Physics2D.Raycast(new Vector2 (0,2f)+ (Vector2 )transform.position,Turn == true ? Vector2.right:Vector2.left,range,layer))
+        if (Physics2D.Raycast(new Vector2 (0, 0.9f) + (Vector2 )transform.position,Turn == true ? Vector2.right:Vector2.left,range,layer))
         {
             //Debug.Log("a");
             Turn = !Turn;
@@ -217,10 +217,17 @@ public class Crustle : MonoBehaviour
             //現在目標の速度を計算、それを目的地とする
             float targetVelocityX = input.x * moveSpeed;
             //加速の計算
-            velocity.x = targetVelocityX;/*Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne)*/;
-            //
+            //Debug.Log(transform.localEulerAngles .y);
+            if (transform.localEulerAngles.y==180|| transform.localEulerAngles.y ==0)
+            {
+                velocity.x = targetVelocityX;/*Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne)*/;
+                //
 
-
+            }
+            else
+            {
+                velocity.x  =0;
+            }
             if (damageVelocity != Vector3.zero)
             {
                 velocity = damageVelocity;

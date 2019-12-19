@@ -18,6 +18,7 @@ public class PS4ControllerInput : MonoBehaviour
         public bool Circle;
 
         public bool singleCircle;
+        public bool singleOptions;
 
         public bool singleLeft;
         public bool singleRight;
@@ -36,6 +37,7 @@ public class PS4ControllerInput : MonoBehaviour
             Circle = false;
 
             singleCircle = false;
+            singleOptions = false;
 
             singleLeft = false;
             singleRight = false;
@@ -90,10 +92,11 @@ public class PS4ControllerInput : MonoBehaviour
             contorollerState.singleDown = oldDown == false && contorollerState.downButton == true;
             contorollerState.singleUp = oldUp == false && contorollerState.upButton == true;
 
-            contorollerState.Jump = Input.GetButton("Fire2");
+            contorollerState.Jump = Input.GetButton("Cross");
             contorollerState.Circle = Input.GetButton("Circle");
 
             contorollerState.singleCircle = Input.GetButtonDown("Circle");
+            contorollerState.singleOptions = Input.GetButtonDown("Options");
         }
         else {
             contorollerState.rightWalk = Input.GetKey(KeyCode.RightArrow);
@@ -110,6 +113,8 @@ public class PS4ControllerInput : MonoBehaviour
             contorollerState.Circle = Input.GetKey(KeyCode.Z);
 
             contorollerState.singleCircle = Input.GetKeyDown(KeyCode.Z);
+            contorollerState.singleOptions = Input.GetKeyDown(KeyCode.Q);
+
         }
 
         //Debug.Log(contorollerState.singleLeft);

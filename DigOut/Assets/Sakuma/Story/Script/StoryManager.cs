@@ -140,7 +140,7 @@ public class StoryManager : MonoBehaviour
                 }
                 else
                 {
-                    Move = Input.GetKeyDown(KeyCode.Z);
+                    Move = PS4ControllerInput.pS4ControllerInput .contorollerState .singleCircle ;
                 }
 
             }

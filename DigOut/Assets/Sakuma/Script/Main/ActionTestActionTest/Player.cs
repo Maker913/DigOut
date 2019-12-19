@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
             damageVelocity *=-1* 20;
             damageVelocity.y = 5;
             DamageTime = 2;
+            MainStateInstance.mainStateInstance.Life--;
         }
     }
 

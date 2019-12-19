@@ -325,6 +325,11 @@ public class StageMakeController : MonoBehaviour
 
     public Data Load()
     {
+        if(fileName == "街に戻る")
+        {
+            MainStateInstance.mainStateInstance.Life = 6;
+        }
+
         bf = new BinaryFormatter();
         fileStream = null;
         Data data = new Data() ;

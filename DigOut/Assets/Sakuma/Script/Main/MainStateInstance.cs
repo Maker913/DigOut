@@ -9,7 +9,8 @@ public class MainStateInstance : MonoBehaviour
         Pause,
         Anime,
         Title,
-        Story
+        Story,
+        Did
     }
 
 
@@ -33,7 +34,7 @@ public class MainStateInstance : MonoBehaviour
     public string stageName;
 
     public int Life;
-
+    public bool toolBox;
 
 
 
@@ -43,7 +44,12 @@ public class MainStateInstance : MonoBehaviour
             mainState.GameModeStart = true;
             mainStateInstance = this;
             Life = 6;
+            toolBox = true;
             DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -52,10 +58,14 @@ public class MainStateInstance : MonoBehaviour
             case GameMode.Anime:
                 break;
             case GameMode.Play:
+                PlayUpdate();
                 break;
             case GameMode.Pause:
                 break;
             case GameMode.Story:
+                break;
+            case GameMode.Did:
+                if (Life > 0) { mainState.gameMode = GameMode.Play; }
                 break;
             case GameMode.Title:
                 TitleUpdate();
@@ -64,7 +74,15 @@ public class MainStateInstance : MonoBehaviour
     }
 
     //startをfalseにするのを忘れずに!!
-
+    private void PlayUpdate()
+    {
+        if (Life <= 0)
+        {
+            mainState.gameMode = GameMode.Did;
+            MainStateInstance.mainStateInstance.stageName = "街に戻る";
+            Scene.sceneManagerPr.SceneLoad("MainAction");
+        }
+    }
     private void TitleUpdate() {
         if (mainState.GameModeStart)
         {

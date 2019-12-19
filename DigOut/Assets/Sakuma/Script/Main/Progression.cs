@@ -28,7 +28,7 @@ public class Progression : MonoBehaviour
         }
     }
 
-
+    
 
     // Update is called once per frame
     void Update()
@@ -40,7 +40,7 @@ public class Progression : MonoBehaviour
                 if(startC)
                 {
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Pause;
-                    StoryManager.storyManager.StoryLoad("TextFile");
+                    StoryManager.storyManager.StoryLoad("StartStory");
                     startC = false;
                 }
                 break;

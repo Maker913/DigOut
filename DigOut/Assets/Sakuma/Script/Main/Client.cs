@@ -27,19 +27,13 @@ public class Client : MonoBehaviour
                     case 0:
                         break;
                     case 1:
-                        StoryManager.storyManager.StoryLoad("FirstRequest");
+                        StoryManager.storyManager.StoryLoad("Investigating");
                         break;
                     case 2:
-                        if(ItemList.itemList.gold >= 3)
-                        {
-                            ItemList.itemList.gold -= 3;
-                            StoryManager.storyManager.StoryLoad("FirstRequestClear");
-                        }
-                        else
-                        {
-                            StoryManager.storyManager.StoryLoad("FirstRequestAfter");
-                        }
-
+                        StoryManager.storyManager.StoryLoad("GradeUP");
+                        break;
+                    case 3:
+                        StoryManager.storyManager.StoryLoad("Investigating2");
                         break;
 
 

@@ -5,15 +5,25 @@ using UnityEngine.SceneManagement;
 public class SceneLoad : MonoBehaviour
 {
     public stageSelect stageSelect;
+
+
+    private void Start()
+    {
+        Mainc.animeC  = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
 
-        if (collision.gameObject.layer == 12)
+        if (collision.gameObject.layer == 12&& !Mainc.animeC)
         {
             stageSelect.On();
 
-
+            Mainc.animeC = true;
+        }
+        else
+        {
+            Debug.Log("ヴぇ");
         }
     }
 

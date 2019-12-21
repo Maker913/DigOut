@@ -35,7 +35,7 @@ public class MainStateInstance : MonoBehaviour
 
     public int Life;
     public bool toolBox;
-
+    
 
 
     private void Awake() {

@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
 
     static public bool Atk = false;
 
+    bool Jump;
+    int jumpTime;
     private void OnTriggerStay2D(Collider2D collision)
     {
         
@@ -81,6 +83,8 @@ public class Player : MonoBehaviour
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 
         atk = false;
+        Jump = false;
+        jumpTime = 0;
 
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
@@ -143,30 +147,44 @@ public class Player : MonoBehaviour
 
                 //改造要素
                 //アニメモードを送る
-                if (controller.collisions.below)
+
+
+                if(PS4ControllerInput.pS4ControllerInput.contorollerState.Jump)
+                {
+                    jumpTime  += 1;
+                }
+                else
+                {
+                    jumpTime = 0;
+                }
+
+                if (jumpTime == 1)
+                {
+                    Jump = true;
+                }
+                else
+                {
+                    Jump = false ;
+                }
+
+                //ジャンプ
+                if (Jump && controller.collisions.below&& playerAnime.animeMode != PlayerAnimeController.AnimeMode.Fall)
+                {
+                    velocity.y = jumpVelocity;
+                    playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
+                }
+                else if (controller.collisions.below)
                 {
                     if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
                     {
-                        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork;left = true; }
-                        if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; left = false ; }
+                        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; left = true; }
+                        if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; left = false; }
                     }
                     else
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
                     }
 
-                }
-                else
-                {
-                    //playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
-
-                }
-
-                //ジャンプ
-                if (PS4ControllerInput.pS4ControllerInput.contorollerState.Jump && controller.collisions.below)
-                {
-                    velocity.y = jumpVelocity;
-                    playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
                 }
 
                 if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle  )

@@ -55,7 +55,7 @@ public class CameraTest : MonoBehaviour
 
             dis = Mathf.SmoothDamp(0, dis, ref refSpead3, spead);
 
-            if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(move.x, 0), dis, mask)) {
+            if (!Physics2D.CircleCast(transform.position, 0.45f, new Vector2(move.x, 0), dis, mask)) {
                 rigidbody2D.transform.Translate(new Vector2(move.x, 0) * dis);
             }
             else
@@ -65,7 +65,7 @@ public class CameraTest : MonoBehaviour
                 do
                 {
                     cont -= 1f;
-                    if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(move.x, 0), dis * (cont / 10f), mask))
+                    if (!Physics2D.CircleCast(transform.position, 0.45f, new Vector2(move.x, 0), dis * (cont / 10f), mask))
                     {
                         flg = false;
                     }
@@ -80,7 +80,7 @@ public class CameraTest : MonoBehaviour
                 //Debug.Log(cont);
             }
 
-            if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(0, move.y), dis, mask)) {
+            if (!Physics2D.CircleCast(transform.position, 0.45f, new Vector2(0, move.y), dis, mask)) {
                 rigidbody2D.transform.Translate(new Vector2(0, move.y) * dis);
             }
             else
@@ -90,7 +90,7 @@ public class CameraTest : MonoBehaviour
                 do
                 {
                     cont -= 1f;
-                    if (!Physics2D.CircleCast(transform.position, 0.5f, new Vector2(0, move.y), dis * (cont / 10f), mask))
+                    if (!Physics2D.CircleCast(transform.position, 0.45f, new Vector2(0, move.y), dis * (cont / 10f), mask))
                     {
                         flg = false;
                     }
@@ -130,11 +130,11 @@ public class CameraTest : MonoBehaviour
 
             dis = Mathf.SmoothDamp(0, dis, ref refSpead2, spead);
 
-            if (!Physics2D.CircleCast(popObj.transform.position, 0.5f, new Vector2(move.x, 0), dis, mask)) {
+            if (!Physics2D.CircleCast(popObj.transform.position, 0.45f, new Vector2(move.x, 0), dis, mask)) {
                 popRigidbody2D.transform.Translate(new Vector2(move.x, 0) * dis);
             }
 
-            if (!Physics2D.CircleCast(popObj.transform.position, 0.5f, new Vector2(0, move.y), dis, mask)) {
+            if (!Physics2D.CircleCast(popObj.transform.position, 0.45f, new Vector2(0, move.y), dis, mask)) {
                 popRigidbody2D.transform.Translate(new Vector2(0, move.y) * dis);
             }
 

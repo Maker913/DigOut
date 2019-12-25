@@ -91,11 +91,11 @@ public class Player : MonoBehaviour
 
         if (left)
         {
-            atkCol.transform.localPosition = new Vector3(-2,0.15f,0);
+            atkCol.transform.localPosition = new Vector3(-1.75f,0.1f,0);
         }
         else
         {
-            atkCol.transform.localPosition = new Vector3(2, 0.15f, 0);
+            atkCol.transform.localPosition = new Vector3(1.75f, 0.1f, 0);
         }
 
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1427024952}
   - component: {fileID: 1427024953}
   m_Layer: 17
-  m_Name: GameObject
+  m_Name: Atk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427024951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0.15, z: 0}
+  m_LocalPosition: {x: 1.75, y: 0.1, z: 0}
   m_LocalScale: {x: 1.3333334, y: 0.5, z: 1.333333}
   m_Children: []
   m_Father: {fileID: 5496511512134817123}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &310006585077634315
 GameObject:
@@ -753,7 +753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6288690288537043287
 Transform:
   m_ObjectHideFlags: 0

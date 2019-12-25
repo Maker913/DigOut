@@ -40,6 +40,12 @@ public class Client : MonoBehaviour
             }
         }
         material.SetColor("_Color", new Color(1, 1, 1, a));
+
+
+        if(MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play&&PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
+        {
+            sw = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,13 +63,14 @@ public class Client : MonoBehaviour
         }
     }
 
-
+    bool sw = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision .gameObject.tag .ToString() == "Player"&&MainStateInstance.mainStateInstance.mainState.gameMode==MainStateInstance.GameMode.Play)
         {
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle&& !sw)
             {
+                sw = true;
                 switch (Progression .progression.num)
                 {
                     case 0:

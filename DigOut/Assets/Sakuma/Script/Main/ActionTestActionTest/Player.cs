@@ -53,9 +53,10 @@ public class Player : MonoBehaviour
     GameObject atkCol;
 
     static public bool Atk = false;
-
+    bool atkHold = false;
     bool Jump;
     int jumpTime;
+    bool atkTik = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
         
@@ -187,12 +188,17 @@ public class Player : MonoBehaviour
 
                 }
 
-                if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle  )
+
+
+
+                    
+
+                if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle&&!atk  && !atkHold)
                 {
                     Debug.Log("asa");
                     atk = true;
                     atkTime = 0;
-                    Atk = true;
+                    atkTik = true;
                     if (left)
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.LAtk;
@@ -213,6 +219,17 @@ public class Player : MonoBehaviour
             }
             else
             {
+                Atk = false;
+                
+                if (atkTime > 0.1f&& atkTik)
+                {
+                    Atk = true;
+                    atkTik = false;
+                }
+                
+
+
+
                 atkTime += Time.deltaTime;
                 if (atkTime > 0.5f)
                 {
@@ -224,11 +241,15 @@ public class Player : MonoBehaviour
 
 
             }
+            if (Atk)
+            {
+                Debug.Log("aaaaaa");
+            }
 
-
+            atkHold = PS4ControllerInput.pS4ControllerInput.contorollerState.Circle;
 
             //damageVelocity *= 0.5f;
-            if(damageVelocity!=Vector3.zero)
+            if (damageVelocity!=Vector3.zero)
             {
                 velocity = damageVelocity;
                 damageVelocity = Vector3.zero;

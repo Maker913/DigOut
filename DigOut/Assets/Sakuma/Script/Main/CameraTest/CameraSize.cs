@@ -5,9 +5,17 @@ using UnityEngine;
 public class CameraSize : MonoBehaviour
 {
     Camera camera;
-    public CameraTest cameraTest;
+    //public CameraTest cameraTest;
     public float baseSize=7;
     public float baseSizelim = 8;
+
+    public GameObject player;
+
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +25,12 @@ public class CameraSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //(i%3==0?Pos.x:(i % 3 == 1? Pos.y:Pos.z))
-        camera.orthographicSize =(baseSize + cameraTest.dis * 4< baseSizelim? baseSize + cameraTest.dis*4: baseSizelim);
+        
+        float dis = Vector2.Distance(player.transform.position, transform.position);
+        //Debug.Log(dis);
+        dis *= 0f;
+
+
+        camera.orthographicSize =(dis > baseSizelim-baseSize? baseSizelim: baseSize + dis);
     }
 }

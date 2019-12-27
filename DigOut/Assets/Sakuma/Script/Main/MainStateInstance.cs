@@ -9,6 +9,8 @@ public class MainStateInstance : MonoBehaviour
         Pause,
         Anime,
         Title,
+        Story,
+        Did
     }
 
 
@@ -16,10 +18,11 @@ public class MainStateInstance : MonoBehaviour
     {
         public GameMode gameMode;
         public bool GameModeStart;
-
+        public int nowArea;
         public void StateSet() {
             GameModeStart=true;
             gameMode = GameMode.Title;
+            nowArea = 0;
         }
     }
 
@@ -28,14 +31,25 @@ public class MainStateInstance : MonoBehaviour
 
     public MainState mainState;
     static public MainStateInstance mainStateInstance;
+    public string stageName;
+
+    public int Life;
+    public bool toolBox;
     
+
 
     private void Awake() {
         if (mainStateInstance == null) {
             mainState.gameMode = StartMode;
             mainState.GameModeStart = true;
             mainStateInstance = this;
+            Life = 6;
+            toolBox = true;
             DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -44,8 +58,14 @@ public class MainStateInstance : MonoBehaviour
             case GameMode.Anime:
                 break;
             case GameMode.Play:
+                PlayUpdate();
                 break;
             case GameMode.Pause:
+                break;
+            case GameMode.Story:
+                break;
+            case GameMode.Did:
+                if (Life > 0) { mainState.gameMode = GameMode.Play; }
                 break;
             case GameMode.Title:
                 TitleUpdate();
@@ -54,7 +74,15 @@ public class MainStateInstance : MonoBehaviour
     }
 
     //startをfalseにするのを忘れずに!!
-
+    private void PlayUpdate()
+    {
+        if (Life <= 0)
+        {
+            mainState.gameMode = GameMode.Did;
+            MainStateInstance.mainStateInstance.stageName = "街に戻る";
+            Scene.sceneManagerPr.SceneLoad("MainAction");
+        }
+    }
     private void TitleUpdate() {
         if (mainState.GameModeStart)
         {

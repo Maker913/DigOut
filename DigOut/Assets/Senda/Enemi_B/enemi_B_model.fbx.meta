@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: 1ea3ea615696ef044bc97563e6d88582
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: body
+    100002: //RootNode
+    100004: head
+    100006: joint10
+    100008: joint11
+    100010: joint12
+    100012: joint13
+    100014: joint14
+    100016: joint15
+    100018: joint16
+    100020: joint17
+    100022: joint18
+    100024: joint19
+    100026: joint20
+    100028: joint21
+    100030: joint22
+    100032: joint23
+    100034: joint24
+    100036: joint25
+    100038: joint26
+    100040: joint9
+    100042: L_arm
+    100044: L_eye
+    100046: L_foot_1
+    100048: L_foot_2
+    100050: L_foot_3
+    100052: pasted__pasted__pCube1
+    100054: pasted__pasted__pCube2
+    100056: pasted__pasted__pTorus1
+    100058: pasted__pasted__pTorus2
+    100060: R_arm
+    100062: R_eye
+    100064: R_foot_1
+    100066: R_foot_2
+    100068: R_foot_3
+    400000: body
+    400002: //RootNode
+    400004: head
+    400006: joint10
+    400008: joint11
+    400010: joint12
+    400012: joint13
+    400014: joint14
+    400016: joint15
+    400018: joint16
+    400020: joint17
+    400022: joint18
+    400024: joint19
+    400026: joint20
+    400028: joint21
+    400030: joint22
+    400032: joint23
+    400034: joint24
+    400036: joint25
+    400038: joint26
+    400040: joint9
+    400042: L_arm
+    400044: L_eye
+    400046: L_foot_1
+    400048: L_foot_2
+    400050: L_foot_3
+    400052: pasted__pasted__pCube1
+    400054: pasted__pasted__pCube2
+    400056: pasted__pasted__pTorus1
+    400058: pasted__pasted__pTorus2
+    400060: R_arm
+    400062: R_eye
+    400064: R_foot_1
+    400066: R_foot_2
+    400068: R_foot_3
+    2100000: lambert2
+    2300000: body
+    2300002: head
+    2300004: L_eye
+    2300006: pasted__pasted__pCube1
+    2300008: pasted__pasted__pCube2
+    2300010: pasted__pasted__pTorus1
+    2300012: pasted__pasted__pTorus2
+    2300014: R_eye
+    3300000: body
+    3300002: head
+    3300004: L_eye
+    3300006: pasted__pasted__pCube1
+    3300008: pasted__pasted__pCube2
+    3300010: pasted__pasted__pTorus1
+    3300012: pasted__pasted__pTorus2
+    3300014: R_eye
+    4300000: pasted__pasted__pCube2
+    4300002: pasted__pasted__pTorus2
+    4300004: pasted__pasted__pTorus1
+    4300006: pasted__pasted__pCube1
+    4300008: L_foot_3
+    4300010: L_foot_2
+    4300012: L_foot_1
+    4300014: R_foot_3
+    4300016: R_foot_2
+    4300018: R_foot_1
+    4300020: head
+    4300022: body
+    4300024: L_arm
+    4300026: R_arm
+    4300028: L_eye
+    4300030: R_eye
+    9500000: //RootNode
+    13700000: L_arm
+    13700002: L_foot_1
+    13700004: L_foot_2
+    13700006: L_foot_3
+    13700008: R_arm
+    13700010: R_foot_1
+    13700012: R_foot_2
+    13700014: R_foot_3
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: c39b41f1fc7333641a3ec232a8ddcd5d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

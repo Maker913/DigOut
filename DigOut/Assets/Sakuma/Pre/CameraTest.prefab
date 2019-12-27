@@ -95,12 +95,14 @@ MonoBehaviour:
   cameraFrame:
     serializedVersion: 2
     m_Bits: 2048
-  spead: 0.3
+  spead: 0.5
   mask:
     serializedVersion: 2
     m_Bits: 2048
   cameradis: 1
   dis: 0
+  stepMove: 0
+  popObj: {fileID: 0}
 --- !u!50 &1960982473
 Rigidbody2D:
   serializedVersion: 4
@@ -120,5 +122,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4

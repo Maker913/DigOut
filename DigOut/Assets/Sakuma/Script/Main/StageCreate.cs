@@ -6,13 +6,9 @@ public class StageCreate : MonoBehaviour
 {
 
     //ステージの親を入れる
-    [SerializeField]
-    private GameObject stageParent;
-    [SerializeField]
-    private GameObject cameraParent;
+
     //各設置物のプレハブ配置
-    [SerializeField]
-    private string workFileName;
+
     [SerializeField]
     StageObjNumList stageObjNumList;
     [SerializeField]
@@ -24,17 +20,21 @@ public class StageCreate : MonoBehaviour
     [SerializeField]
     GameObject camera;
 
+
+
     [SerializeField]
     StageMakeController stageMake;
 
 
 
+    public Vector2 startPos;
+    public Vector2 cameraPos;
     float dataz = -20;
     // Start is called before the first frame update
     void Start()
     {
-        stageMake.fileName = "test1";
-        stageMake.StageLode();
+        stageMake.fileName = MainStateInstance .mainStateInstance .   stageName;
+
         SaveDataLode();
     }
 
@@ -46,27 +46,25 @@ public class StageCreate : MonoBehaviour
 
     void SaveDataLode()
     {
-        var scenarioText = Resources.Load<TextAsset>("SaveData/"+LodeNum .ToString ());
-        if (scenarioText == null)
-        {
-            Debug.LogError("シナリオファイルが見つかりません。");
-            return;
-        }
 
-        string text = scenarioText.text;
-        Resources.UnloadAsset(scenarioText);
+        MainStateInstance.mainStateInstance.mainState.nowArea = 0;
 
-        string[] m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
 
-        Debug.Log(m_scenarios[0]);
-        string[] pass = m_scenarios[0].Split(new string[] { "," }, System.StringSplitOptions.None);
-        GameObject data2 = Instantiate(PlayerPre, new Vector3(int.Parse(pass[0]), int.Parse(pass[1])+0.5f, 0), Quaternion.identity);
-        pass = m_scenarios[1].Split(new string[] { "," }, System.StringSplitOptions.None);
-        GameObject data= Instantiate(cameraPre, new Vector3(int.Parse(pass[0]), int.Parse(pass[1]) + 0.5f, dataz), Quaternion.identity);
-        camera.transform.parent= data.transform;
-        camera.transform.localPosition =new Vector3 (0,0, 10);
-        data.GetComponent<CameraTest>().targetObj=data2.transform.GetChild (0).gameObject;
-        camera.GetComponent<CameraSize>().cameraTest = data.GetComponent<CameraTest>();
+        GameObject data2 = Instantiate(PlayerPre, Vector3.zero, Quaternion.identity);
+        GameObject data = Instantiate(cameraPre, Vector3.zero, Quaternion.identity);
+        camera.transform.parent = data.transform.GetChild(0);
+        camera.transform.localPosition = new Vector3(0, 0, 10);
+        data.transform.GetChild(0).GetComponent<CameraTest>().targetObj = data2.transform.GetChild(0).gameObject;
+        camera.GetComponent<CameraSize>().player = data2;
+
+        stageMake.cameraTestObj = data.transform.GetChild(0).gameObject;
+
+        stageMake.StageLode();
+
+        data2.transform.position = new Vector3(startPos.x, startPos.y + 0.5f, 0);
+        data.transform.position = new Vector3(cameraPos.x, cameraPos.y, dataz);
+
+
     }
 
 

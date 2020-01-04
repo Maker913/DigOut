@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 921279590509203197}
   - component: {fileID: 7379333695496553451}
   - component: {fileID: 5439880701793960089}
-  m_Layer: 9
+  m_Layer: 19
   m_Name: Point_2
   m_TagString: 28
   m_Icon: {fileID: 0}
@@ -105,8 +105,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.5, y: 0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: 0.3}
+      - {x: -0.5, y: 0.3}
       - {x: -0.5, y: 0.5}
 --- !u!1 &6853327188445737477
 GameObject:
@@ -134,7 +134,7 @@ Transform:
   m_GameObject: {fileID: 6853327188445737477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.05, y: 1.05, z: 1}
+  m_LocalScale: {x: 6.3, y: 6.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1441112869330686658}
   m_RootOrder: 0
@@ -176,7 +176,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300064, guid: 089e551ae340a174bac2aa59a5dd0536, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c777ff5bbd482a744817490293533859, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

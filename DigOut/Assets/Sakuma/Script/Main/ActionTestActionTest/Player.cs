@@ -57,21 +57,59 @@ public class Player : MonoBehaviour
     bool Jump;
     int jumpTime;
     bool atkTik = false;
+
+    float pustPos;
+
+
+    [SerializeField]
+    LayerMask nomalMask;
+    [SerializeField]
+    LayerMask upMask;
+
+    [SerializeField]
+    LayerMask Mask;
+    bool footFlg=false;
+
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
-       
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage"&& DamageTime<0)
+
+
+
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage" && DamageTime < 0)
         {
 
-            damageVelocity = ((Vector2 )collision.gameObject.transform.position- (Vector2)transform.position ).normalized;
-            damageVelocity *=-1* 20;
+            damageVelocity = ((Vector2)collision.gameObject.transform.position - (Vector2)transform.position).normalized;
+            damageVelocity *= -1 * 20;
             damageVelocity.y = 5;
             DamageTime = 2;
             MainStateInstance.mainStateInstance.Life--;
         }
+
+
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Penet")
+        {
+            footFlg = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Penet")
+        {
+            if (!Physics2D.BoxCast(transform.position, new Vector2(0.75f, 0.975f * 2), 0, Vector2.up, 0, Mask))
+            {
+                footFlg = false;
+            }
+
+            
+        }
+    }
 
     void Start()
     {
@@ -87,12 +125,32 @@ public class Player : MonoBehaviour
         Jump = false;
         jumpTime = 0;
 
+        pustPos = transform.position.y;
+
+        MainStateInstance.mainStateInstance.footPos = transform.position.y;
+
+
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
     }
 
     void FixedUpdate()
     {
+        Debug.DrawLine(transform.position + new Vector3(0, (0.975f ), -10), transform.position + new Vector3(0, -1 * (0.975f ), -10));
+        Debug.DrawLine(transform.position + new Vector3((0.75f / 2f), 0, -10), transform.position + new Vector3(-1 * (0.75f / 2f), 0, -10));
+        if (pustPos - transform.position.y<-0.01f)
+        {
+            controller.collisionMask = upMask;
+        }
+        if (pustPos - transform.position.y > 0f&&!footFlg )
+        {
+            controller.collisionMask = nomalMask;
+        }
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.downButton) { controller.collisionMask = upMask; }
+        Debug.Log(footFlg);
+
+        pustPos = transform.position.y;
+
 
         if (left)
         {
@@ -127,7 +185,7 @@ public class Player : MonoBehaviour
 
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
-
+            MainStateInstance.mainStateInstance.footPos = transform.position.y;
             Vector2 input = new Vector2(0, 0);
 
             if (!atk)

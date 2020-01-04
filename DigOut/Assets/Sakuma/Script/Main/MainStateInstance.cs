@@ -35,8 +35,8 @@ public class MainStateInstance : MonoBehaviour
 
     public int Life;
     public bool toolBox;
-    
 
+    public float footPos;
 
     private void Awake() {
         if (mainStateInstance == null) {

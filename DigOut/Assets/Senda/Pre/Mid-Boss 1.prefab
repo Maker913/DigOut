@@ -142,7 +142,10 @@ MonoBehaviour:
   timeToJumpApex: 0.85
   accelerationTimeAirborne: 0.2
   accelerationTimeGrounded: 0.1
-  moveSpeed: 6
+  moveSpeed: 3
+  layer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &1199370685302391732
 Rigidbody2D:
   serializedVersion: 4

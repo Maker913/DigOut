@@ -39,6 +39,17 @@ public class MidMove : MonoBehaviour
     //コントローラー保存先
     Controller2D controller;
 
+    [SerializeField]
+    public LayerMask layer;
+
+    float Turnspeed = 180f;
+
+
+
+    float angle;
+
+    bool Turn;
+
 
     //中ボス
     //GameObject MidBoss;
@@ -63,6 +74,23 @@ public class MidMove : MonoBehaviour
         //MidBoss = GameObject.Find("Mid-Boss");
     }
 
+    void HitRay()
+    {
+        Ray ray = new Ray(transform.position, new Vector3(1, 2, 0));
+
+        RaycastHit2D hit;
+
+        float range = 1.2f;
+
+        Debug.DrawLine(new Vector3(0, 0.9f) + transform.position, new Vector3(0, 0.9f) + transform.position + (Turn == true ? Vector3.right : Vector3.left) * range, Color.red);
+
+        if (Physics2D.Raycast(new Vector2(0, 0.9f) + (Vector2)transform.position, Turn == true ? Vector2.right : Vector2.left, range, layer))
+        {
+            //Debug.Log("a");
+            Turn = !Turn;
+        }
+    }
+
     public void MidJump()
     {
         te = true;
@@ -78,30 +106,63 @@ public class MidMove : MonoBehaviour
                 velocity.y = 0;
             }
 
-            //プレイヤーの移動方向
-            //コントローラー等のスティックのベクトル取得
-            //Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             Vector2 input = new Vector2(0, 0);
 
-            //キーボードからの入力取得
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { input.x = -1; }
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { input.x = 1; }
+            HitRay();
 
-            //改造要素
-            //アニメモードを送る
-            //if (controller.collisions.below)
-            //{
-            //    if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
-            //    {
-            //        if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; }
-            //        if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; }
-            //    }
-            //    else
-            //    {
-            //        playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
-            //    }
+            float step = Turnspeed * Time.deltaTime;
 
-            //}
+            if (Turn == true)
+            {
+                if (transform.localEulerAngles.y >= 0f)
+                {
+                    input.x = 0;
+
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0f, 0), step);
+
+                    //angle = Mathf.LerpAngle(0.0f, 0.0f, Time.time);
+
+                    //transform.eulerAngles = new Vector2(0, angle);
+
+                    //Debug.Log("0A");
+                }
+                if (input.x == 0)
+                {
+                    input.x = 1;
+                }
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0f, 0), step);
+
+
+
+                //Debug.Log("true");
+            }
+
+            if (Turn == false)
+            {
+                if (transform.localEulerAngles.y >= 0f)
+                {
+                    input.x = 0;
+
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 180f, 0), step);
+
+                    //angle = Mathf.LerpAngle(0.0f, 0.0f, Time.time);
+
+                    //transform.eulerAngles = new Vector2(0, angle);
+
+                    //Debug.Log("180A");
+                }
+                if (input.x == 0)
+                {
+                    input.x = 1;
+                }
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 180f, 0), step);
+
+                //angle = Mathf.LerpAngle(0.0f, 180.0f, Time.time);
+
+                //transform.eulerAngles = new Vector2(0, angle);
+
+                //Debug.Log("false");
+            }
 
 
             if (te == true && controller.collisions.below)

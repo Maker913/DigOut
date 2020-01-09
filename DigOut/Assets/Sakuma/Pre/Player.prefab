@@ -251,7 +251,15 @@ MonoBehaviour:
   material1: {fileID: 2100000, guid: fc9364faf29bc5440b67dcb586b21169, type: 2}
   material2: {fileID: 2100000, guid: f05ad576581473a40887557ce7ebdde7, type: 2}
   atkCol: {fileID: 1427024951}
-  _anim: {fileID: 1736701458145696472}
+  nomalMask:
+    serializedVersion: 2
+    m_Bits: 524800
+  upMask:
+    serializedVersion: 2
+    m_Bits: 512
+  Mask:
+    serializedVersion: 2
+    m_Bits: 524288
 --- !u!50 &7647717365046053203
 Rigidbody2D:
   serializedVersion: 4

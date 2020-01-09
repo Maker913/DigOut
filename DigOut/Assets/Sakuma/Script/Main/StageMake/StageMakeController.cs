@@ -272,15 +272,18 @@ public class StageMakeController : MonoBehaviour
             //Scenariosに;で区切って表示
             m_scenarios = text.Split(new string[] { "\n" }, System.StringSplitOptions.None);
             if (m_scenarios[0] == "") { return; }
-            for (int i = 0; i < m_scenarios.Length; i++)
+            if (m_scenarios.Length != 0)
             {
-                //Debug.Log(m_scenarios[i]);
-                //passに,で区切った数値を入れる
-                string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
-                //tagを参照し、preList内部のプレハブを各座標に配置
-                GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), MainAction ?-20:- 1), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
+                for (int i = 0; i < m_scenarios.Length; i++)
+                {
+                    //Debug.Log(m_scenarios[i]);
+                    //passに,で区切った数値を入れる
+                    string[] pass = m_scenarios[i].Split(new string[] { "," }, System.StringSplitOptions.None);
+                    //tagを参照し、preList内部のプレハブを各座標に配置
+                    GameObject brockdata = Instantiate(stageObjNumList.CameraPreList[int.Parse(pass[0])], new Vector3(float.Parse(pass[1]), float.Parse(pass[2]), MainAction ? -20 : -1), Quaternion.Euler(0, 0, float.Parse(pass[3])), cameraParent.transform);
 
-                brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
+                    brockdata.transform.localScale = new Vector3(float.Parse(pass[4]), float.Parse(pass[5]), 1);
+                }
             }
         }
 

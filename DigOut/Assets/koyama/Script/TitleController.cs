@@ -13,6 +13,7 @@ public class TitleController : MonoBehaviour
     }
     private void Update()
     {
+        SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
         if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle)
         {
             Debug.Log("行けた");
@@ -26,6 +27,7 @@ public class TitleController : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
         {
             SoundController.Instance.PlaySE(SoundController.SeName.Damage);
+            Debug.Log("〇");
         }
     }
     public void StartButton()

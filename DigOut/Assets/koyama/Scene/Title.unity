@@ -614,8 +614,16 @@ MonoBehaviour:
   contorollerState:
     leftWalk: 0
     rightWalk: 0
+    upButton: 0
+    downButton: 0
     Jump: 0
     Circle: 0
+    singleCircle: 0
+    singleOptions: 0
+    singleLeft: 0
+    singleRight: 0
+    singleDown: 0
+    singleUp: 0
   ControllerOn: 0
 --- !u!4 &1906409667
 Transform:
@@ -812,6 +820,11 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[8]
       value: 
       objectReference: {fileID: 8300000, guid: 2578704ebe6f5ec4cbc3f60d73161d21, type: 3}
+    - target: {fileID: 5408432322869391704, guid: 7a18bb19250e81c438b6e0bc6075ffe4,
+        type: 3}
+      propertyPath: BypassEffects
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a18bb19250e81c438b6e0bc6075ffe4, type: 3}
 --- !u!1001 &6339079554530608706

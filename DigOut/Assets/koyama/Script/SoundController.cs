@@ -9,13 +9,13 @@ public class SoundController : MonoBehaviour
     private SeContrller SeContrller;
     public enum BgmName
     {
-        Order,
+        Order = 0,
         Stage,
-        Stage_1819
+        Stage_1819,
     }
     public enum SeName
     {
-        Attack,//攻撃
+        Attack = 0,//攻撃
         Damage,//ダメージ
         Dig,//掘る
         Get,//アイテム獲得
@@ -23,7 +23,7 @@ public class SoundController : MonoBehaviour
         Open,//箱空ける
         Option_Close,//オプション閉じる
         Option_Open,//オプション開く
-        Walk//歩き
+        Walk,//歩き
     }
     private void Awake()
     {

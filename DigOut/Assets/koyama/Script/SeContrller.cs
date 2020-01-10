@@ -18,5 +18,6 @@ public class SeContrller : SoundModel
     public void StopSE()
     {
         audioSource.Stop();
+        audioSource.clip = null;
     }
 }

@@ -1163,7 +1163,7 @@ GameObject:
   - component: {fileID: 5492081988536657304}
   - component: {fileID: 5492081988536657286}
   - component: {fileID: 5492081988536657287}
-  m_Layer: 9
+  m_Layer: 22
   m_Name: Brock
   m_TagString: 4
   m_Icon: {fileID: 0}

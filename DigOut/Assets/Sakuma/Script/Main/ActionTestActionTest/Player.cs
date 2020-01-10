@@ -51,8 +51,8 @@ public class Player : MonoBehaviour
     float DamageTime=0;
     [SerializeField]
     GameObject atkCol;
-
     static public bool Atk = false;
+
     bool atkHold = false;
     bool Jump;
     int jumpTime;
@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     LayerMask Mask;
     bool footFlg=false;
+
 
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -147,7 +148,7 @@ public class Player : MonoBehaviour
             controller.collisionMask = nomalMask;
         }
         if (PS4ControllerInput.pS4ControllerInput.contorollerState.downButton) { controller.collisionMask = upMask; }
-        Debug.Log(footFlg);
+        //Debug.Log(footFlg);
 
         pustPos = transform.position.y;
 
@@ -302,6 +303,11 @@ public class Player : MonoBehaviour
             if (Atk)
             {
                 Debug.Log("aaaaaa");
+            }
+
+            if(Input.GetKey(KeyCode.X))
+            {
+
             }
 
             atkHold = PS4ControllerInput.pS4ControllerInput.contorollerState.Circle;

@@ -162,8 +162,14 @@ public class Player : MonoBehaviour
         {
             atkCol.transform.localPosition = new Vector3(1.75f, 0.1f, 0);
         }
-
-
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.downButton)
+        {
+            atkCol.transform.localPosition = new Vector3(0, -1f, 0);
+        }
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.upButton)
+        {
+            atkCol.transform.localPosition = new Vector3(0, 1f, 0);
+        }
 
         DamageTime -= Time.fixedDeltaTime;
 

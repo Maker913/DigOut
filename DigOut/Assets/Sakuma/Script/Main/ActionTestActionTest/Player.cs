@@ -70,6 +70,9 @@ public class Player : MonoBehaviour
     LayerMask Mask;
     bool footFlg=false;
 
+    [SerializeField]
+    public GameObject Midboss;
+    public Midboss Sc;
 
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -129,8 +132,6 @@ public class Player : MonoBehaviour
         pustPos = transform.position.y;
 
         MainStateInstance.mainStateInstance.footPos = transform.position.y;
-
-
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
     }
@@ -232,6 +233,8 @@ public class Player : MonoBehaviour
                 {
                     velocity.y = jumpVelocity;
                     playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
+
+                    //sc.MidJump();
                 }
                 else if (controller.collisions.below)
                 {

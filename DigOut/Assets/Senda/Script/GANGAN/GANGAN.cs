@@ -7,7 +7,8 @@ public class GANGAN : MonoBehaviour
     public float dy;
 
     bool Turn = false;
-
+    [SerializeField]
+    Rigidbody2D rigidbody2;
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "0")
@@ -22,15 +23,15 @@ public class GANGAN : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Turn == false)
+        if (!Turn)
         {
-            this.transform.position += new Vector3(0, dy * Time.deltaTime, 0);
+            rigidbody2.transform.position += new Vector3(0, dy * Time.fixedDeltaTime, 0);
         }
-        if (Turn == true)
+        if (Turn)
         {
-            this.transform.position -= new Vector3(0, dy * Time.deltaTime, 0);
+            rigidbody2.transform.position -= new Vector3(0, dy * Time.fixedDeltaTime, 0);
         }
     }
 }

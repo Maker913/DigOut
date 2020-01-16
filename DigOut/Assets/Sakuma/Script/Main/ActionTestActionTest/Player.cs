@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     public GameObject Midboss;
     public Midboss Sc;
-
+    public Vector2 PlayerMove = Vector2.zero;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -134,6 +134,7 @@ public class Player : MonoBehaviour
         MainStateInstance.mainStateInstance.footPos = transform.position.y;
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+        PlayerMove = transform.position;
     }
 
     void FixedUpdate()
@@ -193,6 +194,10 @@ public class Player : MonoBehaviour
 
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
+
+            MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position - PlayerMove;
+            PlayerMove = (Vector2)transform.position;
+
             MainStateInstance.mainStateInstance.footPos = transform.position.y;
             Vector2 input = new Vector2(0, 0);
 
@@ -276,6 +281,9 @@ public class Player : MonoBehaviour
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
                     }
 
+
+
+
                 }
                 else
                 {
@@ -337,7 +345,8 @@ public class Player : MonoBehaviour
             //
             velocity.y += gravity * Time.fixedDeltaTime;
 
-            
+            //Debug.Log();
+
 
 
             try

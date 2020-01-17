@@ -34,7 +34,9 @@ public class Player : MonoBehaviour
     //コントローラー保存先
     Controller2D controller;
 
-
+    [SerializeField]
+    GameObject bomPr;
+    float bomTime=0;
     //改造要素
     [SerializeField]
     PlayerAnimeController playerAnime;
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     public GameObject Midboss;
     public Midboss Sc;
-
+    public Vector2 PlayerMove = Vector2.zero;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -134,6 +136,7 @@ public class Player : MonoBehaviour
         MainStateInstance.mainStateInstance.footPos = transform.position.y;
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+        PlayerMove = transform.position;
     }
 
     void FixedUpdate()
@@ -193,6 +196,10 @@ public class Player : MonoBehaviour
 
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
+
+            MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position - PlayerMove;
+            PlayerMove = (Vector2)transform.position;
+
             MainStateInstance.mainStateInstance.footPos = transform.position.y;
             Vector2 input = new Vector2(0, 0);
 
@@ -276,6 +283,9 @@ public class Player : MonoBehaviour
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
                     }
 
+
+
+
                 }
                 else
                 {
@@ -316,9 +326,20 @@ public class Player : MonoBehaviour
 
             if(Input.GetKey(KeyCode.X))
             {
-
+                bomTime += 1;
             }
+            else
+            {
+                bomTime =0;
+            }
+            if(bomTime == 1)
+            {
+                GameObject bomdata= Instantiate(bomPr, transform.position, Quaternion.identity);
+                Rigidbody2D rigidbody2D = bomdata.GetComponent<Rigidbody2D>();
 
+                rigidbody2D.AddForce(new Vector2(250, 250)+(Vector2)(velocity*20));
+                rigidbody2D.AddTorque(30);
+            }
             atkHold = PS4ControllerInput.pS4ControllerInput.contorollerState.Circle;
 
             //damageVelocity *= 0.5f;
@@ -337,7 +358,8 @@ public class Player : MonoBehaviour
             //
             velocity.y += gravity * Time.fixedDeltaTime;
 
-            
+            //Debug.Log();
+
 
 
             try

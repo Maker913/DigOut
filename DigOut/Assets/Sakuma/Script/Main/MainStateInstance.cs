@@ -52,7 +52,6 @@ public class MainStateInstance : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     void Update() {
         switch (mainState.gameMode) {
             case GameMode.Anime:
@@ -95,6 +94,7 @@ public class MainStateInstance : MonoBehaviour
     public void ChangeGameMode(GameMode nextGameMode){
         mainState.gameMode = nextGameMode;
         mainState.GameModeStart = true;
+
     } 
 
 

@@ -46,7 +46,6 @@ public class StageCreate : MonoBehaviour
 
     void SaveDataLode()
     {
-
         MainStateInstance.mainStateInstance.mainState.nowArea = 0;
 
 
@@ -59,8 +58,7 @@ public class StageCreate : MonoBehaviour
 
         stageMake.cameraTestObj = data.transform.GetChild(0).gameObject;
 
-        stageMake.StageLode();
-
+            stageMake.StageLode();
         data2.transform.position = new Vector3(startPos.x, startPos.y + 0.5f, 0);
         data.transform.position = new Vector3(cameraPos.x, cameraPos.y, dataz);
 

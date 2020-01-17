@@ -9,9 +9,9 @@ public class SoundController : MonoBehaviour
     private SeContrller SeContrller;
     public enum BgmName
     {
-        Order = 0,
-        Stage,
-        Stage_1819,
+        Order = 0,//街
+        Stage,//マップ
+        Stage_1819,//ボス
     }
     public enum SeName
     {

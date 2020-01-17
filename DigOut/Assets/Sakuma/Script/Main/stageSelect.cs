@@ -104,7 +104,6 @@ public class stageSelect : MonoBehaviour
         listOn = false;
         textParent.SetActive(false);
         MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
-
         foreach (Transform n in textParent.transform)
         {
             GameObject.Destroy(n.gameObject);

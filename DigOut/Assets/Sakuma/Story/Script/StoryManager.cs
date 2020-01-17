@@ -168,6 +168,7 @@ public class StoryManager : MonoBehaviour
                     Anime = false;
                     StoryUI.SetActive(false);
                     StoryBack.SetActive(false);
+                    SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
                 }
 
 

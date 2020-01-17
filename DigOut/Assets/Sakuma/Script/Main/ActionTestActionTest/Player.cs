@@ -34,7 +34,9 @@ public class Player : MonoBehaviour
     //コントローラー保存先
     Controller2D controller;
 
-
+    [SerializeField]
+    GameObject bomPr;
+    float bomTime=0;
     //改造要素
     [SerializeField]
     PlayerAnimeController playerAnime;
@@ -324,9 +326,20 @@ public class Player : MonoBehaviour
 
             if(Input.GetKey(KeyCode.X))
             {
-
+                bomTime += 1;
             }
+            else
+            {
+                bomTime =0;
+            }
+            if(bomTime == 1)
+            {
+                GameObject bomdata= Instantiate(bomPr, transform.position, Quaternion.identity);
+                Rigidbody2D rigidbody2D = bomdata.GetComponent<Rigidbody2D>();
 
+                rigidbody2D.AddForce(new Vector2(250, 250)+(Vector2)(velocity*20));
+                rigidbody2D.AddTorque(30);
+            }
             atkHold = PS4ControllerInput.pS4ControllerInput.contorollerState.Circle;
 
             //damageVelocity *= 0.5f;

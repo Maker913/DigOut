@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4194816
   horizontalRayCount: 32
   verticalRayCount: 32
 --- !u!114 &6376921787456466906
@@ -171,7 +171,7 @@ MonoBehaviour:
   moveSpeed: 2
   layer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4194816
 --- !u!50 &6376921787456466903
 Rigidbody2D:
   serializedVersion: 4

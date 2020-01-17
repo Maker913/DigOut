@@ -51,27 +51,69 @@ public class Player : MonoBehaviour
     float DamageTime=0;
     [SerializeField]
     GameObject atkCol;
-
     static public bool Atk = false;
+
     bool atkHold = false;
     bool Jump;
     int jumpTime;
     bool atkTik = false;
+
+    float pustPos;
+
+
+    [SerializeField]
+    LayerMask nomalMask;
+    [SerializeField]
+    LayerMask upMask;
+
+    [SerializeField]
+    LayerMask Mask;
+    bool footFlg=false;
+
+    [SerializeField]
+    public GameObject Midboss;
+    public Midboss Sc;
+    public Vector2 PlayerMove = Vector2.zero;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
-       
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage"&& DamageTime<0)
+
+
+
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage" && DamageTime < 0)
         {
 
-            damageVelocity = ((Vector2 )collision.gameObject.transform.position- (Vector2)transform.position ).normalized;
-            damageVelocity *=-1* 20;
+            damageVelocity = ((Vector2)collision.gameObject.transform.position - (Vector2)transform.position).normalized;
+            damageVelocity *= -1 * 20;
             damageVelocity.y = 5;
             DamageTime = 2;
             MainStateInstance.mainStateInstance.Life--;
         }
+
+
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Penet")
+        {
+            footFlg = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Penet")
+        {
+            if (!Physics2D.BoxCast(transform.position, new Vector2(0.75f, 0.975f * 2), 0, Vector2.up, 0, Mask))
+            {
+                footFlg = false;
+            }
+
+            
+        }
+    }
 
     void Start()
     {
@@ -87,12 +129,31 @@ public class Player : MonoBehaviour
         Jump = false;
         jumpTime = 0;
 
+        pustPos = transform.position.y;
+
+        MainStateInstance.mainStateInstance.footPos = transform.position.y;
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+        PlayerMove = transform.position;
     }
 
     void FixedUpdate()
     {
+        Debug.DrawLine(transform.position + new Vector3(0, (0.975f ), -10), transform.position + new Vector3(0, -1 * (0.975f ), -10));
+        Debug.DrawLine(transform.position + new Vector3((0.75f / 2f), 0, -10), transform.position + new Vector3(-1 * (0.75f / 2f), 0, -10));
+        if (pustPos - transform.position.y<-0.01f)
+        {
+            controller.collisionMask = upMask;
+        }
+        if (pustPos - transform.position.y > 0f&&!footFlg )
+        {
+            controller.collisionMask = nomalMask;
+        }
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.downButton) { controller.collisionMask = upMask; }
+        //Debug.Log(footFlg);
+
+        pustPos = transform.position.y;
+
 
         if (left)
         {
@@ -102,8 +163,14 @@ public class Player : MonoBehaviour
         {
             atkCol.transform.localPosition = new Vector3(1.75f, 0.1f, 0);
         }
-
-
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.downButton)
+        {
+            atkCol.transform.localPosition = new Vector3(0, -1f, 0);
+        }
+        if (PS4ControllerInput.pS4ControllerInput.contorollerState.upButton)
+        {
+            atkCol.transform.localPosition = new Vector3(0, 1f, 0);
+        }
 
         DamageTime -= Time.fixedDeltaTime;
 
@@ -128,6 +195,10 @@ public class Player : MonoBehaviour
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
 
+            MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position - PlayerMove;
+            PlayerMove = (Vector2)transform.position;
+
+            MainStateInstance.mainStateInstance.footPos = transform.position.y;
             Vector2 input = new Vector2(0, 0);
 
             if (!atk)
@@ -173,6 +244,8 @@ public class Player : MonoBehaviour
                 {
                     velocity.y = jumpVelocity;
                     playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
+
+                    //sc.MidJump();
                 }
                 else if (controller.collisions.below)
                 {
@@ -207,6 +280,9 @@ public class Player : MonoBehaviour
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
                     }
+
+
+
 
                 }
                 else
@@ -246,6 +322,11 @@ public class Player : MonoBehaviour
                 Debug.Log("aaaaaa");
             }
 
+            if(Input.GetKey(KeyCode.X))
+            {
+
+            }
+
             atkHold = PS4ControllerInput.pS4ControllerInput.contorollerState.Circle;
 
             //damageVelocity *= 0.5f;
@@ -264,7 +345,8 @@ public class Player : MonoBehaviour
             //
             velocity.y += gravity * Time.fixedDeltaTime;
 
-            
+            //Debug.Log();
+
 
 
             try

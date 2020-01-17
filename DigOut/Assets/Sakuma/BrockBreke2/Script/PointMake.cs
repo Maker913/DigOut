@@ -65,8 +65,6 @@ public class PointMake : MonoBehaviour
 
 
 
-
-
     }
 
 
@@ -80,6 +78,8 @@ public class PointMake : MonoBehaviour
 
             Bom();
         }
+
+
     }
 
     public void Bom()

@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4194816
   horizontalRayCount: 32
   verticalRayCount: 32
 --- !u!114 &6068822596159152611
@@ -251,7 +251,15 @@ MonoBehaviour:
   material1: {fileID: 2100000, guid: fc9364faf29bc5440b67dcb586b21169, type: 2}
   material2: {fileID: 2100000, guid: f05ad576581473a40887557ce7ebdde7, type: 2}
   atkCol: {fileID: 1427024951}
-  _anim: {fileID: 1736701458145696472}
+  nomalMask:
+    serializedVersion: 2
+    m_Bits: 4719104
+  upMask:
+    serializedVersion: 2
+    m_Bits: 4194816
+  Mask:
+    serializedVersion: 2
+    m_Bits: 4718592
 --- !u!50 &7647717365046053203
 Rigidbody2D:
   serializedVersion: 4

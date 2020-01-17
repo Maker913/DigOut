@@ -35,9 +35,9 @@ public class MainStateInstance : MonoBehaviour
 
     public int Life;
     public bool toolBox;
-    
 
-
+    public float footPos;
+    public Vector2 PlayerMove = Vector2.zero;
     private void Awake() {
         if (mainStateInstance == null) {
             mainState.gameMode = StartMode;

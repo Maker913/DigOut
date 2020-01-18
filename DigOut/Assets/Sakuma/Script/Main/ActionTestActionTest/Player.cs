@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
 
     float pustPos;
 
+    int ActionNumber;
 
     [SerializeField]
     LayerMask nomalMask;
@@ -82,7 +83,8 @@ public class Player : MonoBehaviour
 
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage" && DamageTime < 0)
         {
-
+            Debug.Log("ダメージ受けた");
+            SoundController.Instance.PlaySE(SoundController.SeName.Damage);
             damageVelocity = ((Vector2)collision.gameObject.transform.position - (Vector2)transform.position).normalized;
             damageVelocity *= -1 * 20;
             damageVelocity.y = 5;
@@ -135,6 +137,18 @@ public class Player : MonoBehaviour
         //上二つを表示
         //print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
         PlayerMove = transform.position;
+    }
+
+    private void BGM()
+    {
+        if (ActionNumber == 0)
+        {
+            SoundController.Instance.PlaySE(SoundController.SeName.Attack);
+        }
+        if(ActionNumber == 1)
+        {
+            SoundController.Instance.PlaySE(SoundController.SeName.Jump);
+        }
     }
 
     void FixedUpdate()
@@ -244,7 +258,9 @@ public class Player : MonoBehaviour
                 {
                     velocity.y = jumpVelocity;
                     playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
-
+                    Debug.Log("飛んだ");
+                    ActionNumber = 1;
+                    BGM();
                     //sc.MidJump();
                 }
                 else if (controller.collisions.below)
@@ -268,10 +284,12 @@ public class Player : MonoBehaviour
 
                 if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle&&!atk  && !atkHold)
                 {
-                    Debug.Log("asa");
+                    Debug.Log("攻撃");
                     atk = true;
                     atkTime = 0;
                     atkTik = true;
+                    ActionNumber = 0;
+                    BGM();
                     if (left)
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.LAtk;

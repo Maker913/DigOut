@@ -137,7 +137,6 @@ public class PlayerAction : MonoBehaviour
         //Debug.box
         if (playerVector.x != 0)
         {
-            SoundController.Instance.PlaySE(SoundController.SeName.Jump);
             if (Physics2D.BoxCast(transform.position+new Vector3(playerVector.x * Time.deltaTime,0,0), new Vector2(1, height), 0, Vector2.right, 0, layer))
             {
                 if(Physics2D.BoxCast(transform.position+new Vector3 (playerVector.x * Time.deltaTime,0,0), new Vector2(1, height), 0, Vector2.right,0 , saka)

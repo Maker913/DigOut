@@ -16,6 +16,21 @@ public class Pause : MonoBehaviour
         PauseObj.SetActive(false);
     }
 
+    void bgm()
+    {
+        if (pauseBool == false)
+        {
+            SoundController.Instance.PlaySE(SoundController.SeName.Option_Open);
+        }else if (pauseBool == true)
+        {
+            SoundController.Instance.PlaySE(SoundController.SeName.Option_Close);
+        }
+        else
+        {
+            return;
+        }
+        
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +38,8 @@ public class Pause : MonoBehaviour
         {
             if (pauseBool)
             {
-
+                Debug.Log("オプション閉じる");
+                bgm();
                 pauseBool = false;
                 PauseObj.SetActive(false);
                 MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
@@ -33,6 +49,8 @@ public class Pause : MonoBehaviour
             {
                 if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
                 {
+                    Debug.Log("オプション開く");
+                    bgm();
                     pauseBool = true;
                     PauseObj.SetActive(true);
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Pause;

@@ -20,7 +20,7 @@ public class Treasure : MonoBehaviour
     int cont=3;
     int cont2 = 0;
 
-
+    int numbers = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,22 @@ public class Treasure : MonoBehaviour
         
     }
 
+    void bgm()
+    {
+        if(numbers == 0)
+        {
+            Debug.Log("呼ばれた1");
+            SoundController.Instance.PlaySE(SoundController.SeName.Open);
+        }else if(numbers == 1)
+        {
+            Debug.Log("呼ばれた");
+            SoundController.Instance.PlaySE(SoundController.SeName.Get);
+        }
+        else
+        {
+            return;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +60,9 @@ public class Treasure : MonoBehaviour
             {
                 GameObject data = Instantiate(Item[Random.Range(0, 3)], transform.position, Quaternion.identity);
                 Rigidbody2D rigidbody2D = data.GetComponent<Rigidbody2D>();
+                Debug.Log("箱空いた");
+                numbers = 0;
+                bgm();
                 float angle;
 
                     angle = 60 + ((60 / (cont - 1)) * cont2);

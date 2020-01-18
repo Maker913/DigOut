@@ -7,6 +7,8 @@ public class SoundController : MonoBehaviour
     public static SoundController Instance;
     private BgmContoller bgmContoller;
     private SeContrller SeContrller;
+
+    public bool BgmFlg = false;
     public enum BgmName
     {
         Order = 0,//街

@@ -79,6 +79,7 @@ public class MainStateInstance : MonoBehaviour
         {
             mainState.gameMode = GameMode.Did;
             MainStateInstance.mainStateInstance.stageName = "街に戻る";
+            SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
             Scene.sceneManagerPr.SceneLoad("MainAction");
         }
     }

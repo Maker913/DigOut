@@ -53,7 +53,6 @@ public class StageMakeController : MonoBehaviour
     [SerializeField]
     int nowArea;
 
-
     void Start()
     {
     }
@@ -292,13 +291,31 @@ public class StageMakeController : MonoBehaviour
 
         
         Debug.Log(fileName + "をロードしたで(*^-^*)");
-
+        
+        if(SoundController.Instance.BgmFlg == true)
+        {
+            BGM();
+        }
+        else
+        {
+            return;
+        }
 
         
     }
 
 
-
+    public void BGM()
+    {
+        if (fileName == "街に戻る")
+        {
+            SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
+        }
+        else
+        {
+            SoundController.Instance.PlayBGM(SoundController.BgmName.Stage);
+        }
+    }
 
 
 

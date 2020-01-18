@@ -6,6 +6,18 @@ public class MapMove : MonoBehaviour
 {
     public 
     RectTransform rect;
+
+    [SerializeField]
+    Vector3 stagePos;
+    [SerializeField]
+    Vector3 mapPos;
+    [SerializeField]
+    Vector3 late=Vector3.zero;
+
+
+    [SerializeField]
+    PixAccess pixAccess;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +27,17 @@ public class MapMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rect.localPosition += new Vector3(-MainStateInstance.mainStateInstance.PlayerMove.x * 8.01f, -MainStateInstance.mainStateInstance.PlayerMove.y*9.2f, 0);
+        Vector3 pos = stagePos - (Vector3)MainStateInstance.mainStateInstance.PlayerMove;
+
+
+        Vector3 wa = new Vector3(pos.x * late.x, pos.y * late.y, pos.z * late.z) + mapPos;
+        rect.localPosition =wa;
+        
+    }
+
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(stagePos,new Vector3 (1,1,1));
     }
 }

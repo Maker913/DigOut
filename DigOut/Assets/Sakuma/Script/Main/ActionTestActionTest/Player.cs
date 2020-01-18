@@ -141,6 +141,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position;
+
         Debug.DrawLine(transform.position + new Vector3(0, (0.975f ), -10), transform.position + new Vector3(0, -1 * (0.975f ), -10));
         Debug.DrawLine(transform.position + new Vector3((0.75f / 2f), 0, -10), transform.position + new Vector3(-1 * (0.75f / 2f), 0, -10));
         if (pustPos - transform.position.y<-0.01f)
@@ -197,8 +199,7 @@ public class Player : MonoBehaviour
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
 
-            MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position - PlayerMove;
-            PlayerMove = (Vector2)transform.position;
+            
 
             MainStateInstance.mainStateInstance.footPos = transform.position.y;
             Vector2 input = new Vector2(0, 0);

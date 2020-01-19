@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour
 {
@@ -77,6 +77,8 @@ public class Player : MonoBehaviour
     public Midboss Sc;
     public Vector2 PlayerMove = Vector2.zero;
 
+    float timeBom=2;
+    bool bomf = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -141,6 +143,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        timeBom+=Time.fixedDeltaTime;
         MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position;
 
         Debug.DrawLine(transform.position + new Vector3(0, (0.975f ), -10), transform.position + new Vector3(0, -1 * (0.975f ), -10));
@@ -266,8 +269,31 @@ public class Player : MonoBehaviour
 
 
 
-
-                    
+                if (Input.GetKey(KeyCode.X)&&!atk && !atkHold)
+                {
+                    bomTime += 1;
+                }
+                else
+                {
+                    bomTime = 0;
+                }
+                if (bomTime == 1)
+                {
+                    timeBom = 0;
+                    atk = true;
+                    atkTime = 0;
+                    atkTik = true;
+                    bomf = true;
+                    if (left)
+                    {
+                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.LTh;
+                    }
+                    else
+                    {
+                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.RTh;
+                    }
+                    Invoke("Th", 0.3f);
+                }
 
                 if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle&&!atk  && !atkHold)
                 {
@@ -275,16 +301,31 @@ public class Player : MonoBehaviour
                     atk = true;
                     atkTime = 0;
                     atkTik = true;
-                    if (left)
+                    if (!PS4ControllerInput.pS4ControllerInput.contorollerState.downButton && !PS4ControllerInput.pS4ControllerInput.contorollerState.upButton)
                     {
-                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.LAtk;
+
+
+                        if (left)
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.LAtk;
+                        }
+                        else
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
+                        }
+
                     }
                     else
                     {
-                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
+                        if (PS4ControllerInput.pS4ControllerInput.contorollerState.downButton)
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.DAtk;
+                        }
+                        else
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.UAtk;
+                        }
                     }
-
-
 
 
                 }
@@ -325,22 +366,7 @@ public class Player : MonoBehaviour
                 Debug.Log("aaaaaa");
             }
 
-            if(Input.GetKey(KeyCode.X))
-            {
-                bomTime += 1;
-            }
-            else
-            {
-                bomTime =0;
-            }
-            if(bomTime == 1)
-            {
-                GameObject bomdata= Instantiate(bomPr, transform.position, Quaternion.identity);
-                Rigidbody2D rigidbody2D = bomdata.GetComponent<Rigidbody2D>();
 
-                rigidbody2D.AddForce(new Vector2(250, 250)+(Vector2)(velocity*20));
-                rigidbody2D.AddTorque(30);
-            }
             atkHold = PS4ControllerInput.pS4ControllerInput.contorollerState.Circle;
 
             //damageVelocity *= 0.5f;
@@ -372,5 +398,17 @@ public class Player : MonoBehaviour
             }
             
         }
+    }
+
+
+
+    private void Th()
+    {
+        bomf = false;
+        GameObject bomdata = Instantiate(bomPr, transform.position+new Vector3 (0,0.5f,0), Quaternion.identity);
+        Rigidbody2D rigidbody2D = bomdata.GetComponent<Rigidbody2D>();
+
+        rigidbody2D.AddForce(new Vector2(250*(left?-1:1), 300) + new Vector2(velocity.x * 20,0));
+        rigidbody2D.AddTorque(30);
     }
 }

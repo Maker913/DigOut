@@ -12,6 +12,8 @@ public class MapMove : MonoBehaviour
     [SerializeField]
     Vector3 mapPos;
     [SerializeField]
+    Vector3 mapPos2;
+    [SerializeField]
     Vector3 late=Vector3.zero;
 
 
@@ -32,7 +34,11 @@ public class MapMove : MonoBehaviour
 
         Vector3 wa = new Vector3(pos.x * late.x, pos.y * late.y, pos.z * late.z) + mapPos;
         rect.localPosition =wa;
-        
+        Vector3 wa2 = new Vector3(pos.x * late.x, pos.y * late.y, pos.z * late.z) + mapPos2;
+        wa2 *= 1/260f;
+        wa2.x *= -1;
+        pixAccess.Draw(wa2 * 256);
+        Debug.Log(wa2);
     }
 
 

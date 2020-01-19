@@ -38,11 +38,16 @@ public class MainStateInstance : MonoBehaviour
 
     public float footPos;
     public Vector2 PlayerMove = Vector2.zero;
+
+    public Color[] mapbuffer;
+
     private void Awake() {
         if (mainStateInstance == null) {
+            
             mainState.gameMode = StartMode;
             mainState.GameModeStart = true;
             mainStateInstance = this;
+            mainStateInstance.mapbuffer = null;
             Life = 6;
             toolBox = true;
             DontDestroyOnLoad(this.gameObject);

@@ -99,6 +99,7 @@ MonoBehaviour:
   - {fileID: 4043902653511269741, guid: 1f415abe8dee26a419b6d4a128d1076d, type: 3}
   - {fileID: 2194474282041364408, guid: 6750e6f5520b87b45b4d762e0c11a2b9, type: 3}
   - {fileID: 4530975571402086573, guid: ed97737e7b16b1144b8f529c4d5b2ac9, type: 3}
+  - {fileID: 4043902653511269741, guid: 44429842117f09e468d4d2f1b17d67df, type: 3}
   CameraPreList:
   - {fileID: 8006924506129148325, guid: e3082a6b2f1a8b44ebfa4e86a4fc28ff, type: 3}
   CameraPre: 0

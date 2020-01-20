@@ -277,8 +277,9 @@ public class Player : MonoBehaviour
                 {
                     bomTime = 0;
                 }
-                if (bomTime == 1)
+                if (bomTime == 1&& ItemList.itemList.dynamite>0)
                 {
+                    ItemList.itemList.dynamite--;
                     timeBom = 0;
                     atk = true;
                     atkTime = 0;

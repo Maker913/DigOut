@@ -45,15 +45,23 @@ public class PixAccess : MonoBehaviour {
     }
 
     public void Draw(Vector2 p) {
-        for (int x = 0; x < 256; x++) {
-            for (int y = 0; y < 256; y++) {
-                if (Vector2.Distance(p, new Vector2(x*(bob.x/bob.y), y))< 50) {
-                    float alfa= Mathf.Pow( Vector2.Distance(p, new Vector2(x * (bob.x / bob.y), y)) / 40,4);
-                    if (MainStateInstance.mainStateInstance.mapbuffer[x + 256 * y].a > alfa)
+        if (MainStateInstance.mainStateInstance.mapbuffer != null)
+        {
+
+
+            for (int x = 0; x < 256; x++)
+            {
+                for (int y = 0; y < 256; y++)
+                {
+                    if (Vector2.Distance(p, new Vector2(x * (bob.x / bob.y), y)) < 50)
                     {
-                        MainStateInstance.mainStateInstance.mapbuffer.SetValue(new Color(MainStateInstance.mainStateInstance.mapbuffer[x * 256 + y].r, MainStateInstance.mainStateInstance.mapbuffer[x * 256 + y].g, MainStateInstance.mainStateInstance.mapbuffer[x * 256 + y].b, alfa), x + 256 * y);
+                        float alfa = Mathf.Pow(Vector2.Distance(p, new Vector2(x * (bob.x / bob.y), y)) / 40, 4);
+                        if (MainStateInstance.mainStateInstance.mapbuffer[x + 256 * y].a > alfa)
+                        {
+                            MainStateInstance.mainStateInstance.mapbuffer.SetValue(new Color(MainStateInstance.mainStateInstance.mapbuffer[x * 256 + y].r, MainStateInstance.mainStateInstance.mapbuffer[x * 256 + y].g, MainStateInstance.mainStateInstance.mapbuffer[x * 256 + y].b, alfa), x + 256 * y);
+                        }
+
                     }
-                    
                 }
             }
         }

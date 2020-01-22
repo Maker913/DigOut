@@ -16,9 +16,15 @@ public class PS4ControllerInput : MonoBehaviour
 
         public bool Jump;
         public bool Circle;
+        public bool Square;
+        public bool Triangle;
 
         public bool singleCircle;
         public bool singleOptions;
+        public bool singleSquare;
+        public bool singleTriangle;
+        public bool singleJump;
+
 
         public bool singleLeft;
         public bool singleRight;
@@ -35,9 +41,14 @@ public class PS4ControllerInput : MonoBehaviour
 
             Jump = false;
             Circle = false;
+            Square = false;
+            Triangle = false;
 
             singleCircle = false;
             singleOptions = false;
+            singleSquare = false;
+            singleTriangle = false;
+            singleJump = false;
 
             singleLeft = false;
             singleRight = false;
@@ -94,8 +105,13 @@ public class PS4ControllerInput : MonoBehaviour
 
             contorollerState.Jump = Input.GetButton("Cross");
             contorollerState.Circle = Input.GetButton("Circle");
+            contorollerState.Square = Input.GetButton("Square");
+            contorollerState.Triangle = Input.GetButton("Triangle");
 
+            contorollerState.singleJump = Input.GetButtonDown("Cross");
             contorollerState.singleCircle = Input.GetButtonDown("Circle");
+            contorollerState.singleSquare = Input.GetButtonDown("Square");
+            contorollerState.singleTriangle = Input.GetButtonDown("Triangle");
             contorollerState.singleOptions = Input.GetButtonDown("Options");
         }
         else {
@@ -111,8 +127,13 @@ public class PS4ControllerInput : MonoBehaviour
 
             contorollerState.Jump = Input.GetKey(KeyCode.Space);
             contorollerState.Circle = Input.GetKey(KeyCode.Z);
+            contorollerState.Square = Input.GetKey(KeyCode.X);
+            contorollerState.Triangle = Input.GetKey(KeyCode.C);
 
+            contorollerState.singleJump = Input.GetKeyDown(KeyCode.Space);
             contorollerState.singleCircle = Input.GetKeyDown(KeyCode.Z);
+            contorollerState.singleSquare = Input.GetKeyDown(KeyCode.X);
+            contorollerState.singleTriangle = Input.GetKeyDown(KeyCode.C);
             contorollerState.singleOptions = Input.GetKeyDown(KeyCode.Q);
 
         }

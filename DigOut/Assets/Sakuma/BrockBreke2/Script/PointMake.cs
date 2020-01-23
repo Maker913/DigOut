@@ -29,6 +29,9 @@ public class PointMake : MonoBehaviour
     [SerializeField]
     Collider2D collider2D;
 
+    [SerializeField]
+    GameObject[] Item;
+
     bool flg = false;
     float flgTime = 0;
     // Start is called before the first frame update
@@ -87,6 +90,12 @@ public class PointMake : MonoBehaviour
         if (!flg)
         {
             Destroy(collider2D);
+            if (Random.Range(0,10)  >= 6) {
+                GameObject data = Instantiate(Item[Random.Range(0, 3)], transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);
+                Rigidbody2D rigidbody2D = data.GetComponent<Rigidbody2D>();
+                rigidbody2D.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+            }
+
             for (int i = 0; i < 9; i++)
             {
                 rigidbody[i].constraints = RigidbodyConstraints2D.None;

@@ -7,12 +7,14 @@ public class shopCan : MonoBehaviour
     static public bool shop=false;
     [SerializeField]
     GameObject can;
-    [SerializeField]
+    //[SerializeField]
     //GameObject sUI;
     float ktime=0;
     [SerializeField]
     Image image;
     bool sw = false;
+    [SerializeField]
+    Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,7 @@ public class shopCan : MonoBehaviour
                     sw = false;
                     //sUI.SetActive(true);
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
+                    text.text = "いらっしゃい";
                 }
                 ktime = 0;
                 

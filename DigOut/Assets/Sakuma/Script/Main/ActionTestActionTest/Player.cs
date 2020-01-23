@@ -79,6 +79,8 @@ public class Player : MonoBehaviour
 
     float timeBom=2;
     bool bomf = false;
+
+    bool heelF = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -202,8 +204,16 @@ public class Player : MonoBehaviour
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
 
-            
-
+            if (!PS4ControllerInput.pS4ControllerInput.contorollerState.Triangle)
+            {
+                heelF = true;
+            }
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Triangle && ItemList.itemList.heel > 0 && heelF && MainStateInstance.mainStateInstance.Life < 6)
+            {
+                heelF = false;
+                MainStateInstance.mainStateInstance.Life = 6;
+                ItemList.itemList.heel--;
+            }
             MainStateInstance.mainStateInstance.footPos = transform.position.y;
             Vector2 input = new Vector2(0, 0);
 

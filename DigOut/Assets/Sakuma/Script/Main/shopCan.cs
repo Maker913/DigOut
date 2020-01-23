@@ -7,12 +7,14 @@ public class shopCan : MonoBehaviour
     static public bool shop=false;
     [SerializeField]
     GameObject can;
-    [SerializeField]
-    GameObject sUI;
+    //[SerializeField]
+    //GameObject sUI;
     float ktime=0;
     [SerializeField]
     Image image;
     bool sw = false;
+    [SerializeField]
+    Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,8 +49,9 @@ public class shopCan : MonoBehaviour
                 if (sw)
                 {
                     sw = false;
-                    sUI.SetActive(true);
+                    //sUI.SetActive(true);
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
+                    text.text = "いらっしゃい";
                 }
                 ktime = 0;
                 
@@ -62,7 +65,7 @@ public class shopCan : MonoBehaviour
         }
         if (shopCan.shop)
         {
-            sUI.SetActive(false);
+            //sUI.SetActive(false);
             if (PS4ControllerInput.pS4ControllerInput.contorollerState.Jump)
             {
                 sw = true;

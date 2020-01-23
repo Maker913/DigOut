@@ -1251,6 +1251,10 @@ MonoBehaviour:
   power: 75
   anglePower: 10
   collider2D: {fileID: 5492081988536657287}
+  Item:
+  - {fileID: 1595078381687483389, guid: 27184c2c99411b540881bb131218eca4, type: 3}
+  - {fileID: 1595078381687483389, guid: 6e88372d57987b744b115a83d4c79279, type: 3}
+  - {fileID: 1595078381687483389, guid: f57f55cb6ba448e4e9b59624611ccabf, type: 3}
 --- !u!61 &5492081988536657287
 BoxCollider2D:
   m_ObjectHideFlags: 0

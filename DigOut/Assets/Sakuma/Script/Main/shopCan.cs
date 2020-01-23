@@ -8,7 +8,7 @@ public class shopCan : MonoBehaviour
     [SerializeField]
     GameObject can;
     [SerializeField]
-    GameObject sUI;
+    //GameObject sUI;
     float ktime=0;
     [SerializeField]
     Image image;
@@ -47,7 +47,7 @@ public class shopCan : MonoBehaviour
                 if (sw)
                 {
                     sw = false;
-                    sUI.SetActive(true);
+                    //sUI.SetActive(true);
                     MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Play;
                 }
                 ktime = 0;
@@ -62,7 +62,7 @@ public class shopCan : MonoBehaviour
         }
         if (shopCan.shop)
         {
-            sUI.SetActive(false);
+            //sUI.SetActive(false);
             if (PS4ControllerInput.pS4ControllerInput.contorollerState.Jump)
             {
                 sw = true;

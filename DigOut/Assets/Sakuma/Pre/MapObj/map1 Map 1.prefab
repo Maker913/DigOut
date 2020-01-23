@@ -115,7 +115,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8fe2fd523dbb8984c85e0877b699b1ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16f8414cacd948149881a5f532db9338, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rect: {fileID: 6368755042835908648}
-  stagePos: {x: -3, y: 14, z: 0}
+  stagePos: {x: -0.5, y: 14.4, z: 0}
   mapPos: {x: 211.6, y: -112.2, z: 0}
   mapPos2: {x: -21, y: 6.75, z: 0}
-  late: {x: 2.71, y: 3, z: 0}
+  late: {x: 2.76, y: 3.12, z: 0}
   pixAccess: {fileID: 7525794983457327714}
 --- !u!1 &5174504323671797304
 GameObject:

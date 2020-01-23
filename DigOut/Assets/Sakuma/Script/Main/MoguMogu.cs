@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+public class MoguMogu : MonoBehaviour
 {
     [SerializeField]
     Material material;
@@ -71,9 +71,7 @@ public class Shop : MonoBehaviour
             if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle && !sw)
             {
                 sw = true;
-                ItemList.itemList.dynamite += 5;
-                MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Pause;
-                shopCan.shop = true;
+                StoryManager.storyManager.StoryLoad("Mogu1");
             }
         }
     }

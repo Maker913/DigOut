@@ -46,8 +46,8 @@ public class Crustle : MonoBehaviour
     float angle;
 
     bool Turn;
-
-
+    [SerializeField]
+    int crustleHP = 3;
 
 
     //佐久間追加分
@@ -70,6 +70,7 @@ public class Crustle : MonoBehaviour
             damageVelocity *= (Turn ?-1:1) * 20;
             damageVelocity.y = 5;
             DamageTime = 1;
+            crustleHP--;
         }
     }
     //
@@ -117,6 +118,11 @@ public class Crustle : MonoBehaviour
 
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
+
+            if(crustleHP <= 0)
+            {
+                Destroy(gameObject);
+            }
 
             if (controller.collisions.above || controller.collisions.below)
             {

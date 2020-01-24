@@ -15,11 +15,11 @@ public class PauseSet : MonoBehaviour
     Text LV;
 
     [SerializeField]
-    GameObject dynamite;
+    Text dynamite;
     [SerializeField]
     GameObject drill;
     [SerializeField]
-    GameObject heel;
+    Text heel;
 
     // Update is called once per frame
     void Update()
@@ -29,8 +29,18 @@ public class PauseSet : MonoBehaviour
         copper.text = ItemList.itemList.copper.ToString();
         LV.text = ItemList.itemList.iceaxLevel .ToString();
 
-        dynamite.SetActive(!ItemList.itemList.dynamite);
+        try
+        {
+            dynamite.text = ItemList.itemList.dynamite.ToString();
+        }
+        catch
+        {
+
+        }
+        
+
         drill.SetActive(!ItemList.itemList.drill);
-        heel.SetActive(!ItemList.itemList.heel);
+        heel.text = ItemList.itemList.heel.ToString();
+
     }
 }

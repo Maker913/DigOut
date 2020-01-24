@@ -9,9 +9,9 @@ public class ItemList : MonoBehaviour
     public int silver;
     public int gold;
 
-    public bool dynamite;
+    public int dynamite;
     public bool drill;
-    public bool heel;
+    public int heel;
 
     public int iceaxLevel;
 
@@ -51,9 +51,9 @@ public class ItemList : MonoBehaviour
         silver=0;
         gold=0;
 
-        dynamite= false;
+        dynamite= 0;
         drill=false ;
-        heel=false ;
+        heel=0 ;
 
         iceaxLevel = 1;
     }

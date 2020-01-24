@@ -44,6 +44,7 @@ public class GoHomeSelect : MonoBehaviour
 
                 if(yesNo)
                 {
+                    Mainc.animeC = true;
                     MainStateInstance.mainStateInstance.stageName = "街に戻る";
                     Scene.sceneManagerPr.SceneLoad("MainAction");
 
@@ -65,6 +66,7 @@ public class GoHomeSelect : MonoBehaviour
 
     public void On()
     {
+        
         windowOn = true;
         gameObject.SetActive(true);
         MainStateInstance.mainStateInstance.mainState.gameMode = MainStateInstance.GameMode.Pause;

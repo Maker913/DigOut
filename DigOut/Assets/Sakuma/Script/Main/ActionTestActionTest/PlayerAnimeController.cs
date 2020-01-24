@@ -11,7 +11,11 @@ public class PlayerAnimeController : MonoBehaviour
         RWork,
         Fall,
         LAtk,
-        RAtk
+        RAtk,
+        UAtk,
+        DAtk,
+        LTh,
+        RTh
 
     }
 
@@ -54,6 +58,18 @@ public class PlayerAnimeController : MonoBehaviour
                 case AnimeMode.RAtk:
                     transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 90, ref spead, 0.1f), 0);
                     break;
+                case AnimeMode.UAtk:
+                    transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 180, ref spead, 0.1f), 0);
+                    break;
+                case AnimeMode.DAtk:
+                    transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 180, ref spead, 0.1f), 0);
+                    break;
+                case AnimeMode.LTh:
+                    transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 270, ref spead, 0.1f), 0);
+                    break;
+                case AnimeMode.RTh:
+                    transform.eulerAngles = new Vector3(0, Mathf.SmoothDamp(transform.eulerAngles.y, 90, ref spead, 0.1f), 0);
+                    break;
                 case AnimeMode.Fall:
                     break;
             }
@@ -85,6 +101,18 @@ public class PlayerAnimeController : MonoBehaviour
                     case AnimeMode.Fall:
                         AnimeChange("Jump");
                         break;
+                    case AnimeMode.DAtk:
+                        AnimeChange("DAtk");
+                        break;
+                    case AnimeMode.UAtk :
+                        AnimeChange("UAtk");
+                        break;
+                    case AnimeMode.LTh :
+                        AnimeChange("Th");
+                        break;
+                    case AnimeMode.RTh :
+                        AnimeChange("Th");
+                        break;
                 }
             }
 
@@ -110,6 +138,9 @@ public class PlayerAnimeController : MonoBehaviour
         animator.SetBool("Work", animeName == "Work");
         animator.SetBool("Jump", animeName == "Jump");
         animator.SetBool("Atk", animeName == "Atk");
+        animator.SetBool("AtkU", animeName == "UAtk");
+        animator.SetBool("AtkD", animeName == "DAtk");
+        animator.SetBool("Th", animeName == "Th");
     }
 
 }

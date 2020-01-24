@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2776694717110545119}
   - component: {fileID: 2776694717110545104}
+  - component: {fileID: 215843268}
   m_Layer: 0
   m_Name: MainStateInstance
   m_TagString: Untagged
@@ -43,4 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39943e18a65c7d14eb9d465305da6135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartMode: 3
+  StartMode: 0
+  stageName: "\u8857\u306B\u623B\u308B"
+  Life: 0
+  toolBox: 0
+  footPos: 0
+  PlayerMove: {x: 0, y: 0}
+  mapbuffer: []
+  mainTexture: {fileID: 2800000, guid: 8fe2fd523dbb8984c85e0877b699b1ce, type: 3}
+--- !u!114 &215843268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2776694717110545105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401d01b19d32e6f448036c8c59d18c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

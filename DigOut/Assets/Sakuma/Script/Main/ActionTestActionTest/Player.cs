@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour
 {
@@ -34,7 +34,9 @@ public class Player : MonoBehaviour
     //コントローラー保存先
     Controller2D controller;
 
-
+    [SerializeField]
+    GameObject bomPr;
+    float bomTime=0;
     //改造要素
     [SerializeField]
     PlayerAnimeController playerAnime;
@@ -60,7 +62,6 @@ public class Player : MonoBehaviour
 
     float pustPos;
 
-    int ActionNumber;
 
     [SerializeField]
     LayerMask nomalMask;
@@ -70,12 +71,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     LayerMask Mask;
     bool footFlg=false;
-    float sound_span;
+
     [SerializeField]
     public GameObject Midboss;
     public Midboss Sc;
     public Vector2 PlayerMove = Vector2.zero;
 
+    float timeBom=2;
+    bool bomf = false;
+
+    bool heelF = false;
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -83,8 +88,7 @@ public class Player : MonoBehaviour
 
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage" && DamageTime < 0)
         {
-            Debug.Log("ダメージ受けた");
-            SoundController.Instance.PlaySE(SoundController.SeName.Damage);
+
             damageVelocity = ((Vector2)collision.gameObject.transform.position - (Vector2)transform.position).normalized;
             damageVelocity *= -1 * 20;
             damageVelocity.y = 5;
@@ -139,20 +143,11 @@ public class Player : MonoBehaviour
         PlayerMove = transform.position;
     }
 
-    private void BGM()
-    {
-        if (ActionNumber == 0)
-        {
-            SoundController.Instance.PlaySE(SoundController.SeName.Attack);
-        }
-        if(ActionNumber == 1)
-        {
-            SoundController.Instance.PlaySE(SoundController.SeName.Jump);
-        }
-    }
-
     void FixedUpdate()
     {
+        timeBom+=Time.fixedDeltaTime;
+        MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position;
+
         Debug.DrawLine(transform.position + new Vector3(0, (0.975f ), -10), transform.position + new Vector3(0, -1 * (0.975f ), -10));
         Debug.DrawLine(transform.position + new Vector3((0.75f / 2f), 0, -10), transform.position + new Vector3(-1 * (0.75f / 2f), 0, -10));
         if (pustPos - transform.position.y<-0.01f)
@@ -209,9 +204,16 @@ public class Player : MonoBehaviour
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
 
-            MainStateInstance.mainStateInstance.PlayerMove = (Vector2)transform.position - PlayerMove;
-            PlayerMove = (Vector2)transform.position;
-
+            if (!PS4ControllerInput.pS4ControllerInput.contorollerState.Triangle)
+            {
+                heelF = true;
+            }
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Triangle && ItemList.itemList.heel > 0 && heelF && MainStateInstance.mainStateInstance.Life < 6)
+            {
+                heelF = false;
+                MainStateInstance.mainStateInstance.Life = 6;
+                ItemList.itemList.heel--;
+            }
             MainStateInstance.mainStateInstance.footPos = transform.position.y;
             Vector2 input = new Vector2(0, 0);
 
@@ -258,55 +260,83 @@ public class Player : MonoBehaviour
                 {
                     velocity.y = jumpVelocity;
                     playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
-                    Debug.Log("飛んだ");
-                    ActionNumber = 1;
-                    BGM();
+
                     //sc.MidJump();
                 }
                 else if (controller.collisions.below)
                 {
                     if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
                     {
-                        sound_span -= Time.deltaTime;
-                        if (sound_span <= 0)
-                        {
-                            SoundController.Instance.PlaySE(SoundController.SeName.Walk);
-                            sound_span = (float)0.5;
-                        }
                         if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; left = true; }
                         if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; left = false; }
                     }
                     else
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
-                        //SoundController.Instance.StopSE();
                     }
 
                 }
 
 
 
-
-                    
-
-                if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle&&!atk  && !atkHold)
+                if (Input.GetKey(KeyCode.X)&&!atk && !atkHold)
                 {
-                    Debug.Log("攻撃");
+                    bomTime += 1;
+                }
+                else
+                {
+                    bomTime = 0;
+                }
+                if (bomTime == 1&& ItemList.itemList.dynamite>0)
+                {
+                    ItemList.itemList.dynamite--;
+                    timeBom = 0;
                     atk = true;
                     atkTime = 0;
                     atkTik = true;
-                    ActionNumber = 0;
-                    BGM();
+                    bomf = true;
                     if (left)
                     {
-                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.LAtk;
+                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.LTh;
                     }
                     else
                     {
-                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
+                        playerAnime.animeMode = PlayerAnimeController.AnimeMode.RTh;
                     }
+                    Invoke("Th", 0.3f);
+                }
+
+                if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle&&!atk  && !atkHold)
+                {
+                    Debug.Log("asa");
+                    atk = true;
+                    atkTime = 0;
+                    atkTik = true;
+                    if (!PS4ControllerInput.pS4ControllerInput.contorollerState.downButton && !PS4ControllerInput.pS4ControllerInput.contorollerState.upButton)
+                    {
 
 
+                        if (left)
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.LAtk;
+                        }
+                        else
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.RAtk;
+                        }
+
+                    }
+                    else
+                    {
+                        if (PS4ControllerInput.pS4ControllerInput.contorollerState.downButton)
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.DAtk;
+                        }
+                        else
+                        {
+                            playerAnime.animeMode = PlayerAnimeController.AnimeMode.UAtk;
+                        }
+                    }
 
 
                 }
@@ -347,10 +377,6 @@ public class Player : MonoBehaviour
                 Debug.Log("aaaaaa");
             }
 
-            if(Input.GetKey(KeyCode.X))
-            {
-
-            }
 
             atkHold = PS4ControllerInput.pS4ControllerInput.contorollerState.Circle;
 
@@ -383,5 +409,17 @@ public class Player : MonoBehaviour
             }
             
         }
+    }
+
+
+
+    private void Th()
+    {
+        bomf = false;
+        GameObject bomdata = Instantiate(bomPr, transform.position+new Vector3 (0,0.5f,0), Quaternion.identity);
+        Rigidbody2D rigidbody2D = bomdata.GetComponent<Rigidbody2D>();
+
+        rigidbody2D.AddForce(new Vector2(250*(left?-1:1), 300) + new Vector2(velocity.x * 20,0));
+        rigidbody2D.AddTorque(30);
     }
 }

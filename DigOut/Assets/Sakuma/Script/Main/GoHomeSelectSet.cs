@@ -21,7 +21,7 @@ public class GoHomeSelectSet : MonoBehaviour
         if (collision.gameObject.layer == 12 && !Mainc.animeC)
         {
             goHome.On();
-            Mainc.animeC = true;
+            
         }
     }
 

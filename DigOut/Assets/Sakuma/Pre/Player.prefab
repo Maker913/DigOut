@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!1 &310006585077634315
 GameObject:
@@ -247,6 +247,7 @@ MonoBehaviour:
   accelerationTimeAirborne: 0.2
   accelerationTimeGrounded: 0.1
   moveSpeed: 6
+  bomPr: {fileID: 3095040592218742062, guid: 4dd1a0cff545d9a4f94ec5cbf6902edd, type: 3}
   playerAnime: {fileID: 4019370168449980998}
   material1: {fileID: 2100000, guid: fc9364faf29bc5440b67dcb586b21169, type: 2}
   material2: {fileID: 2100000, guid: f05ad576581473a40887557ce7ebdde7, type: 2}
@@ -260,6 +261,9 @@ MonoBehaviour:
   Mask:
     serializedVersion: 2
     m_Bits: 4718592
+  Midboss: {fileID: 0}
+  Sc: {fileID: 0}
+  PlayerMove: {x: 0, y: 0}
 --- !u!50 &7647717365046053203
 Rigidbody2D:
   serializedVersion: 4
@@ -799,10 +803,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5496511512134817123}
     m_Modifications:
-    - target: {fileID: 100000, guid: 62aede732613e204f920ad24c9b9d090, type: 3}
-      propertyPath: m_Name
-      value: attack_motion_01_v96
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 62aede732613e204f920ad24c9b9d090, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -858,6 +858,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 62aede732613e204f920ad24c9b9d090, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.3333325
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 62aede732613e204f920ad24c9b9d090, type: 3}
+      propertyPath: m_Name
+      value: attack_motion_01_v96
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 62aede732613e204f920ad24c9b9d090, type: 3}
       propertyPath: m_LocalRotation.y

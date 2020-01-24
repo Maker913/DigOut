@@ -29,7 +29,16 @@ public class PauseSet : MonoBehaviour
         copper.text = ItemList.itemList.copper.ToString();
         LV.text = ItemList.itemList.iceaxLevel .ToString();
 
-        dynamite.text = ItemList.itemList.dynamite.ToString();
+        try
+        {
+            dynamite.text = ItemList.itemList.dynamite.ToString();
+        }
+        catch
+        {
+
+        }
+        
+
         drill.SetActive(!ItemList.itemList.drill);
         heel.text = ItemList.itemList.heel.ToString();
 

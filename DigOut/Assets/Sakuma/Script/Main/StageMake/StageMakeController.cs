@@ -310,11 +310,12 @@ public class StageMakeController : MonoBehaviour
         if (fileName == "街に戻る")
         {
             SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
-        }
+        }/*
         else
         {
+            Debug.Log("ダンジョン");
             SoundController.Instance.PlayBGM(SoundController.BgmName.Stage);
-        }
+        }*/
     }
 
 

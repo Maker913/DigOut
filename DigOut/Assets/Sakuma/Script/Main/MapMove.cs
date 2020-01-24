@@ -38,6 +38,8 @@ public class MapMove : MonoBehaviour
         wa2 *= 1/260f;
         wa2.x *= -1;
         pixAccess.Draw(wa2 * 256);
+        //ダンジョン潜入
+        SoundController.Instance.PlayBGM(SoundController.BgmName.Stage);
         Debug.Log(wa2);
     }
 

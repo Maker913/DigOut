@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     LayerMask Mask;
     bool footFlg=false;
-
+    float sound_span;
     [SerializeField]
     public GameObject Midboss;
     public Midboss Sc;
@@ -267,12 +267,19 @@ public class Player : MonoBehaviour
                 {
                     if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
                     {
+                        sound_span -= Time.deltaTime;
+                        if (sound_span <= 0)
+                        {
+                            SoundController.Instance.PlaySE(SoundController.SeName.Walk);
+                            sound_span = (float)0.5;
+                        }
                         if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; left = true; }
                         if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; left = false; }
                     }
                     else
                     {
                         playerAnime.animeMode = PlayerAnimeController.AnimeMode.Idole;
+                        //SoundController.Instance.StopSE();
                     }
 
                 }

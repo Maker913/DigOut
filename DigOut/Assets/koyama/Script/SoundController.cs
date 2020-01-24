@@ -60,9 +60,9 @@ public class SoundController : MonoBehaviour
     /// <para>SoundController.Instance.PlaySE(AudioManager.SeName.名前) </para>
     /// </summary>
     /// <param name="name"></param>
-    public void PlaySE(SeName name)
+    public void PlaySE(SeName name)//, bool loop= false)
     {
-        SeContrller.PlaySE((int)name);
+        SeContrller.PlaySE((int)name);//,false);
     }
     //SE停止
     public void StopSE()

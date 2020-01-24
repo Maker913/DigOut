@@ -41,14 +41,20 @@ public class Item : MonoBehaviour
             {
                 case 0:
                     ItemList.itemList.copper += 1;
+                    Debug.Log("銅");
+                    SoundController.Instance.PlaySE(SoundController.SeName.Get);
                     Destroy(transform.parent.gameObject);
                     break;
                 case 1:
                     ItemList.itemList.silver += 1;
+                    SoundController.Instance.PlaySE(SoundController.SeName.Get);
+                    Debug.Log("銀");
                     Destroy(transform.parent.gameObject);
                     break;
                 case 2:
                     ItemList.itemList.gold += 1;
+                    SoundController.Instance.PlaySE(SoundController.SeName.Get);
+                    Debug.Log("金");
                     Destroy(transform.parent.gameObject);
                     break;
                 case 3:

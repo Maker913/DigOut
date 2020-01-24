@@ -10,14 +10,22 @@ public class SeContrller : SoundModel
         audioSource = GetComponent<AudioSource>();
     }
     //再生
-    public void PlaySE(int number)
+    public void PlaySE(int number)//,bool loop)
     {
         audioSource.PlayOneShot(audioClips[number]);
+        /*
+        if(loop == true)
+        {
+            audioSource.loop = true;
+        }
+        else
+        {
+            audioSource.loop = false;
+        }*/
     }
     //停止
     public void StopSE()
     {
         audioSource.Stop();
-        audioSource.clip = null;
     }
 }

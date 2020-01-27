@@ -13,6 +13,8 @@ public class PauseSet : MonoBehaviour
     Text copper;
     [SerializeField]
     Text LV;
+    [SerializeField]
+    Text Pow;
 
     [SerializeField]
     Text dynamite;
@@ -28,15 +30,9 @@ public class PauseSet : MonoBehaviour
         silver .text = ItemList.itemList.silver .ToString();
         copper.text = ItemList.itemList.copper.ToString();
         LV.text = ItemList.itemList.iceaxLevel .ToString();
-
-        try
-        {
+        Pow.text = MainStateInstance.mainStateInstance.Pow.ToString();
             dynamite.text = ItemList.itemList.dynamite.ToString();
-        }
-        catch
-        {
 
-        }
         
 
         drill.SetActive(!ItemList.itemList.drill);

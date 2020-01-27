@@ -1164,8 +1164,8 @@ GameObject:
   - component: {fileID: 5492081988536657286}
   - component: {fileID: 5492081988536657287}
   m_Layer: 22
-  m_Name: Brock
-  m_TagString: 4
+  m_Name: Brock 2
+  m_TagString: 59
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c5f3bee75a55a4db850a66d76d07ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pow: 1
+  pow: 3
   Brock:
   - {fileID: 5492081987217866661}
   - {fileID: 5492081988669336850}
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   - {fileID: 5492081987771872293}
   - {fileID: 5492081987421002274}
   BreakShader: {fileID: 4800000, guid: f3d0625acf944e84f9378d56bc8ba5b0, type: 3}
-  texture: {fileID: 2800000, guid: b9caa5becf39cae4f826ee5eebd512b0, type: 3}
+  texture: {fileID: 2800000, guid: 68130d36e1408564ba5f2189fa232aa5, type: 3}
   collider2Ds:
   - {fileID: 5492081987217866663}
   - {fileID: 5492081988669336854}

@@ -55,7 +55,8 @@ public class Progression : MonoBehaviour
             case 3:
                 if (startC)
                 {
-                    Scene.sceneManagerPr.SceneLoad("Title");
+                    //Scene.sceneManagerPr.SceneLoad("Title");
+                    MainStateInstance.mainStateInstance.Pow = 2;
                     startC = false;
                 }
                 

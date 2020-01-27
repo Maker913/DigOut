@@ -32,7 +32,7 @@ public class MainStateInstance : MonoBehaviour
     public MainState mainState;
     static public MainStateInstance mainStateInstance;
     public string stageName;
-
+    public int Pow;
     public int Life;
     public bool toolBox;
 
@@ -48,6 +48,7 @@ public class MainStateInstance : MonoBehaviour
             mainState.GameModeStart = true;
             mainStateInstance = this;
             mainStateInstance.mapbuffer = null;
+            Pow = 1;
             Life = 6;
             toolBox = true;
             DontDestroyOnLoad(this.gameObject);

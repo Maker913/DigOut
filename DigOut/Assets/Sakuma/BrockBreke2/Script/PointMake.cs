@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PointMake : MonoBehaviour
 {
-
+    [SerializeField]
+    int pow;
     [SerializeField]
     GameObject[] Brock;
     [SerializeField]
@@ -76,7 +77,7 @@ public class PointMake : MonoBehaviour
     {
 
 
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Atk" && Player.Atk)
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Atk" && Player.Atk&&pow<=MainStateInstance.mainStateInstance.Pow)
         {
 
             Bom();

@@ -70,7 +70,7 @@ public class Crustle : MonoBehaviour
             damageVelocity *= (Turn ?-1:1) * 20;
             damageVelocity.y = 5;
             DamageTime = 1;
-            crustleHP--;
+            crustleHP-=MainStateInstance.mainStateInstance.Pow;
         }
     }
     //

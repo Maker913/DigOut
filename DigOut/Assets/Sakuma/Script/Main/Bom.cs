@@ -55,12 +55,15 @@ public class Bom : MonoBehaviour
                         Debug.Log("21");
                         PointMake pointMake= data.collider.gameObject.GetComponent<PointMake>();
                         pointMake.Bom();
+
                     }
 
 
                     rigidbody.constraints =RigidbodyConstraints2D.FreezeAll;
 
                     image.SetActive(false);
+                    Debug.Log("baku");
+                    SoundController.Instance.PlaySE(SoundController.SeName.bomb);
                     particle.Play();
                     flg = true;
                     time = 2;

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92dbed8ba77948042a1798c1fde2d13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BgmFlg: 0
 --- !u!114 &5408432322869391718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +85,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8553ee7cb6b807f41b25870105b95856, type: 3}
   - {fileID: 8300000, guid: 1d5df656e97fc384c90ef41056b02dc4, type: 3}
   - {fileID: 8300000, guid: 2578704ebe6f5ec4cbc3f60d73161d21, type: 3}
+  - {fileID: 8300000, guid: 84d87a89e05c72549bfa83d2591240bf, type: 3}
 --- !u!82 &5408432322869391704
 AudioSource:
   m_ObjectHideFlags: 0

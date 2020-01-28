@@ -26,6 +26,7 @@ public class SoundController : MonoBehaviour
         Option_Close,//オプション閉じる
         Option_Open,//オプション開く
         Walk,//歩き
+        bomb,//爆弾
     }
     private void Awake()
     {

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4530975571402086570}
   - component: {fileID: 5611542094578252576}
-  - component: {fileID: 2795194821616300455}
+  - component: {fileID: 484563209859766766}
   m_Layer: 0
-  m_Name: ToolBox
-  m_TagString: 54
+  m_Name: lastItem
+  m_TagString: 60
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.52, y: 1.18}
   m_EdgeRadius: 0
---- !u!114 &2795194821616300455
+--- !u!114 &484563209859766766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,11 +68,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4530975571402086573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aadcb5a2b6d4742498a6aef6761f964f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fb72b6a8cb22464993e6ca0cf508c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNum: 3
-  time: 0
 --- !u!1 &4530975572147382855
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06f9642008461aa41a46c99365f8ca11, type: 2}
+  - {fileID: 2100000, guid: 65ccb84ba930a424ba6bc9f77eacefde, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

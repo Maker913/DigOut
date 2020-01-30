@@ -7,7 +7,7 @@ public class LastItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!MainStateInstance.mainStateInstance.lastItem)
+        if (!MainStateInstance.mainStateInstance.lastItem||MainStateInstance.mainStateInstance.toolBox)
         {
             gameObject.SetActive(false);
         }
@@ -23,8 +23,8 @@ public class LastItem : MonoBehaviour
         if (collision.tag.ToString() == "Player" )
         {
 
-            StoryManager.storyManager.StoryLoad("ItemGet");
-            Progression.progression.num++;
+            StoryManager.storyManager.StoryLoad("LastItemGet");
+            //Progression.progression.num++;
             MainStateInstance.mainStateInstance.lastItem = false;
             Destroy(gameObject);
 

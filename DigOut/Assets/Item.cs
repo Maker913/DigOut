@@ -58,8 +58,8 @@ public class Item : MonoBehaviour
                     Destroy(transform.parent.gameObject);
                     break;
                 case 3:
-                    //StoryManager.storyManager.StoryLoad("ItemGet");
-                    Progression.progression.num++;
+                    StoryManager.storyManager.StoryLoad("ItemGet");
+                    //Progression.progression.num++;
                     MainStateInstance.mainStateInstance.toolBox = false;
                     Destroy(gameObject);
                     break;

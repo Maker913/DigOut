@@ -61,6 +61,14 @@ public class Progression : MonoBehaviour
                 }
                 
                 break;
+            case 5:
+                if (startC)
+                {
+                    Scene.sceneManagerPr.SceneLoad("Title");
+                    startC = false;
+                }
+
+                break;
         }
     }
 

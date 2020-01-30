@@ -84,6 +84,9 @@ public class Client : MonoBehaviour
                     case 3:
                         StoryManager.storyManager.StoryLoad("Investigating2");
                         break;
+                    case 4:
+                        StoryManager.storyManager.StoryLoad("EndStory");
+                        break;
 
 
                 }

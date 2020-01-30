@@ -5,8 +5,6 @@
 		_MainTex("Texture", 2D) = "white" {}
 		_SubTex1("Subtexture1", 2D) = "white" {}
 		_SubTex2("Subtexture2", 2D) = "white" {}
-		_SubTex3("Subtexture3", 2D) = "white" {}
-		_SubTex4("Subtexture4", 2D) = "white" {}
 	}
 		SubShader
 	{
@@ -58,14 +56,6 @@
 
 				uv.x = i.uv.x + t * 1.5f;
 				sub = tex2D(_SubTex2, uv);
-			col.rgb = lerp(col.rgb, sub.rgb, sub.a);
-
-				uv.x = i.uv.x + t * 2;
-				sub = tex2D(_SubTex3, uv);
-			col.rgb = lerp(col.rgb, sub.rgb, sub.a);
-
-				uv.x = i.uv.x + t * 2.5f;
-				sub = tex2D(_SubTex4, uv);
 			col.rgb = lerp(col.rgb, sub.rgb, sub.a);
 
 				return col;

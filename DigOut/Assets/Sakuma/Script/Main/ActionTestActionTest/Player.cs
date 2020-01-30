@@ -72,9 +72,9 @@ public class Player : MonoBehaviour
     LayerMask Mask;
     bool footFlg=false;
 
-    [SerializeField]
+    /*[SerializeField]
     public GameObject Midboss;
-    public Midboss Sc;
+    public Midboss Sc;*/
     public Vector2 PlayerMove = Vector2.zero;
 
     private void OnTriggerStay2D(Collider2D collision)

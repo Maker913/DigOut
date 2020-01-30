@@ -284,7 +284,7 @@ public class Player : MonoBehaviour
                         if(sound_span<= 0)
                         {
                             SoundController.Instance.PlaySE(SoundController.SeName.Walk);
-                            sound_span = (float)0.5;
+                            sound_span = (float)0.32;
                         }
 
                         if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; left = true; }

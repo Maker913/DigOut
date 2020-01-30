@@ -58,7 +58,6 @@ public class MainStateInstance : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     void Update() {
         switch (mainState.gameMode) {
             case GameMode.Anime:
@@ -86,6 +85,7 @@ public class MainStateInstance : MonoBehaviour
         {
             mainState.gameMode = GameMode.Did;
             MainStateInstance.mainStateInstance.stageName = "街に戻る";
+            SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
             Scene.sceneManagerPr.SceneLoad("MainAction");
         }
     }
@@ -101,6 +101,7 @@ public class MainStateInstance : MonoBehaviour
     public void ChangeGameMode(GameMode nextGameMode){
         mainState.gameMode = nextGameMode;
         mainState.GameModeStart = true;
+
     } 
 
 

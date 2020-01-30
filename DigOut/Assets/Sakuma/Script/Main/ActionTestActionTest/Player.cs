@@ -62,7 +62,8 @@ public class Player : MonoBehaviour
 
     float pustPos;
 
-
+    int ActionNumber;
+    float sound_span;
     [SerializeField]
     LayerMask nomalMask;
     [SerializeField]
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
 
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Damage" && DamageTime < 0)
         {
-
+            SoundController.Instance.PlaySE(SoundController.SeName.Damage);
             damageVelocity = ((Vector2)collision.gameObject.transform.position - (Vector2)transform.position).normalized;
             damageVelocity *= -1 * 20;
             damageVelocity.y = 5;
@@ -143,6 +144,17 @@ public class Player : MonoBehaviour
         PlayerMove = transform.position;
     }
 
+    private void BGM()
+    {
+        if (ActionNumber == 0)
+        {
+            SoundController.Instance.PlaySE(SoundController.SeName.Attack);
+        }
+        if(ActionNumber == 1)
+        {
+            SoundController.Instance.PlaySE(SoundController.SeName.Jump);
+        }
+    }
     void FixedUpdate()
     {
         timeBom+=Time.fixedDeltaTime;
@@ -260,13 +272,21 @@ public class Player : MonoBehaviour
                 {
                     velocity.y = jumpVelocity;
                     playerAnime.animeMode = PlayerAnimeController.AnimeMode.Fall;
-
+                    ActionNumber =1;
+                    BGM();
                     //sc.MidJump();
                 }
                 else if (controller.collisions.below)
                 {
                     if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk ^ PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk)
                     {
+                        sound_span -= Time.deltaTime;
+                        if(sound_span<= 0)
+                        {
+                            SoundController.Instance.PlaySE(SoundController.SeName.Walk);
+                            sound_span = (float)0.5;
+                        }
+
                         if (PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.LWork; left = true; }
                         if (PS4ControllerInput.pS4ControllerInput.contorollerState.rightWalk) { playerAnime.animeMode = PlayerAnimeController.AnimeMode.RWork; left = false; }
                     }
@@ -312,6 +332,8 @@ public class Player : MonoBehaviour
                     atk = true;
                     atkTime = 0;
                     atkTik = true;
+                    ActionNumber = 0;
+                    BGM();
                     if (!PS4ControllerInput.pS4ControllerInput.contorollerState.downButton && !PS4ControllerInput.pS4ControllerInput.contorollerState.upButton)
                     {
 

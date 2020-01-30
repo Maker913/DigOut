@@ -44,6 +44,7 @@ public class StoryManager : MonoBehaviour
 
     int cont;
 
+    int bgmCount = 0;
     static public StoryManager storyManager;
     String LoadName;
 
@@ -168,6 +169,13 @@ public class StoryManager : MonoBehaviour
                     Anime = false;
                     StoryUI.SetActive(false);
                     StoryBack.SetActive(false);
+                    
+                    SoundController.Instance.BgmFlg = true;
+                    bgmCount++;
+                    if (bgmCount == 1)
+                    {
+                        BGM();
+                    }
                 }
 
 
@@ -180,7 +188,10 @@ public class StoryManager : MonoBehaviour
     }
 
 
-
+    private void BGM()
+    {
+        SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
+    }
 
     public void StoryLoad(string name)
     {

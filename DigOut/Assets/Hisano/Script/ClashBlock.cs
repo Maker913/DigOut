@@ -55,7 +55,6 @@ public class ClashBlock : MonoBehaviour
                 }
             }
         }
-
         Debug.DrawRay(transform.position, (Vector3)(Vector2.right * 2f));
     }
 }

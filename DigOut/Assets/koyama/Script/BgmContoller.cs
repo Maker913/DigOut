@@ -23,6 +23,7 @@ public class BgmContoller : SoundModel
             return;
         }
         audioSource.Stop();
+        audioSource.loop = true;
         audioSource.clip = audioClips[number];
         audioSource.Play();
     }

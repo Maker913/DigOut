@@ -35,7 +35,7 @@ public class MainStateInstance : MonoBehaviour
     public int Pow;
     public int Life;
     public bool toolBox;
-
+    public bool lastItem;
     public float footPos;
     public Vector2 PlayerMove = Vector2.zero;
 
@@ -51,6 +51,7 @@ public class MainStateInstance : MonoBehaviour
             Pow = 1;
             Life = 6;
             toolBox = true;
+            lastItem = true;
             DontDestroyOnLoad(this.gameObject);
         }
         else

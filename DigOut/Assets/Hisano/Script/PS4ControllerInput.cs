@@ -9,16 +9,21 @@ public class PS4ControllerInput : MonoBehaviour
 
     public struct ContorollerState
     {
+        //十字キー、スティック
         public bool leftWalk;
         public bool rightWalk;
         public bool upButton;
         public bool downButton;
-
+        public bool lSticLeft;
+        public bool lSticRight;
+        public bool lSticUp;
+        public bool lSticDown;
+        //×〇□△ボタン
         public bool Jump;
         public bool Circle;
         public bool Square;
         public bool Triangle;
-
+        //単押し
         public bool singleCircle;
         public bool singleOptions;
         public bool singleSquare;
@@ -30,6 +35,10 @@ public class PS4ControllerInput : MonoBehaviour
         public bool singleRight;
         public bool singleDown;
         public bool singleUp;
+        public bool singleLSticLeft;
+        public bool singleLSticRight;
+        public bool singleLSticUp;
+        public bool singleLSticDown;
 
 
         public void reset()
@@ -38,6 +47,10 @@ public class PS4ControllerInput : MonoBehaviour
             rightWalk = false;
             upButton = false;
             downButton = false;
+            lSticLeft = false;
+            lSticRight = false;
+            lSticUp = false;
+            lSticDown = false;
 
             Jump = false;
             Circle = false;
@@ -54,16 +67,26 @@ public class PS4ControllerInput : MonoBehaviour
             singleRight = false;
             singleUp = false;
             singleDown = false;
+            singleLSticLeft = false;
+            singleLSticRight = false;
+            singleLSticUp = false;
+            singleLSticDown = false;
         }
     }
 
     public ContorollerState contorollerState;
     float Padx;
     float Pady;
+    float lSticX;
+    float lSticY;
     bool oldLeft;
     bool oldRight;
     bool oldDown;
     bool oldUp;
+    bool oldLSticLeft;
+    bool oldLSticRight;
+    bool oldLSticUp;
+    bool oldLSticDown;
 
     static public PS4ControllerInput pS4ControllerInput;
 
@@ -92,16 +115,26 @@ public class PS4ControllerInput : MonoBehaviour
         if (ControllerOn) {
             Padx = Input.GetAxis("DpadLR");
             Pady = Input.GetAxis("DpadUD");
+            lSticX = Input.GetAxis("LsticX");
+            lSticY = Input.GetAxis("LsticY");
             
             contorollerState.rightWalk = Padx > 0.9f;
             contorollerState.leftWalk = Padx < -0.9f;
             contorollerState.upButton = Pady > 0.9f;
             contorollerState.downButton = Pady < -0.9f;
+            contorollerState.lSticRight = lSticX > 0.9f;
+            contorollerState.lSticLeft = lSticX < -0.9f;
+            contorollerState.lSticUp = lSticY > 0.9f;
+            contorollerState.lSticDown = lSticY < -0.9f;
 
             contorollerState.singleLeft = oldLeft == false && contorollerState.leftWalk == true;
             contorollerState.singleRight = oldRight == false && contorollerState.rightWalk == true;
             contorollerState.singleDown = oldDown == false && contorollerState.downButton == true;
             contorollerState.singleUp = oldUp == false && contorollerState.upButton == true;
+            contorollerState.singleLSticLeft = oldLSticLeft == false && contorollerState.lSticLeft == true;
+            contorollerState.singleLSticRight = oldLSticRight == false && contorollerState.lSticRight == true;
+            contorollerState.singleLSticUp = oldLSticUp == false && contorollerState.lSticUp == true;
+            contorollerState.singleLSticDown = oldLSticDown == false && contorollerState.lSticDown == true;
 
             contorollerState.Jump = Input.GetButton("Cross");
             contorollerState.Circle = Input.GetButton("Circle");
@@ -144,5 +177,9 @@ public class PS4ControllerInput : MonoBehaviour
         oldLeft = contorollerState.leftWalk;
         oldRight = contorollerState.rightWalk;
         oldUp = contorollerState.upButton;
+        oldLSticLeft = contorollerState.lSticLeft;
+        oldLSticRight = contorollerState.lSticRight;
+        oldLSticUp = contorollerState.lSticUp;
+        oldLSticDown = contorollerState.lSticDown;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class MainStateInstance : MonoBehaviour
 {
     public enum GameMode {
@@ -59,7 +59,19 @@ public class MainStateInstance : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+
+
+
+
+
+    }
     void Update() {
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            mainStateInstance = null;
+        }
         switch (mainState.gameMode) {
             case GameMode.Anime:
                 break;

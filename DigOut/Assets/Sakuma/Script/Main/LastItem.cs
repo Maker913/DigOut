@@ -7,7 +7,7 @@ public class LastItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!MainStateInstance.mainStateInstance.lastItem||MainStateInstance.mainStateInstance.toolBox)
+        if (!MainStateInstance.mainStateInstance.lastItem||Progression.progression.num<4)
         {
             gameObject.SetActive(false);
         }

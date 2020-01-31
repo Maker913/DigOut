@@ -9,13 +9,8 @@ public class GANGAN : MonoBehaviour
     bool Turn = false;
     [SerializeField]
     Rigidbody2D rigidbody2;
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "0")
-        {
-            Turn = !Turn;
-        }
-    }
+    [SerializeField]
+    LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +20,17 @@ public class GANGAN : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(Physics2D.Raycast (transform.position,!Turn ? Vector2.up: Vector2.down, 2, layerMask))
+        {
+            Turn = !Turn;
+        }
+
+
+
+
+
+
+
         if (!Turn)
         {
             rigidbody2.transform.position += new Vector3(0, dy * Time.fixedDeltaTime, 0);

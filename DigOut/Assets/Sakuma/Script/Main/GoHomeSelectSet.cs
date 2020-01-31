@@ -18,7 +18,7 @@ public class GoHomeSelectSet : MonoBehaviour
     {
 
 
-        if (collision.gameObject.layer == 12 && !Mainc.animeC)
+        if (collision.gameObject.layer == 12 && !Mainc.animeC&&MainStateInstance.mainStateInstance.stageName =="洞窟へ1")
         {
             goHome.On();
             

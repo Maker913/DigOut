@@ -61,7 +61,7 @@ public class Progression : MonoBehaviour
                 }
                 
                 break;
-            case 5:
+            case 6:
                 if (startC)
                 {
                     Scene.sceneManagerPr.SceneLoad("Title");

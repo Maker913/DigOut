@@ -20,6 +20,9 @@ public class Scene : MonoBehaviour
     bool lostCheck;
     bool go;
 
+    //連打対処用
+    bool Press = false;
+
     //経過時間の格納先
     float dTime;
 
@@ -77,7 +80,7 @@ public class Scene : MonoBehaviour
         //暗転フラグが正の時のみ処理
         if (lostCheck)
         {
-
+            
             if (go)
             {
                 //暗転する処理

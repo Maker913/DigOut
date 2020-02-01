@@ -54,7 +54,7 @@
 				sub = tex2D(_SubTex1, uv);
 			col.rgb = lerp(col.rgb, sub.rgb, sub.a);
 
-				uv.x = i.uv.x + t * 1.5f;
+				uv.x = i.uv.x + t * 2;
 				sub = tex2D(_SubTex2, uv);
 			col.rgb = lerp(col.rgb, sub.rgb, sub.a);
 

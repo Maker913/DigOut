@@ -41,7 +41,8 @@ public class Crustle : MonoBehaviour
 
     float Turnspeed = 180f;
 
-
+    [SerializeField]
+    Material material1;
 
     float angle;
 
@@ -52,9 +53,16 @@ public class Crustle : MonoBehaviour
 
     //佐久間追加分
     Vector3 damageVelocity = Vector3.zero;
+    [SerializeField]
     float DamageTime = 0;
-    [SerializeField ]
-
+    [SerializeField]
+    GameObject[] parts;
+    [SerializeField]
+    GameObject[] parts2;
+    [SerializeField]
+    Shader shader;
+    [SerializeField]
+    Texture2D texture2D;
     //
 
     //佐久間追加分
@@ -83,6 +91,21 @@ public class Crustle : MonoBehaviour
 
         ////重力計算
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+
+        Material mat = new Material (shader);
+        mat.SetColor("_Color", new Color(1, 1, 1, 1));
+        mat.SetTexture("_MainTex", texture2D);
+        material1 = mat;
+        for (int i = 0; i < parts.Length; i++)
+        {
+            parts[i].GetComponent<MeshRenderer>().material = mat;
+
+        }
+        for (int i = 0; i < parts2.Length; i++)
+        {
+            parts2[i].GetComponent<SkinnedMeshRenderer >().material = mat;
+
+        }
         ////ジャンプ初速算出
         //jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 
@@ -112,8 +135,17 @@ public class Crustle : MonoBehaviour
     {
         
         DamageTime -= Time.fixedDeltaTime;
+       
 
-
+        if (DamageTime > 0)
+        {
+            material1.SetColor("_Color", new Color(1, 1, 1, (Mathf.Sin((DamageTime * 360) * 4 * Mathf.PI / 180) + 1) / 2));
+            //material1.SetColor("_Color", new Color(1, 1, 1, 0));
+        }
+        if (DamageTime < 0)
+        {
+            material1.SetColor("_Color", new Color(1, 1, 1, 1));
+        }
 
 
         if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)

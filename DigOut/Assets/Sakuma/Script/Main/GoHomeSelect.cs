@@ -29,30 +29,30 @@ public class GoHomeSelect : MonoBehaviour
         if(windowOn)
         {
 
-            rectTransform.localPosition  = new Vector3(yesNo?-100:100, -125, 0);
+            //rectTransform.localPosition  = new Vector3(yesNo?-100:100, -125, 0);
 
 
-            if(PS4ControllerInput.pS4ControllerInput.contorollerState.singleLeft|| PS4ControllerInput.pS4ControllerInput.contorollerState.singleRight)
-            {
-                yesNo = !yesNo;
-            }
+            //if(PS4ControllerInput.pS4ControllerInput.contorollerState.singleLeft|| PS4ControllerInput.pS4ControllerInput.contorollerState.singleRight)
+            //{
+            //    yesNo = !yesNo;
+            //}
 
 
-            if(PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
-            {
+            //if(PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
+            //{
 
 
-                if(yesNo)
-                {
+                //if(yesNo)
+                //{
                     Mainc.animeC = true;
                     MainStateInstance.mainStateInstance.stageName = "街に戻る";
                     Scene.sceneManagerPr.SceneLoad("MainAction");
 
-                }
+                //}
 
                 Off();
 
-            }
+            //}
 
 
 

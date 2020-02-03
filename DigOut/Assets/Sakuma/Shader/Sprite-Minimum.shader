@@ -52,8 +52,8 @@ Shader "Custom/Sprite-Minimum" {
 				c.a=1-(dis*2)*(dis*2);
 
 
-				c.a-=1-abs( sin((_Time.y*100)*3.1415f/180));
-
+				c.a-=1-abs( sin((/*_Time.y*/1*100)*3.1415f/180));
+				
 				c.a=c.a<0?0:c.a;
 
                 c.rgb *= c.a;

@@ -38,7 +38,7 @@ public class MainStateInstance : MonoBehaviour
     public bool lastItem;
     public float footPos;
     public Vector2 PlayerMove = Vector2.zero;
-
+    public bool warp=false;
     public Color[] mapbuffer;
 
     private void Awake() {

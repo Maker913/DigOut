@@ -59,10 +59,19 @@ public class StageCreate : MonoBehaviour
         stageMake.cameraTestObj = data.transform.GetChild(0).gameObject;
 
             stageMake.StageLode();
-        data2.transform.position = new Vector3(startPos.x, startPos.y + 0.5f, 0);
-        data.transform.position = new Vector3(cameraPos.x, cameraPos.y, dataz);
-
-
+        if(MainStateInstance.mainStateInstance.warp)
+        {
+            data2.transform.position = new Vector3(46.5f, -6.5f, 0);
+            data.transform.position = new Vector3(46.5f, -5f, dataz);
+            MainStateInstance.mainStateInstance.warp = false;
+        }
+        else
+        {
+            data2.transform.position = new Vector3(startPos.x, startPos.y + 0.5f, 0);
+            data.transform.position = new Vector3(cameraPos.x, cameraPos.y, dataz);
+        }
+        
+        
     }
 
 

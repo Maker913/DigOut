@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 5492081988536657285, guid: beaef6e6628c5b54a915c03c1ff5f9c3, type: 3}
   - {fileID: 5492081988536657285, guid: f0daad9918f0b1a45b824d99d4b87e27, type: 3}
   - {fileID: 4530975571402086573, guid: 029d3b2faf87e9b42b893ed4dcfd0693, type: 3}
+  - {fileID: 4043902653511269741, guid: 133b6e1399b3f124d9d7670d0e6b737a, type: 3}
   CameraPreList:
   - {fileID: 8006924506129148325, guid: e3082a6b2f1a8b44ebfa4e86a4fc28ff, type: 3}
   CameraPre: 0

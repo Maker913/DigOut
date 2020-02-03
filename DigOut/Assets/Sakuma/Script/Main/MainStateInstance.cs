@@ -100,6 +100,23 @@ public class MainStateInstance : MonoBehaviour
             MainStateInstance.mainStateInstance.stageName = "街に戻る";
             SoundController.Instance.PlayBGM(SoundController.BgmName.Order);
             Scene.sceneManagerPr.SceneLoad("MainAction");
+            ItemList.itemList.copper = 0;
+            ItemList.itemList.silver = 0;
+            ItemList.itemList.gold = 0;
+            ItemList.itemList.dynamite = 0;
+            ItemList.itemList.heel = 0;
+            if (Progression.progression.num < 3)
+            {
+                toolBox = true;
+                Progression.progression.num = 1;
+            }
+            else if (Progression.progression.num < 6 && Progression.progression.num > 3)
+            {
+                lastItem = true;
+                Progression.progression.num = 4;
+            }
+
+
         }
     }
     private void TitleUpdate() {

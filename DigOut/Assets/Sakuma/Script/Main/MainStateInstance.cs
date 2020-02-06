@@ -40,6 +40,7 @@ public class MainStateInstance : MonoBehaviour
     public Vector2 PlayerMove = Vector2.zero;
     public bool warp=false;
     public Color[] mapbuffer;
+    public bool[] moguFlg = new bool[3];
 
     private void Awake() {
         if (mainStateInstance == null) {
@@ -48,6 +49,10 @@ public class MainStateInstance : MonoBehaviour
             mainState.GameModeStart = true;
             mainStateInstance = this;
             mainStateInstance.mapbuffer = null;
+            for(int i = 0; i < moguFlg.Length; i++)
+            {
+                moguFlg[i] = false;
+            }
             Pow = 1;
             Life = 6;
             toolBox = true;

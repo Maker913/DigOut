@@ -8,6 +8,8 @@ public class MoguMogu : MonoBehaviour
     Material material;
     bool text = false;
     float a = 0;
+    [SerializeField]
+    int mogunum;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +73,43 @@ public class MoguMogu : MonoBehaviour
             if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle && !sw)
             {
                 sw = true;
-                StoryManager.storyManager.StoryLoad("Mogu1");
+                switch (mogunum)
+                {
+                    case 1:
+                        if (MainStateInstance.mainStateInstance.moguFlg[0])
+                        {
+                            StoryManager.storyManager.StoryLoad("Mogu1b");
+                        }
+                        else
+                        {
+                            StoryManager.storyManager.StoryLoad("Mogu1f");
+                            MainStateInstance.mainStateInstance.moguFlg[0] = true;
+                        }
+                        break;
+                    case 2:
+                        if (MainStateInstance.mainStateInstance.moguFlg[1])
+                        {
+                            StoryManager.storyManager.StoryLoad("Mogu2b");
+                        }
+                        else
+                        {
+                            StoryManager.storyManager.StoryLoad("Mogu2f");
+                            MainStateInstance.mainStateInstance.moguFlg[1] = true;
+                        }
+                        break;
+                    case 3:
+                        if (MainStateInstance.mainStateInstance.moguFlg[2])
+                        {
+                            StoryManager.storyManager.StoryLoad("Mogu3b");
+                        }
+                        else
+                        {
+                            StoryManager.storyManager.StoryLoad("Mogu3f");
+                            MainStateInstance.mainStateInstance.moguFlg[2] = true;
+                        }
+                        break;
+                }
+                
             }
         }
     }

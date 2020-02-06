@@ -1217,7 +1217,7 @@ MonoBehaviour:
   - {fileID: 5492081987771872293}
   - {fileID: 5492081987421002274}
   BreakShader: {fileID: 4800000, guid: f3d0625acf944e84f9378d56bc8ba5b0, type: 3}
-  texture: {fileID: 2800000, guid: 68130d36e1408564ba5f2189fa232aa5, type: 3}
+  texture: {fileID: 2800000, guid: 05e06d23512bb7b4e8288bb101327d44, type: 3}
   collider2Ds:
   - {fileID: 5492081987217866663}
   - {fileID: 5492081988669336854}

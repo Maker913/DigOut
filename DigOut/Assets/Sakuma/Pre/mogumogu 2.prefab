@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 9bcf5dae0e0fe4f42b29c0e548f6db7e, type: 2}
-  mogunum: 1
+  mogunum: 3
 --- !u!1 &4043902653511269741
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,8 +161,8 @@ GameObject:
   - component: {fileID: 4043902653511269739}
   - component: {fileID: 4043902653511269738}
   m_Layer: 0
-  m_Name: mogumogu
-  m_TagString: 56
+  m_Name: mogumogu 2
+  m_TagString: 63
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

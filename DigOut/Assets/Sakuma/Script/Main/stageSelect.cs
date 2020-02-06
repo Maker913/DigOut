@@ -35,27 +35,27 @@ public class stageSelect : MonoBehaviour
         if (windowOn)
         {
 
-            rectTransform.localPosition = homePos + new Vector3(0, - 120*nowpas ,0);
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleUp&&nowpas>0)
-            {
-                nowpas--;
-            }
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleDown && nowpas < stagelist.Length-1)
-            {
-                nowpas++;
-            }
+            //rectTransform.localPosition = homePos + new Vector3(0, - 120*nowpas ,0);
+            //if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleUp&&nowpas>0)
+            //{
+            //    nowpas--;
+            //}
+            //if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleDown && nowpas < stagelist.Length-1)
+            //{
+            //    nowpas++;
+            //}
 
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
-            {
-
-
-                    MainStateInstance.mainStateInstance.stageName = stagelist[nowpas];
-                    Scene.sceneManagerPr.SceneLoad("MainAction");
+            //if (PS4ControllerInput.pS4ControllerInput.contorollerState.singleCircle)
+            //{
 
 
-                Off();
+            MainStateInstance.mainStateInstance.stageName = "洞窟へ1" /*stagelist[nowpas]*/;
+            Scene.sceneManagerPr.SceneLoad("MainAction");
 
-            }
+
+            Off();
+
+            //}
 
 
 

@@ -72,7 +72,7 @@ public class Crustle : MonoBehaviour
 
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Atk" && DamageTime < 0&&Player .Atk )
         {
-            
+            SoundController.Instance.PlaySE(SoundController.SeName.metal02);
             damageVelocity = ((Vector2)collision.gameObject.transform.parent.gameObject.transform.position - (Vector2)transform.position).normalized;
             Debug.Log(damageVelocity);
             damageVelocity *= (Turn ?-1:1) * 20;

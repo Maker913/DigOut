@@ -64,6 +64,7 @@ public class Progression : MonoBehaviour
             case 6:
                 if (startC)
                 {
+                    SoundController.Instance.StopBGM();
                     Scene.sceneManagerPr.SceneLoad("Title");
                     startC = false;
                 }

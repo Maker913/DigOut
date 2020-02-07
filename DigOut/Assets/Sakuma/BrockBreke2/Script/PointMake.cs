@@ -79,7 +79,8 @@ public class PointMake : MonoBehaviour
 
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Atk" && Player.Atk&&pow<=MainStateInstance.mainStateInstance.Pow)
         {
-
+            SoundController.Instance.PlaySE(SoundController.SeName.metal02);
+            SoundController.Instance.PlaySE(SoundController.SeName.lockClick);
             Bom();
         }
 
@@ -90,6 +91,7 @@ public class PointMake : MonoBehaviour
     {
         if (!flg)
         {
+            
             Destroy(collider2D);
             if (Random.Range(0,10)  >= 6) {
                 GameObject data = Instantiate(Item[Random.Range(0, 3)], transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity);

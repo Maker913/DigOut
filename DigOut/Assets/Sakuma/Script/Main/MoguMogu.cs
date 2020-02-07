@@ -84,6 +84,8 @@ public class MoguMogu : MonoBehaviour
                         {
                             StoryManager.storyManager.StoryLoad("Mogu1f");
                             MainStateInstance.mainStateInstance.moguFlg[0] = true;
+                            MainStateInstance.mainStateInstance.maxLife += 2;
+                            MainStateInstance.mainStateInstance.Life += 2;
                         }
                         break;
                     case 2:
@@ -95,6 +97,8 @@ public class MoguMogu : MonoBehaviour
                         {
                             StoryManager.storyManager.StoryLoad("Mogu2f");
                             MainStateInstance.mainStateInstance.moguFlg[1] = true;
+                            MainStateInstance.mainStateInstance.maxLife += 2;
+                            MainStateInstance.mainStateInstance.Life += 2;
                         }
                         break;
                     case 3:
@@ -106,6 +110,7 @@ public class MoguMogu : MonoBehaviour
                         {
                             StoryManager.storyManager.StoryLoad("Mogu3f");
                             MainStateInstance.mainStateInstance.moguFlg[2] = true;
+                            ItemList.itemList.dynamite += 5;
                         }
                         break;
                 }

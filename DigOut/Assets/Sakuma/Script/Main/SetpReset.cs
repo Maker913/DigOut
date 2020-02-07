@@ -12,7 +12,9 @@ public class SetpReset : MonoBehaviour
         {
             if (MainStateInstance.mainStateInstance != null)
             {
-                MainStateInstance.mainStateInstance.Life = 6;
+                MainStateInstance.mainStateInstance.maxLife = 6;
+                MainStateInstance.mainStateInstance.Life = MainStateInstance.mainStateInstance.maxLife;
+
                 MainStateInstance.mainStateInstance.toolBox = true;
             }
             if (Progression.progression != null)
@@ -25,6 +27,8 @@ public class SetpReset : MonoBehaviour
                 ItemList.itemList.copper = 0;
                 ItemList.itemList.silver  = 0;
                 ItemList.itemList.gold = 0;
+                ItemList.itemList.dynamite = 0;
+                ItemList.itemList.heel = 0;
             }
         }
     }

@@ -55,6 +55,48 @@ public class Life : MonoBehaviour
             hearts[2].mode = 1;
         }
 
+        if(MainStateInstance.mainStateInstance.maxLife > 6)
+        {
+            hearts[3].gameObject.SetActive(true);
+            if (MainStateInstance.mainStateInstance.Life <= 6)
+            {
+                hearts[3].mode = 0;
+            }else if(MainStateInstance.mainStateInstance.Life >= 8)
+            {
+                hearts[3].mode = 2;
+            }
+            else
+            {
+                hearts[3].mode = 1;
+            }
+            hearts[3].LifeModeChange();
+        }
+        else
+        {
+            hearts[3].gameObject.SetActive(false);
+        }
+
+        if (MainStateInstance.mainStateInstance.maxLife > 8)
+        {
+            hearts[4].gameObject.SetActive(true);
+            if (MainStateInstance.mainStateInstance.Life <= 8)
+            {
+                hearts[4].mode = 0;
+            }
+            else if (MainStateInstance.mainStateInstance.Life >= 10)
+            {
+                hearts[4].mode = 2;
+            }
+            else
+            {
+                hearts[4].mode = 1;
+            }
+            hearts[4].LifeModeChange();
+        }
+        else
+        {
+            hearts[4].gameObject.SetActive(false);
+        }
 
         //if(Input.GetKeyDown (KeyCode.UpArrow))
         //{

@@ -27,25 +27,29 @@ public class Info : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (MainStateInstance.mainStateInstance != null)
+        {
+            if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
+            {
+                float movex = Mathf.SmoothDamp(info.color.a, 1.0f, ref nows, 1f);
+                //transform.position = new Vector3(movex, transform.position.y, transform.position.z);
+                info.color = new Color(1, 1, 1, movex);
 
-        if (MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play) {
-            float movex = Mathf.SmoothDamp(info.color.a, 1.0f, ref nows, 1f);
-            //transform.position = new Vector3(movex, transform.position.y, transform.position.z);
-            info.color = new Color (1,1,1, movex);
 
+                if (backNum != Progression.progression.num)
+                {
+                    InfoSet();
+                }
 
-            if(backNum != Progression.progression.num) {
-                InfoSet();
+                backNum = Progression.progression.num;
+
+            }
+            else
+            {
+                //info.color = new Color(1, 1, 1, 0);
             }
 
-            backNum = Progression.progression.num;
-
         }
-        else {
-            //info.color = new Color(1, 1, 1, 0);
-        }
-
-
 
 
 

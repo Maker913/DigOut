@@ -65,9 +65,18 @@ public class PixAccess : MonoBehaviour {
                 }
             }
         }
-                    drawTexture.SetPixels(MainStateInstance.mainStateInstance.mapbuffer);
+        try
+        {
+            drawTexture.SetPixels(MainStateInstance.mainStateInstance.mapbuffer);
             drawTexture.Apply();
             GetComponent<Renderer>().material.mainTexture = drawTexture;
+        }
+        catch
+        {
+
+        }
+            
+
         Debug.Log("123");
     }
 

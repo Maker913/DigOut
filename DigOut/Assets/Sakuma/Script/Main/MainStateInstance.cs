@@ -34,6 +34,7 @@ public class MainStateInstance : MonoBehaviour
     public string stageName;
     public int Pow;
     public int Life;
+    public int maxLife;
     public bool toolBox;
     public bool lastItem;
     public float footPos;
@@ -54,7 +55,8 @@ public class MainStateInstance : MonoBehaviour
                 moguFlg[i] = false;
             }
             Pow = 1;
-            Life = 6;
+            maxLife = 6;
+            Life = maxLife;
             toolBox = true;
             lastItem = true;
             DontDestroyOnLoad(this.gameObject);

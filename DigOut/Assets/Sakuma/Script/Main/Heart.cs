@@ -36,4 +36,26 @@ public class Heart : MonoBehaviour
                 break;
         }
     }
+
+    public void LifeModeChange()
+    {
+        switch (mode)
+        {
+            case 0:
+                image[0].SetActive(false);
+                image[1].SetActive(false);
+                image[2].SetActive(true);
+                break;
+            case 1:
+                image[0].SetActive(true);
+                image[1].SetActive(true);
+                image[2].SetActive(false);
+                break;
+            case 2:
+                image[0].SetActive(true);
+                image[1].SetActive(false);
+                image[2].SetActive(false);
+                break;
+        }
+    }
 }

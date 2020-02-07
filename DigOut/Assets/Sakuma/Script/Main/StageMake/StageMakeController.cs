@@ -348,7 +348,7 @@ public class StageMakeController : MonoBehaviour
     {
         if(fileName == "街に戻る")
         {
-            MainStateInstance.mainStateInstance.Life = 6;
+            MainStateInstance.mainStateInstance.Life = MainStateInstance.mainStateInstance.maxLife;
         }
 
         bf = new BinaryFormatter();

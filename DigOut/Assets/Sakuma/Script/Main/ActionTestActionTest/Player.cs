@@ -220,10 +220,10 @@ public class Player : MonoBehaviour
             {
                 heelF = true;
             }
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Triangle && ItemList.itemList.heel > 0 && heelF && MainStateInstance.mainStateInstance.Life < 6)
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Triangle && ItemList.itemList.heel > 0 && heelF && MainStateInstance.mainStateInstance.Life < MainStateInstance.mainStateInstance.maxLife)
             {
                 heelF = false;
-                MainStateInstance.mainStateInstance.Life = 6;
+                MainStateInstance.mainStateInstance.Life = MainStateInstance.mainStateInstance.maxLife;
                 ItemList.itemList.heel--;
             }
             MainStateInstance.mainStateInstance.footPos = transform.position.y;

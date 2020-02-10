@@ -8,6 +8,7 @@ public class Warp : MonoBehaviour
     Material material;
     bool text = false;
     float a = 0;
+    bool next = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,12 +69,13 @@ public class Warp : MonoBehaviour
     {
         if (collision.gameObject.tag.ToString() == "Player" && MainStateInstance.mainStateInstance.mainState.gameMode == MainStateInstance.GameMode.Play)
         {
-            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle && !sw)
+            if (PS4ControllerInput.pS4ControllerInput.contorollerState.Circle && !sw&&!next )
             {
                 sw = true;
                 MainStateInstance.mainStateInstance.warp = true;
                 MainStateInstance.mainStateInstance.stageName = "洞窟へ1";
                 Scene.sceneManagerPr.SceneLoad("MainAction");
+                next = true;
             }
         }
     }

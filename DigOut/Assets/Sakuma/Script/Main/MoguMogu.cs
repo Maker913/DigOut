@@ -110,7 +110,9 @@ public class MoguMogu : MonoBehaviour
                         {
                             StoryManager.storyManager.StoryLoad("Mogu3f");
                             MainStateInstance.mainStateInstance.moguFlg[2] = true;
-                            ItemList.itemList.dynamite += 5;
+                            ItemList.itemList.copper  += 2;
+                            ItemList.itemList.silver  += 2;
+                            ItemList.itemList.gold += 2;
                         }
                         break;
                 }

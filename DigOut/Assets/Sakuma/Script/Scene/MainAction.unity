@@ -6599,12 +6599,17 @@ PrefabInstance:
         type: 3}
       propertyPath: audioClips.Array.data[10]
       value: 
-      objectReference: {fileID: 8300000, guid: ae8253680bd46be47a0afe148d2bada0, type: 3}
+      objectReference: {fileID: 8300000, guid: e0e08d068827c804996fe44c24210191, type: 3}
     - target: {fileID: 5408432322869391719, guid: 7a18bb19250e81c438b6e0bc6075ffe4,
         type: 3}
       propertyPath: audioClips.Array.data[11]
       value: 
       objectReference: {fileID: 8300000, guid: af8f787a3eb01974dad4ce0c6b4771b3, type: 3}
+    - target: {fileID: 5408432322869391704, guid: 7a18bb19250e81c438b6e0bc6075ffe4,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a18bb19250e81c438b6e0bc6075ffe4, type: 3}
 --- !u!4 &1266573022 stripped

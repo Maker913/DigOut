@@ -299,7 +299,7 @@ public class Player : MonoBehaviour
 
 
 
-                if (Input.GetKey(KeyCode.X)&&!atk && !atkHold)
+                if (PS4ControllerInput.pS4ControllerInput.contorollerState.Square&&!atk && !atkHold)
                 {
                     bomTime += 1;
                 }

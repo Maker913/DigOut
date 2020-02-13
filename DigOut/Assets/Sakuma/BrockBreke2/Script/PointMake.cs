@@ -77,11 +77,18 @@ public class PointMake : MonoBehaviour
     {
 
 
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Atk" && Player.Atk&&pow<=MainStateInstance.mainStateInstance.Pow)
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Atk" && Player.Atk)
         {
-            SoundController.Instance.PlaySE(SoundController.SeName.metal02);
-            SoundController.Instance.PlaySE(SoundController.SeName.lockClick);
-            Bom();
+            if(pow <= MainStateInstance.mainStateInstance.Pow)
+            {
+                SoundController.Instance.PlaySE(SoundController.SeName.lockClick);
+                Bom();
+            }
+            else
+            {
+                SoundController.Instance.PlaySE(SoundController.SeName.metal02);
+            }
+
         }
 
 

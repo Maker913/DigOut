@@ -32,7 +32,13 @@ public class CameraTest : MonoBehaviour
 
     [SerializeField]
     GameObject popObj;
-
+    private void Update()
+    {
+        if (PS4ControllerInput.pS4ControllerInput .contorollerState .Circle && PS4ControllerInput.pS4ControllerInput.contorollerState.singleOptions && PS4ControllerInput.pS4ControllerInput.contorollerState.leftWalk)
+        {
+            transform.position = new Vector3 (  targetObj.transform.position.x, targetObj.transform.position.y,transform.position.z);
+        }
+    }
 
     private void FixedUpdate()
     {

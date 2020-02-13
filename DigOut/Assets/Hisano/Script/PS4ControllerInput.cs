@@ -120,10 +120,10 @@ public class PS4ControllerInput : MonoBehaviour
             Debug.Log(Input.GetAxis("LsticX"));
             Debug.Log(Input.GetAxis("LsticY"));
 
-            contorollerState.rightWalk = Padx > 0.9f;
-            contorollerState.leftWalk = Padx < -0.9f;
-            contorollerState.upButton = Pady > 0.9f;
-            contorollerState.downButton = Pady < -0.9f;
+            contorollerState.rightWalk = Padx > 0.9f|| lSticX > 0.9f;
+            contorollerState.leftWalk = (Padx < -0.9f|| lSticX < -0.9f)&&!contorollerState.rightWalk;
+            contorollerState.upButton = Pady > 0.9f|| lSticY < -0.9f;
+            contorollerState.downButton = (Pady < -0.9f|| lSticY > 0.9f)&&!contorollerState.upButton;
             contorollerState.lSticRight = lSticX > 0.9f;
             contorollerState.lSticLeft = lSticX < -0.9f;
             contorollerState.lSticUp = lSticY < -0.9f;

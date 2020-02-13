@@ -54,7 +54,7 @@ Shader "Custom/BackGround" {
 				float2 rimuv=float2(output.uv.x+_Rim,output.uv.y);
 				rimuv.x-= rimuv.x>1?1:0;
 
-            	float4 c =tex2D(_MainTex, rimuv);
+            	float4 c =tex2D(_MainTex, rimuv)*_Color;
 
 
                 c.rgb *= c.a;

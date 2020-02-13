@@ -103,6 +103,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4194304
   rigidbody: {fileID: 3095040592218742063}
+  layerMask2:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!1 &3095040592473437941
 GameObject:
   m_ObjectHideFlags: 0

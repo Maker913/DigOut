@@ -18,6 +18,8 @@ public class Bom : MonoBehaviour
     [SerializeField]
     Rigidbody2D rigidbody;
     bool flg=false;
+    [SerializeField]
+    LayerMask layerMask2;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +59,20 @@ public class Bom : MonoBehaviour
                         pointMake.Bom();
 
                     }
+                    next = true;
+                    while (next)
+                    {
 
+                        RaycastHit2D data = Physics2D.CircleCast(transform.position, 2, Vector2.up, 0, layerMask2);
+                        if (data == false)
+                        {
+                            break;
+                        }
+                        Debug.Log("23");
+                        Crustle crustle = data.collider.gameObject.GetComponent<Crustle>();
+                        crustle.Damage();
+
+                    }
 
                     rigidbody.constraints =RigidbodyConstraints2D.FreezeAll;
 

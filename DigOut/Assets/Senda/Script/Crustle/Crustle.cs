@@ -58,6 +58,7 @@ public class Crustle : MonoBehaviour
     [SerializeField]
     GameObject[] parts;
     [SerializeField]
+
     GameObject[] parts2;
     [SerializeField]
     Shader shader;
@@ -82,7 +83,10 @@ public class Crustle : MonoBehaviour
         }
     }
     //
-
+    public void Damage()
+    {
+        Destroy(gameObject);
+    }
 
     void Start()
     {
